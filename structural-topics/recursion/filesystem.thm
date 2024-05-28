@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<alloy>
+
+<view nodetheme="Martha" edgetheme="Martha">
+
+<defaultnode/>
+
+<defaultedge/>
+
+<node>
+   <type name="File"/>
+   <type name="Int"/>
+   <type name="String"/>
+   <type name="univ"/>
+   <type name="seq/Int"/>
+   <type name="natural/ord/Ord"/>
+   <set name="$depth2_f" type="File"/>
+   <set name="natural/One" type="natural/Natural"/>
+   <set name="natural/Zero" type="natural/Natural"/>
+</node>
+
+<node color="Gray">
+   <type name="Entry"/>
+</node>
+
+<node color="Red">
+   <type name="Object"/>
+</node>
+
+<node numberatoms="no" shape="House">
+   <type name="Root"/>
+</node>
+
+<node shape="Trapezoid">
+   <type name="Dir"/>
+</node>
+
+<node visible="no">
+   <type name="Name"/>
+</node>
+
+<node visible="no" label="Natural">
+   <type name="natural/Natural"/>
+</node>
+
+<edge attribute="no">
+   <relation name="object"> <type name="Entry"/> <type name="Object"/> </relation>
+</edge>
+
+<edge attribute="yes">
+   <relation name="depth"> <type name="Object"/> <type name="natural/Natural"/> </relation>
+</edge>
+
+<edge visible="no" attribute="yes">
+   <relation name="name"> <type name="Entry"/> <type name="Name"/> </relation>
+</edge>
+
+</view>
+
+</alloy>
