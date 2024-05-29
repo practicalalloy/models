@@ -18,21 +18,11 @@ sig Dir extends Object {
 
 sig File extends Object {}
 
-// Superseded by the introduction of TaggedDir
-// one sig Root extends Dir {}
-
-one sig Root in Dir {}
+one sig Root extends Dir {}
 
 sig Tagged in File + Dir {
 	tags : some Tag
 }
-
-sig TaggedDir extends Dir {
-    tagged_content : set Object
-}
-
-fact tagged_dirs { TaggedDir in Tagged }
-
 
 sig Permission {}
 
@@ -52,13 +42,12 @@ sig Name {}
 run example {}
 run example {
 	#Tagged = 2
---	one Dir - Root
+	one Dir - Root
 	Tagged = Root + File
 	#Entry = 2
 	#Root.entries = 2
 	one Root.tags
 	#File.tags = 2
- 	tagged_content = Root -> File
 	one Symlink
 } for 4 but 2 Entry, exactly 3 Name
 
