@@ -33,14 +33,7 @@ sig Entry {
 
 sig Name {}
 
-run example {}
 run example {} for 4
-run example {} for 4 but 2 Entry, exactly 3 Name
-
-fact restrict_object {
-  // All objects are directories or files, redundant due to signature declarations
-  all x : Object | x in Dir or x in File
-}
 
 fact unique_names {
   // Different entries in the same directory must have different names
@@ -78,11 +71,6 @@ fact no_indirect_containment {
 assert no_partitions {
   // Every object is reachable from the root
   all o : Object | reachable[o]
-}
-
-fact no_indirect_containment {
-   // Directories cannot descend from themselves
-   all d : Dir | d not in descendants[d]
 }
 
 check no_partitions

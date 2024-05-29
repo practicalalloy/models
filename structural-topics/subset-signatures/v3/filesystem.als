@@ -43,12 +43,6 @@ sig Entry {
 sig Name {}
 
 run example {} for 4
-run example {} for 4 but 2 Entry, exactly 3 Name
-
-fact restrict_object {
-  // All objects are directories or files, redundant due to signature declarations
-  all x : Object | x in Dir or x in File
-}
 
 fact unique_names {
   // Different entries in the same directory must have different names
@@ -88,11 +82,6 @@ assert no_partitions {
   all o : Object | reachable[o]
 }
 
-fact no_indirect_containment {
-   // Directories cannot descend from themselves
-   all d : Dir | d not in descendants[d]
-}
-
 check no_partitions
 check no_partitions for 6
 
@@ -115,5 +104,5 @@ run book_instance3 {
     object = none -> none
     tags = none -> none
   }
-}
+} for 4
 
