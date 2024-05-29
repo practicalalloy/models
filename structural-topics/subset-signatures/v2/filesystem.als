@@ -7,38 +7,22 @@ sig Dir extends Object {
 }
 
 sig File extends Object {}
-sig Symlink extends Object {}
 
 one sig Root extends Dir {}
 
-sig Permission {}
-
-sig NonSymlink = Dir + File {
-    permission : one Permission
-}
-
-sig Tag {}
+abstract sig Tag {}
 
 sig Color, Text {}
 
-sig Shape in Tag {
+sig Shape extends Tag {
   color : one Color
 }
 
-sig Label in Tag {
+sig Label extends Tag {
   text : one Text
 }
 
-sig Alert in Tag {}
-
-fact tag_hierarchy {
-  // Tag is abstract
-  Tag = Shape + Label
-  // Alerts are labeled shapes
-  Alert = Shape & Label
-}
-
-sig Tagged in Dir + File {
+sig Tagged in Object {
     tags : some Tag
 }
 
@@ -49,8 +33,14 @@ sig Entry {
 
 sig Name {}
 
+run example {}
 run example {} for 4
 run example {} for 4 but 2 Entry, exactly 3 Name
+
+fact restrict_object {
+  // All objects are directories or files, redundant due to signature declarations
+  all x : Object | x in Dir or x in File
+}
 
 fact unique_names {
   // Different entries in the same directory must have different names

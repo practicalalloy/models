@@ -7,38 +7,12 @@ sig Dir extends Object {
 }
 
 sig File extends Object {}
-sig Symlink extends Object {}
 
 one sig Root extends Dir {}
 
-sig Permission {}
-
-sig NonSymlink = Dir + File {
-    permission : one Permission
-}
-
 sig Tag {}
 
-sig Color, Text {}
-
-sig Shape in Tag {
-  color : one Color
-}
-
-sig Label in Tag {
-  text : one Text
-}
-
-sig Alert in Tag {}
-
-fact tag_hierarchy {
-  // Tag is abstract
-  Tag = Shape + Label
-  // Alerts are labeled shapes
-  Alert = Shape & Label
-}
-
-sig Tagged in Dir + File {
+sig Tagged in Object {
     tags : some Tag
 }
 
@@ -49,8 +23,14 @@ sig Entry {
 
 sig Name {}
 
+run example {}
 run example {} for 4
 run example {} for 4 but 2 Entry, exactly 3 Name
+
+fact restrict_object {
+  // All objects are directories or files, redundant due to signature declarations
+  all x : Object | x in Dir or x in File
+}
 
 fact unique_names {
   // Different entries in the same directory must have different names
@@ -97,3 +77,20 @@ fact no_indirect_containment {
 
 check no_partitions
 check no_partitions for 6
+
+run book_instance2 {
+  some disj o0,o1,o2,o3,o4,o5,o6,o7,o8,o9,o10 : univ {
+    Dir = o0 + o1
+    Root = o1
+    File = o2
+    Entry = o3 + o4
+    Name = o5 + o6 + o7
+    Tagged = o1 + o2
+    Tag = o8 + o9 + o10
+    univ = o0 + o1 + o2 + o3 + o4 + o5 + o6 + o7 + o8 + o9 + o10 + Int
+    entries = o1 -> o3 + o1 -> o4
+    name = o3 -> o6 + o4 -> o7
+    object = o3 -> o2 + o4 -> o0
+    tags = o1 -> o10 + o2 -> o8 + o2 -> o9
+  }
+} for 4 but 2 Entry, exactly 3 Name
