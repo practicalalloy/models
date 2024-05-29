@@ -3,7 +3,7 @@ module filesystem
 abstract sig Object {}
 
 sig Dir extends Object {
-    entries : set Entry
+  entries : set Entry
 }
 
 sig File extends Object {}
@@ -11,8 +11,8 @@ sig File extends Object {}
 one sig Root extends Dir {}
 
 sig Entry {
-    object : one Object,
-    name   : one Name
+  object : one Object,
+  name   : one Name
 }
 
 sig Name {}
@@ -20,7 +20,6 @@ sig Name {}
 run example {}
 run example {} for 4
 run example {} for 4 but 2 Entry, exactly 3 Name
-run example {} for 3 but 2 Object, exactly 3 File
 
 fact restrict_object {
     // All objects are directories or files, redundant due to signature declarations

@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<alloy>
+
+<view hideSkolem="yes">
+
+<defaultnode/>
+
+<defaultedge/>
+
+<node>
+   <type name="Int"/>
+   <type name="Object"/>
+   <type name="String"/>
+   <type name="univ"/>
+   <type name="seq/Int"/>
+   <set name="$instance2_o0" type="univ"/>
+   <set name="Dir" type="Object"/>
+   <set name="File" type="Object"/>
+</node>
+
+</view>
+
+</alloy>
