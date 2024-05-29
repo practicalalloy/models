@@ -10,17 +10,7 @@ sig File extends Object {}
 
 one sig Root extends Dir {}
 
-abstract sig Tag {}
-
-sig Color, Text {}
-
-sig Shape extends Tag {
-  color : one Color
-}
-
-sig Label extends Tag {
-  text : one Text
-}
+sig Tag {}
 
 sig Tagged in Object {
     tags : some Tag
