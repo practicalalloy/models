@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<alloy>
+
+<view hideSkolem="yes">
+
+<defaultnode/>
+
+<defaultedge/>
+
+<node>
+   <type name="Dir"/>
+   <type name="Entry"/>
+   <type name="File"/>
+   <type name="Int"/>
+   <type name="Name"/>
+   <type name="Object"/>
+   <type name="Root"/>
+   <type name="String"/>
+   <type name="univ"/>
+   <type name="seq/Int"/>
+   <set name="$book_instance5_o0" type="univ"/>
+   <set name="$book_instance5_o1" type="univ"/>
+   <set name="$book_instance5_o2" type="univ"/>
+   <set name="$book_instance5_o3" type="univ"/>
+   <set name="$book_instance5_o4" type="univ"/>
+   <set name="$book_instance5_o5" type="univ"/>
+</node>
+
+</view>
+
+</alloy>
