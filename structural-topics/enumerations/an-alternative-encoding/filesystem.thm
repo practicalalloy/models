@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<alloy>
+
+<view nodetheme="Martha" edgetheme="Martha" hideSkolem="yes">
+
+<defaultnode/>
+
+<defaultedge/>
+
+<node>
+   <type name="Execute"/>
+   <type name="File"/>
+   <type name="Group"/>
+   <type name="Int"/>
+   <type name="Other"/>
+   <type name="Read"/>
+   <type name="String"/>
+   <type name="univ"/>
+   <type name="User"/>
+   <type name="Write"/>
+   <type name="open$3/Ord"/>
+   <type name="ordering/Ord"/>
+   <type name="seq/Int"/>
+   <set name="$distinct_permissions_o1" type="Object"/>
+   <set name="$distinct_permissions_o2" type="Object"/>
+   <set name="first" type="Class"/>
+   <set name="first" type="Permission"/>
+   <set name="last" type="Class"/>
+   <set name="last" type="Permission"/>
+</node>
+
+<node color="Gray">
+   <type name="Entry"/>
+</node>
+
+<node color="Red">
+   <type name="Object"/>
+</node>
+
+<node hideunconnected="yes">
+   <type name="Class"/>
+   <type name="Permission"/>
+</node>
+
+<node shape="Hexagon" color="Blue">
+   <type name="PermissionAssignment"/>
+</node>
+
+<node shape="House">
+   <type name="Root"/>
+</node>
+
+<node shape="Trapezoid">
+   <type name="Dir"/>
+</node>
+
+<node visible="no">
+   <type name="Name"/>
+</node>
+
+<edge attribute="no">
+   <relation name="object"> <type name="Entry"/> <type name="Object"/> </relation>
+</edge>
+
+<edge visible="no" attribute="yes">
+   <relation name="class"> <type name="PermissionAssignment"/> <type name="Class"/> </relation>
+   <relation name="name"> <type name="Entry"/> <type name="Name"/> </relation>
+   <relation name="permission"> <type name="PermissionAssignment"/> <type name="Permission"/> </relation>
+</edge>
+
+</view>
+
+</alloy>
