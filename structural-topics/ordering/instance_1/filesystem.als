@@ -1,8 +1,7 @@
 module filesystem
-open graph[Object] 
-open timestamp[Object,Timestamp]
 
-sig Timestamp {}
+open util/ordering[Time]
+sig Time {}
 
 abstract sig Object {}
 
@@ -16,7 +15,8 @@ one sig Root extends Dir {}
 
 sig Entry {
   object : one Object,
-  name   : one Name
+  name   : one Name,
+  time   : one Time
 }
 
 sig Name {}
@@ -35,6 +35,11 @@ fact no_shared_dirs {
   all d : Dir | lone object.d
 }
 
+fact no_dangling_objects {
+  // Every object except the root is contained somewhere
+  Entry.object = Object - Root
+}
+
 fact one_directory_per_entry {
   // Entries must belong to exactly one a directory
   all e : Entry | one entries.e
@@ -48,13 +53,14 @@ pred reachable [o : Object] {
   o in Root + descendants[Root]
 }
 
-fact rooted_dag {
-  dag[entries.object]
-  rootedAt[entries.object,Root]
+fact no_indirect_containment {
+   // Directories cannot descend from themselves
+   all d : Dir | d not in descendants[d]
 }
 
-fact time {
-  all d:Dir | d.entries.object.time in d.time.*next
+fact children_timestamp {
+  // The timestamp of an entry precedes that of its children
+  all e : Entry, t : e.object.entries.time | lt[e.time,t]
 }
 
 assert no_partitions {
@@ -65,7 +71,7 @@ assert no_partitions {
 check no_partitions
 check no_partitions for 6
 
-run book_instance_4 {
+run book_instance_1 {
   some disj o0,o1,o2,o3,o4,o6,o7 : univ {
     Dir = o0 + o1
     Root = o1

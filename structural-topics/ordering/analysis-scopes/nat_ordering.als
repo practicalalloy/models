@@ -11,3 +11,4 @@ fact {
 }
 
 run example {}
+run example {} for 4

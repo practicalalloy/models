@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<alloy>
+
+<view>
+
+<defaultnode/>
+
+<defaultedge/>
+
+<node>
+   <type name="Even"/>
+   <type name="Int"/>
+   <type name="Nat"/>
+   <type name="Odd"/>
+   <type name="String"/>
+   <type name="univ"/>
+   <type name="ordering/Ord"/>
+   <type name="seq/Int"/>
+   <set name="$first" type="Nat"/>
+   <set name="$last" type="Nat"/>
+</node>
+
+</view>
+
+</alloy>

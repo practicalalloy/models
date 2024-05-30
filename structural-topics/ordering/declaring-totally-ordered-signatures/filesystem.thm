@@ -14,6 +14,8 @@
    <type name="univ"/>
    <type name="ordering/Ord"/>
    <type name="seq/Int"/>
+   <set name="$first" type="Time"/>
+   <set name="$last" type="Time"/>
 </node>
 
 <node color="Gray">
@@ -22,10 +24,6 @@
 
 <node color="Red">
    <type name="Object"/>
-</node>
-
-<node hideunconnected="yes">
-   <type name="Time"/>
 </node>
 
 <node shape="House">
@@ -38,6 +36,7 @@
 
 <node visible="no">
    <type name="Name"/>
+   <type name="Time"/>
 </node>
 
 <edge attribute="no">
