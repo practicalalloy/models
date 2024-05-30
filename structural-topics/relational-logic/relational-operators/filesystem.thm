@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<alloy>
+
+<view>
+
+<defaultnode/>
+
+<defaultedge/>
+
+<node>
+   <type name="Dir"/>
+   <type name="Entry"/>
+   <type name="File"/>
+   <type name="Int"/>
+   <type name="Name"/>
+   <type name="Object"/>
+   <type name="Root"/>
+   <type name="String"/>
+   <type name="univ"/>
+   <type name="seq/Int"/>
+</node>
+
+</view>
+
+</alloy>
