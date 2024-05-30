@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<alloy>
+
+<view nodetheme="Martha" edgetheme="Martha">
+
+<defaultnode/>
+
+<defaultedge/>
+
+<node>
+   <type name="Int"/>
+   <type name="node"/>
+   <type name="String"/>
+   <type name="univ"/>
+   <type name="seq/Int"/>
+</node>
+
+<node showlabel="no">
+   <set name="$dag_example_o0" type="univ"/>
+   <set name="$dag_example_o1" type="univ"/>
+   <set name="$dag_example_o2" type="univ"/>
+   <set name="$dag_example_o3" type="univ"/>
+</node>
+
+</view>
+
+</alloy>

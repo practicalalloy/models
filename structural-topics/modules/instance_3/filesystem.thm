@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<alloy>
+
+<view nodetheme="Martha" edgetheme="Martha">
+
+<defaultnode/>
+
+<defaultedge/>
+
+<node>
+   <type name="File"/>
+   <type name="Int"/>
+   <type name="String"/>
+   <type name="Timestamp"/>
+   <type name="univ"/>
+   <type name="seq/Int"/>
+   <type name="timestamp/TimeAux"/>
+   <type name="timestamp/ordering/Ord"/>
+   <set name="$first" type="Timestamp"/>
+   <set name="$last" type="Timestamp"/>
+</node>
+
+<node color="Gray">
+   <type name="Entry"/>
+</node>
+
+<node color="Red">
+   <type name="Object"/>
+</node>
+
+<node hideunconnected="yes" showlabel="no">
+   <set name="$book_instance_3_o6" type="univ"/>
+   <set name="$book_instance_3_o7" type="univ"/>
+</node>
+
+<node shape="House">
+   <type name="Root"/>
+</node>
+
+<node shape="Trapezoid">
+   <type name="Dir"/>
+</node>
+
+<node showlabel="no">
+   <set name="$book_instance_3_o0" type="univ"/>
+   <set name="$book_instance_3_o1" type="univ"/>
+   <set name="$book_instance_3_o2" type="univ"/>
+   <set name="$book_instance_3_o3" type="univ"/>
+   <set name="$book_instance_3_o4" type="univ"/>
+</node>
+
+<node visible="no">
+   <type name="Name"/>
+</node>
+
+<edge attribute="no">
+   <relation name="object"> <type name="Entry"/> <type name="Object"/> </relation>
+</edge>
+
+<edge visible="no" attribute="yes">
+   <relation name="name"> <type name="Entry"/> <type name="Name"/> </relation>
+</edge>
+
+</view>
+
+</alloy>

@@ -1,4 +1,8 @@
 module filesystem
+open graph[Object] 
+open timestamp[Object,Timestamp]
+
+sig Timestamp {}
 
 abstract sig Object {}
 
@@ -31,11 +35,6 @@ fact no_shared_dirs {
   all d : Dir | lone object.d
 }
 
-fact no_dangling_objects {
-  // Every object except the root is contained somewhere
-  Entry.object = Object - Root
-}
-
 fact one_directory_per_entry {
   // Entries must belong to exactly one a directory
   all e : Entry | one entries.e
@@ -49,9 +48,13 @@ pred reachable [o : Object] {
   o in Root + descendants[Root]
 }
 
-fact no_indirect_containment {
-   // Directories cannot descend from themselves
-   all d : Dir | d not in descendants[d]
+fact rooted_dag {
+  dag[entries.object]
+  rootedAt[entries.object,Root]
+}
+
+fact time {
+  all d:Dir | d.entries.object.(TimeAux.aux_time) in d.(TimeAux.aux_time).*next
 }
 
 assert no_partitions {

@@ -1,4 +1,5 @@
 module filesystem
+open graph 
 
 abstract sig Object {}
 
@@ -31,11 +32,6 @@ fact no_shared_dirs {
   all d : Dir | lone object.d
 }
 
-fact no_dangling_objects {
-  // Every object except the root is contained somewhere
-  Entry.object = Object - Root
-}
-
 fact one_directory_per_entry {
   // Entries must belong to exactly one a directory
   all e : Entry | one entries.e
@@ -49,9 +45,9 @@ pred reachable [o : Object] {
   o in Root + descendants[Root]
 }
 
-fact no_indirect_containment {
-   // Directories cannot descend from themselves
-   all d : Dir | d not in descendants[d]
+fact rooted_dag {
+  dag[Object,entries.object]
+  rootedAt[Object,entries.object,Root]
 }
 
 assert no_partitions {
