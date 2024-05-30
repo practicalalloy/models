@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <alloy>
 
-<view nodetheme="Martha" edgetheme="Martha" hideSkolem="yes">
+<view nodetheme="Martha" edgetheme="Martha" hideSkolem="no">
 
 <defaultnode/>
 

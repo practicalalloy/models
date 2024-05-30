@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <alloy>
 
-<view nodetheme="Martha" edgetheme="Martha">
+<view nodetheme="Martha" edgetheme="Martha" hideSkolem="no">
 
 <defaultnode/>
 
@@ -13,6 +13,13 @@
    <type name="String"/>
    <type name="univ"/>
    <type name="seq/Int"/>
+   <set name="$example_o0" type="univ"/>
+   <set name="$example_o1" type="univ"/>
+   <set name="$example_o2" type="univ"/>
+   <set name="$example_o3" type="univ"/>
+   <set name="$example_o4" type="univ"/>
+   <set name="$example_o5" type="univ"/>
+   <set name="$example_o6" type="univ"/>
 </node>
 
 <node color="Red">
@@ -27,7 +34,7 @@
    <type name="Dir"/>
 </node>
 
-<node visible="no">
+<node visible="no" hideunconnected="no">
    <type name="Name"/>
 </node>
 

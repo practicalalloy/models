@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <alloy>
 
-<view nodetheme="Martha" edgetheme="Martha" hideSkolem="no">
+<view nodetheme="Martha" edgetheme="Martha">
 
 <defaultnode/>
 
@@ -13,11 +13,6 @@
    <type name="String"/>
    <type name="univ"/>
    <type name="seq/Int"/>
-   <set name="$no_partitions_o" type="Object"/>
-</node>
-
-<node color="Gray">
-   <type name="Entry"/>
 </node>
 
 <node color="Red">
@@ -35,14 +30,6 @@
 <node visible="no" hideunconnected="no">
    <type name="Name"/>
 </node>
-
-<edge attribute="no">
-   <relation name="object"> <type name="Entry"/> <type name="Object"/> </relation>
-</edge>
-
-<edge visible="no" attribute="yes">
-   <relation name="name"> <type name="Entry"/> <type name="Name"/> </relation>
-</edge>
 
 </view>
 
