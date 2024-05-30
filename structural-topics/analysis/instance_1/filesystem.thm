@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <alloy>
 
-<view nodetheme="Martha" edgetheme="Martha" useOriginalAtomNames="yes">
+<view nodetheme="Martha" edgetheme="Martha">
 
 <defaultnode/>
 
@@ -23,6 +23,10 @@
    <type name="Object"/>
 </node>
 
+<node hideunconnected="yes" showlabel="no">
+   <set name="$book_instance1_o3" type="univ"/>
+</node>
+
 <node shape="House">
    <type name="Root"/>
 </node>
@@ -31,8 +35,14 @@
    <type name="Dir"/>
 </node>
 
+<node showlabel="no">
+   <set name="$book_instance1_o0" type="univ"/>
+   <set name="$book_instance1_o1" type="univ"/>
+   <set name="$book_instance1_o2" type="univ"/>
+</node>
+
 <node style="Bold">
-   <set name="$some_entries_dir_d" type="Dir"/>
+   <set name="$book_instance1_d" type="Dir"/>
 </node>
 
 <node visible="no">
