@@ -30,12 +30,6 @@
    <type name="Dir"/>
 </node>
 
-<node showlabel="no">
-   <set name="$example_o1" type="File"/>
-   <set name="$example_o2" type="File"/>
-   <set name="$example_o3" type="File"/>
-</node>
-
 <node visible="no">
    <type name="Name"/>
 </node>
@@ -45,7 +39,7 @@
 </node>
 
 <node visible="yes" shape="Dbl Octagon" color="Green">
-   <set name="this/Capacity" type="Int"/>
+   <set name="Capacity" type="Int"/>
 </node>
 
 <edge attribute="no">

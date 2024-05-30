@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<alloy>
+
+<view nodetheme="Martha" edgetheme="Martha">
+
+<defaultnode/>
+
+<defaultedge/>
+
+<node>
+   <type name="File"/>
+   <type name="String"/>
+   <type name="univ"/>
+   <type name="seq/Int"/>
+</node>
+
+<node color="Gray">
+   <type name="Entry"/>
+</node>
+
+<node color="Red">
+   <type name="Object"/>
+</node>
+
+<node shape="House">
+   <type name="Root"/>
+</node>
+
+<node shape="Trapezoid">
+   <type name="Dir"/>
+</node>
+
+<node visible="no">
+   <type name="Name"/>
+</node>
+
+<node visible="no" hideunconnected="inherit">
+   <type name="Int"/>
+</node>
+
+<node visible="yes" shape="Dbl Octagon" color="Green">
+   <set name="Capacity" type="Int"/>
+</node>
+
+<edge attribute="no">
+   <relation name="object"> <type name="Entry"/> <type name="Object"/> </relation>
+</edge>
+
+<edge visible="no" attribute="yes">
+   <relation name="name"> <type name="Entry"/> <type name="Name"/> </relation>
+   <relation name="size"> <type name="File"/> <type name="Int"/> </relation>
+</edge>
+
+</view>
+
+</alloy>
