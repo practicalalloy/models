@@ -87,7 +87,7 @@ fact no_indirect_containment {
 check no_partitions
 check no_partitions for 6
 
-run distinct_permissions {
+run book_instance2 {
   some disj o0, o1, o2, o3, o4, o5, o6, o7 : univ {
     Dir = o0
     Root = o0
