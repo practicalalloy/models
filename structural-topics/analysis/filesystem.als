@@ -69,16 +69,6 @@ run some_entries_dir {
   some d: Dir | d in Entry.object
 } for 2
 
-pred total_order [s:set univ, f,l: s, r: s -> s] {
-  some s
-  r in s lone -> lone s
-  all x: s | x = l implies no x.r else one x.r 
-  s in f.*r
+check all_entries_same_name {
+  all s : set Entry | lone s.name
 }
-
-run path_same_name {
-  all f1, f2: Entry, r: object.entries {
-	f1 != f2 and f2.name = f1.name
-	total_order[f1.*(object.entries) & *(object.entries).f2,f1,f2,r]
-  }
-} for 4 but 2 Name
