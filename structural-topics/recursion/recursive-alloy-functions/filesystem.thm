@@ -15,8 +15,10 @@
    <type name="seq/Int"/>
    <type name="natural/ord/Ord"/>
    <set name="$depth2_f" type="File"/>
-   <set name="natural/One" type="natural/Natural"/>
-   <set name="natural/Zero" type="natural/Natural"/>
+   <set name="$first" type="natural/Natural"/>
+   <set name="$last" type="natural/Natural"/>
+   <set name="One" type="natural/Natural"/>
+   <set name="Zero" type="natural/Natural"/>
 </node>
 
 <node color="Gray">
@@ -27,7 +29,7 @@
    <type name="Object"/>
 </node>
 
-<node numberatoms="no" shape="House">
+<node shape="House">
    <type name="Root"/>
 </node>
 
@@ -37,18 +39,11 @@
 
 <node visible="no">
    <type name="Name"/>
-</node>
-
-<node visible="no" label="Natural">
    <type name="natural/Natural"/>
 </node>
 
 <edge attribute="no">
    <relation name="object"> <type name="Entry"/> <type name="Object"/> </relation>
-</edge>
-
-<edge attribute="yes">
-   <relation name="depth"> <type name="Object"/> <type name="natural/Natural"/> </relation>
 </edge>
 
 <edge visible="no" attribute="yes">

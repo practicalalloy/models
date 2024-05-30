@@ -21,18 +21,6 @@ run example {}
 run example {} for 4
 run example {} for 4 but 2 Entry, exactly 3 Name
 
-run all_entries_dir {
-  Entry.object in Dir
-} for 2
-
-run some_entries_dir {
-  some d: Dir | d in Entry.object
-} for 2
-
-check all_entries_same_name {
-  all s : set Entry | lone s.name
-}
-
 fact unique_names {
   // Different entries in the same directory must have different names
   all d : Dir, n : Name | lone (d.entries & name.n)
@@ -74,16 +62,28 @@ assert no_partitions {
 check no_partitions
 check no_partitions for 6
 
-run book_instance1 {
-  some disj o0, o1, o2, o3 : univ {
-    Dir = o0 + o1
-    Root = o0
-    File = none
-    Entry = o2
-    Name = o3
-    univ = o0 + o1 + o2 + o3 + Int
-    entries = o0 -> o2
-    name = o2 -> o3
-    object = o2 -> o1
+run book_instance_1 {
+  some disj d1, d2 : Dir, disj f1, f2 : File, disj e1, e2, e3 : Entry, disj n1, n2, n3 : Name {
+    Root  = d1
+    Dir   = d1 + d2
+    File  = f1 + f2
+    Entry = e1 + e2 + e3
+    Name  = n1 + n2 + n3
+    entries = d1 -> e1 + d1 -> e2 + d2 -> e3
+    name    = e1 -> n1 + e2 -> n2 + e3 -> n3
+    object  = e1 -> d2 + e2 -> f1 + e3 -> f2
   }
-} for 3
+} for 4 Object, 3 Entry, 3 Name
+
+run book_instance_2 {
+  some disj d1, d2 : Dir, f1, f2 : File, disj e1, e2, e3 : Entry, disj n1, n2, n3 : Name {
+    Root  = d1
+    Dir   = d1 + d2
+    File  = f1 + f2
+    Entry = e1 + e2 + e3
+    Name  = n1 + n2 + n3
+    entries = d1 -> e1 + d1 -> e2 + d2 -> e3
+    name    = e1 -> n1 + e2 -> n2 + e3 -> n3
+    object  = e1 -> d2 + e2 -> f1 + e3 -> f2
+  }
+} for 4 Object, 3 Entry, 3 Name

@@ -1,24 +1,59 @@
 <?xml version="1.0"?>
 <alloy>
 
-<view>
+<view nodetheme="Martha" edgetheme="Martha" hideSkolem="yes">
 
 <defaultnode/>
 
 <defaultedge/>
 
 <node>
-   <type name="Even"/>
+   <type name="File"/>
    <type name="Int"/>
-   <type name="Nat"/>
-   <type name="Odd"/>
    <type name="String"/>
    <type name="univ"/>
    <type name="ordering/Ord"/>
    <type name="seq/Int"/>
-   <set name="$first" type="Nat"/>
-   <set name="$last" type="Nat"/>
+   <set name="$book_instance2_o0" type="univ"/>
+   <set name="$book_instance2_o1" type="univ"/>
+   <set name="$book_instance2_o2" type="univ"/>
+   <set name="$book_instance2_o3" type="univ"/>
+   <set name="$book_instance2_o4" type="univ"/>
+   <set name="$book_instance2_o6" type="univ"/>
+   <set name="$book_instance2_o7" type="univ"/>
+   <set name="$first" type="Time"/>
+   <set name="$last" type="Time"/>
 </node>
+
+<node color="Gray">
+   <type name="Entry"/>
+</node>
+
+<node color="Red">
+   <type name="Object"/>
+</node>
+
+<node shape="House">
+   <type name="Root"/>
+</node>
+
+<node shape="Trapezoid">
+   <type name="Dir"/>
+</node>
+
+<node visible="no">
+   <type name="Name"/>
+   <type name="Time"/>
+</node>
+
+<edge attribute="no">
+   <relation name="object"> <type name="Entry"/> <type name="Object"/> </relation>
+</edge>
+
+<edge visible="no" attribute="yes">
+   <relation name="name"> <type name="Entry"/> <type name="Name"/> </relation>
+   <relation name="time"> <type name="Entry"/> <type name="Time"/> </relation>
+</edge>
 
 </view>
 

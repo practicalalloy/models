@@ -54,7 +54,7 @@ fact rooted_dag {
 }
 
 fact time {
-  all d:Dir | d.entries.object.time in d.time.*next
+  all d : Dir | d.entries.object.time in d.time.*next
 }
 
 assert no_partitions {

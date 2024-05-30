@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <alloy>
 
-<view nodetheme="Martha" edgetheme="Martha">
+<view nodetheme="Martha" edgetheme="Martha" hideSkolem="no">
 
 <defaultnode/>
 
@@ -13,16 +13,14 @@
    <type name="String"/>
    <type name="univ"/>
    <type name="seq/Int"/>
-   <set name="$test_root_file_dir_d1" type="Dir"/>
-   <set name="$test_root_file_dir_d2" type="Dir"/>
-   <set name="$test_root_file_dir_e1" type="Entry"/>
-   <set name="$test_root_file_dir_e2" type="Entry"/>
-   <set name="$test_root_file_dir_e3" type="Entry"/>
-   <set name="$test_root_file_dir_f1" type="File"/>
-   <set name="$test_root_file_dir_f2" type="File"/>
-   <set name="$test_root_file_dir_n1" type="Name"/>
-   <set name="$test_root_file_dir_n2" type="Name"/>
-   <set name="$test_root_file_dir_n3" type="Name"/>
+   <set name="$book_instance8_o0" type="univ"/>
+   <set name="$book_instance8_o1" type="univ"/>
+   <set name="$book_instance8_o2" type="univ"/>
+   <set name="$book_instance8_o3" type="univ"/>
+   <set name="$book_instance8_o4" type="univ"/>
+   <set name="$book_instance8_o5" type="univ"/>
+   <set name="$book_instance8_o6" type="univ"/>
+   <set name="$book_instance8_o7" type="univ"/>
 </node>
 
 <node color="Gray">

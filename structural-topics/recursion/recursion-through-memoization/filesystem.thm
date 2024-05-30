@@ -13,7 +13,12 @@
    <type name="String"/>
    <type name="univ"/>
    <type name="seq/Int"/>
-   <set name="$book_instance2_d" type="Dir"/>
+   <type name="natural/ord/Ord"/>
+   <set name="$depth4_f" type="File"/>
+   <set name="$first" type="natural/Natural"/>
+   <set name="$last" type="natural/Natural"/>
+   <set name="One" type="natural/Natural"/>
+   <set name="Zero" type="natural/Natural"/>
 </node>
 
 <node color="Gray">
@@ -24,12 +29,6 @@
    <type name="Object"/>
 </node>
 
-<node hideunconnected="yes">
-   <set name="$book_instance2_o6" type="univ"/>
-   <set name="$book_instance2_o7" type="univ"/>
-   <set name="$book_instance2_o8" type="univ"/>
-</node>
-
 <node shape="House">
    <type name="Root"/>
 </node>
@@ -38,17 +37,12 @@
    <type name="Dir"/>
 </node>
 
-<node showlabel="no">
-   <set name="$book_instance2_o0" type="univ"/>
-   <set name="$book_instance2_o1" type="univ"/>
-   <set name="$book_instance2_o2" type="univ"/>
-   <set name="$book_instance2_o3" type="univ"/>
-   <set name="$book_instance2_o4" type="univ"/>
-   <set name="$book_instance2_o5" type="univ"/>
-</node>
-
 <node visible="no">
    <type name="Name"/>
+</node>
+
+<node visible="no" label="Natural">
+   <type name="natural/Natural"/>
 </node>
 
 <edge attribute="no">
@@ -56,6 +50,7 @@
 </edge>
 
 <edge visible="no" attribute="yes">
+   <relation name="depth"> <type name="Object"/> <type name="natural/Natural"/> </relation>
    <relation name="name"> <type name="Entry"/> <type name="Name"/> </relation>
 </edge>
 

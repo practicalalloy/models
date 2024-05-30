@@ -53,6 +53,10 @@ fact rooted_dag {
   rootedAt[entries.object,Root]
 }
 
+fact time {
+  all d : Dir | d.entries.object.(TimeAux.aux_time) in d.(TimeAux.aux_time).*next
+}
+
 assert no_partitions {
   // Every object is reachable from the root
   all o : Object | reachable[o]

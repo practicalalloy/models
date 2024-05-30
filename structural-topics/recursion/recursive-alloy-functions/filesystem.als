@@ -1,5 +1,7 @@
 module filesystem
 
+open util/natural
+
 abstract sig Object {}
 
 sig Dir extends Object {
@@ -62,15 +64,17 @@ assert no_partitions {
 check no_partitions
 check no_partitions for 6
 
-run book_instance_2 {
-  some disj d1, d2 : Dir, f1, f2 : File, disj e1, e2, e3 : Entry, disj n1, n2, n3 : Name {
-    Root  = d1
-    Dir   = d1 + d2
-    File  = f1 + f2
-    Entry = e1 + e2 + e3
-    Name  = n1 + n2 + n3
-    entries = d1 -> e1 + d1 -> e2 + d2 -> e3
-    name    = e1 -> n1 + e2 -> n2 + e3 -> n3
-    object  = e1 -> d2 + e2 -> f1 + e3 -> f2
-  }
-} for 4 Object, 3 Entry, 3 Name
+fun depth [o: Object] : Natural {
+    o in Root implies Zero
+    else inc[max[{n : Natural | some x : entries.object.o | n = depth[x]}]]
+}
+
+-- needs recursion depth of 2
+run depth2 {
+    some f:File | depth[f] = inc[One]
+} for 5 but 3 Name
+
+-- needs recursion depth of 3
+run depth3 {
+    some f:File | depth[f] = inc[inc[One]]
+} for 5 but 3 Name

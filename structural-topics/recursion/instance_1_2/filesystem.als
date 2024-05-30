@@ -1,5 +1,7 @@
 module filesystem
 
+open util/natural
+
 abstract sig Object {}
 
 sig Dir extends Object {
@@ -62,15 +64,47 @@ assert no_partitions {
 check no_partitions
 check no_partitions for 6
 
+fun depth [o: Object] : Natural {
+    o in Root implies Zero
+    else inc[max[{n : Natural | some x : entries.object.o | n = depth[x]}]]
+}
+
+-- needs recursion depth of 2
+run depth2 {
+    some f:File | depth[f] = inc[One]
+} for 5 but 3 Name
+
+-- needs recursion depth of 3
+run depth3 {
+    some f:File | depth[f] = inc[inc[One]]
+} for 5 but 3 Name
+
+-- needs recursion depth of 2
 run book_instance_1 {
-  some disj d1, d2 : Dir, disj f1, f2 : File, disj e1, e2, e3 : Entry, disj n1, n2, n3 : Name {
+  some disj d1, d2 : Dir, disj f : File, disj e1, e2, e3 : Entry, disj n1, n2, n3 : Name {
+    depth[f] = inc[One]
     Root  = d1
     Dir   = d1 + d2
-    File  = f1 + f2
+    File  = f
     Entry = e1 + e2 + e3
     Name  = n1 + n2 + n3
     entries = d1 -> e1 + d1 -> e2 + d2 -> e3
     name    = e1 -> n1 + e2 -> n2 + e3 -> n3
-    object  = e1 -> d2 + e2 -> f1 + e3 -> f2
+    object  = e1 -> d2 + e2 -> f + e3 -> f
   }
-} for 4 Object, 3 Entry, 3 Name
+} for 5 but 3 Name
+
+-- needs recursion depth of 3
+run book_instance_2 {
+  some disj d0, d1, r : Dir, disj f : File, disj e0, e1, e2, e3 : Entry, disj n0, n1, n2 : Name {
+    depth[f] = inc[inc[One]]
+    Root  = r
+    Dir   = d0 + d1 + r
+    File  = f
+    Entry = e0 + e1 + e2 + e3
+    Name  = n0 + n1 + n2
+    entries = r -> e3 + d1 -> e1 + d1 -> e0 + d0 -> e2
+    name    = e0 -> n2 + e1 -> n1 + e2 -> n2 + e3 -> n0
+    object  = e0 -> f + e1 -> d0 + e2 -> f + e3 -> d1
+  }
+} for 5 but 3 Name

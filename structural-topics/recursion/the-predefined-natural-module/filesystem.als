@@ -1,5 +1,7 @@
 module filesystem
 
+open util/natural
+
 abstract sig Object {}
 
 sig Dir extends Object {
@@ -20,18 +22,6 @@ sig Name {}
 run example {}
 run example {} for 4
 run example {} for 4 but 2 Entry, exactly 3 Name
-
-run all_entries_dir {
-  Entry.object in Dir
-} for 2
-
-run some_entries_dir {
-  some d: Dir | d in Entry.object
-} for 2
-
-check all_entries_same_name {
-  all s : set Entry | lone s.name
-}
 
 fact unique_names {
   // Different entries in the same directory must have different names
@@ -73,18 +63,3 @@ assert no_partitions {
 
 check no_partitions
 check no_partitions for 6
-
-run book_instance2 {
-  some d: Dir | d in Entry.object
-  some disj o0, o1, o2, o3, o4, o5, o6, o7, o8 : univ {
-    Dir = o0 + o1
-    Root = o0
-    File = o2
-    Entry = o3 + o4 + o5
-    Name = o6 + o7 + o8
-    univ = Object + Entry + Name + Int
-    entries = o0 -> o3 + o1 -> o4 + o1 -> o5
-    name = o3 -> o8 + o4 -> o7 + o5 -> o6
-    object = o3 -> o1 + o4 -> o2 + o5 -> o2
-  }
-} for 3
