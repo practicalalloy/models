@@ -1,44 +1,29 @@
 <?xml version="1.0"?>
 <alloy>
 
-<view nodetheme="Martha">
+<view nodetheme="Martha" edgetheme="Martha">
 
 <defaultnode/>
 
 <defaultedge/>
 
 <node>
-   <type name="Delete"/>
-   <type name="Download"/>
-   <type name="Empty"/>
-   <type name="Event"/>
    <type name="Int"/>
-   <type name="Restore"/>
-   <type name="Share"/>
    <type name="String"/>
-   <type name="Stutter"/>
    <type name="univ"/>
-   <type name="Upload"/>
-   <type name="ordering/Ord"/>
    <type name="seq/Int"/>
-   <set name="$example_f" type="File"/>
-   <set name="$example_t" type="Token"/>
 </node>
 
 <node color="Gray">
    <type name="Token"/>
 </node>
 
-<node shape="Circle" color="White">
+<node shape="Circle" color="Yellow">
    <type name="File"/>
 </node>
 
 <node showlabel="no" color="Red">
-   <set name="this/trashed" type="File"/>
-</node>
-
-<node showlabel="no" color="Yellow">
-   <set name="this/uploaded" type="File"/>
+   <set name="trashed" type="File"/>
 </node>
 
 </view>
