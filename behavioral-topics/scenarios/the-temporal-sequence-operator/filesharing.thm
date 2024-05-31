@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<alloy>
+
+<view nodetheme="Martha" edgetheme="Martha">
+
+<defaultnode/>
+
+<defaultedge/>
+
+<node>
+   <type name="Int"/>
+   <type name="String"/>
+   <type name="univ"/>
+   <type name="seq/Int"/>
+   <set name="$scenario_two_shared_f" type="File"/>
+   <set name="$scenario_two_shared_t1" type="Token"/>
+   <set name="$scenario_two_shared_t2" type="Token"/>
+</node>
+
+<node color="Gray">
+   <type name="Token"/>
+</node>
+
+<node shape="Circle" color="White">
+   <type name="File"/>
+</node>
+
+<node showlabel="no" color="Red">
+   <set name="trashed" type="File"/>
+</node>
+
+<node showlabel="no" color="Yellow">
+   <set name="uploaded" type="File"/>
+</node>
+
+</view>
+
+</alloy>
