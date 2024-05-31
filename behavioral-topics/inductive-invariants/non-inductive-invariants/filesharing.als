@@ -78,50 +78,51 @@ pred stutter {
 
 run example {}
 
+run {
+  traces 
+  eventually { one shared and no trashed and no uploaded }
+} for 10
+
 pred inv_shared_are_accessible {
-	shared.Token in uploaded - trashed
+  shared.Token in uploaded - trashed
 }
 
 assert init_inv_shared_are_accessible { 
-	init implies inv_shared_are_accessible } 
+  init implies inv_shared_are_accessible 
+} 
 
 assert pres_inv_shared_are_accessible { 
-	(inv_shared_are_accessible and next) implies 
-		after inv_shared_are_accessible }
+  (inv_shared_are_accessible and next) implies 
+    after inv_shared_are_accessible 
+}
 
 check init_inv_shared_are_accessible for 10 but 1 steps
 check pres_inv_shared_are_accessible for 10 but 2 steps
 
 assert shared_are_accessible {
-    traces implies always inv_shared_are_accessible
+  traces implies always inv_shared_are_accessible
 }
 
 check shared_are_accessible for 10 but 1.. steps
 
-pred inv_shared_are_uploaded { shared.Token in uploaded }
+pred inv_shared_are_uploaded {
+  shared.Token in uploaded 
+}
 
 assert shared_are_uploaded { 
-	traces implies always inv_shared_are_uploaded }
+  traces implies always inv_shared_are_uploaded 
+}
 
 check shared_are_uploaded for 10 but 1.. steps
 
 assert init_inv_shared_are_uploaded { 
-	init implies inv_shared_are_uploaded }
+  init implies inv_shared_are_uploaded 
+}
 
 assert pres_inv_shared_are_uploaded { 
-	(inv_shared_are_uploaded and next) implies 
-		after inv_shared_are_uploaded }
+  (inv_shared_are_uploaded and next) implies 
+    after inv_shared_are_uploaded }
 
 check init_inv_shared_are_uploaded for 10 but 1 steps
 check pres_inv_shared_are_uploaded for 10 but 2 steps
 check pres_inv_shared_are_uploaded for 1 but 2 steps
-
-run {
-	traces 
-	eventually { one shared and no trashed and no uploaded }
-} for 10
-
-assert accessible_is_uploaded { 
-	inv_shared_are_accessible implies inv_shared_are_uploaded }
-
-check accessible_is_uploaded for 10 but 1 steps
