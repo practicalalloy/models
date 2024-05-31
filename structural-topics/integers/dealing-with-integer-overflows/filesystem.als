@@ -2,15 +2,15 @@ module filesystem
 
 one sig Capacity in Int {}
 
-abstract sig Object {
-  size: one Int
-}
+abstract sig Object {}
 
 sig Dir extends Object {
   entries : set Entry
 }
 
-sig File extends Object {}
+sig File extends Object {
+  size: one Int
+}
 
 one sig Root extends Dir {}
 

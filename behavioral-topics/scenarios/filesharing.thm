@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<alloy>
+
+<view nodetheme="Martha">
+
+<defaultnode/>
+
+<defaultedge/>
+
+<node>
+   <type name="Int"/>
+   <type name="String"/>
+   <type name="univ"/>
+   <type name="seq/Int"/>
+</node>
+
+<node color="Gray">
+   <type name="Token"/>
+</node>
+
+<node shape="Circle" color="White">
+   <type name="File"/>
+</node>
+
+<node showlabel="no">
+   <set name="$scenario_two_shared_stutter_f" type="File"/>
+   <set name="$scenario_two_shared_stutter_t1" type="Token"/>
+   <set name="$scenario_two_shared_stutter_t2" type="Token"/>
+</node>
+
+<node showlabel="no" color="Red">
+   <set name="this/trashed" type="File"/>
+</node>
+
+<node showlabel="no" color="Yellow">
+   <set name="this/uploaded" type="File"/>
+</node>
+
+</view>
+
+</alloy>
