@@ -24,8 +24,6 @@ fact some_node {
 fact init {
   // initially inbox are empty
   no inbox
-  // initially there are no elected nodes
-  no Elected
 }
 
 pred initiate [n : Node] {
