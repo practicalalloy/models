@@ -99,6 +99,7 @@ fun downloaded [t : Token] : set File {
 assert one_download_per_token {
   all t : Token | always lone downloaded[t]
 }
+check one_download_per_token expect 0
 
 assert empty_after_restore {
   all f : File | always (
