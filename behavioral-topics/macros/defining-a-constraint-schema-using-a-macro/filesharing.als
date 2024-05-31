@@ -25,52 +25,54 @@ fact transitions {
   )
 } 
 
+let unchanged[x] { x = (x)' }
+
 pred empty {
   no trashed'                    // effect on trashed
   uploaded' = uploaded - trashed // effect on uploaded
-  shared'   = shared             // no effect on shared
+  unchanged[shared]              // no effect on shared
 }
 
 pred upload [f : File] {
   f not in uploaded        // guard
   uploaded' = uploaded + f // effect on uploaded
-  trashed'  = trashed      // no effect on trashed
-  shared'   = shared       // no effect on shared
+  unchanged[trashed]       // no effect on trashed
+  unchanged[shared]        // no effect on shared
 }
 
 pred delete [f : File] {
   f in uploaded - trashed       // guard
   trashed'  = trashed + f       // effect on trashed
   shared'   = shared - f->Token // effect on shared
-  uploaded' = uploaded          // no effect on uploaded
+  unchanged[uploaded]           // no effect on uploaded
 }
 
 pred restore [f : File] {
   f in trashed            // guard
   trashed'  = trashed - f // effect on trashed
-  uploaded' = uploaded    // no effect on uploaded
-  shared'   = shared      // no effect on shared
+  unchanged[uploaded]     // no effect on uploaded
+  unchanged[shared]       // no effect on shared
 }
 
 pred share [f : File, t : Token] {
   f in uploaded - trashed           // guard
   historically t not in File.shared // guard
-  shared'   = shared + f->t         // effect on shared
-  uploaded' = uploaded              // no effect on uploaded
-  trashed'  = trashed               // no effect on trashed
+  shared' = shared + f->t           // effect on shared
+  unchanged[uploaded]               // no effect on uploaded
+  unchanged[trashed]                // no effect on trashed
 }
 
 pred download [t : Token] {
   some shared.t                // guard 
   shared'   = shared - File->t // effect on shared
-  uploaded' = uploaded         // no effect on uploaded
-  trashed'  = trashed          // no effect on trashed
+  unchanged[uploaded]          // no effect on uploaded
+  unchanged[trashed]           // no effect on trashed
 }
 
 pred stutter {
-  uploaded' = uploaded // no effect on uploaded
-  trashed'  = trashed  // no effect on trashed
-  shared'   = shared   // no effect on trashed
+  unchanged[uploaded] // no effect on uploaded
+  unchanged[trashed]  // no effect on trashed
+  unchanged[shared]   // no effect on trashed
 }
 
 run example {}
@@ -106,9 +108,11 @@ assert empty_after_restore {
 }
 check empty_after_restore
 
-fact fairness_on_empty {
+let fair [ena, ev] { always ((always (ena)) implies eventually (ev)) }
+
+fact fairness_on_empty { 
   // Trash is periodically emptied
-  always eventually empty
+  fair[(some trashed), empty] 
 }
 
 assert non_restored_files_will_disappear {

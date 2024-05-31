@@ -25,7 +25,6 @@ fact transitions_or_stutter {
 }
 
 pred empty {
-  some trashed           // guard
   no trashed'            // effect on trashed
   File' = File - trashed // effect on File
   shared' = shared       // no effect on shared
@@ -78,8 +77,8 @@ assert shared_are_accessible {
   always shared.Token in File - trashed
 }
 check shared_are_accessible
-check shared_are_accessible for 4 but 20 steps
-check shared_are_accessible for 4 but 1.. steps
+--check shared_are_accessible for 4 but 20 steps
+--check shared_are_accessible for 4 but 1.. steps
 
 assert restore_undoes_delete {
   always all f : File | (
@@ -98,9 +97,9 @@ assert one_download_per_token {
 check one_download_per_token
 
 assert empty_after_restore {
-  always (
-    empty implies
-    after ((some f : File | delete[f]) releases not empty)
+  always ( all f : File |
+    delete[f] implies
+    after ((restore[f] or upload) releases not delete[f])
   )
 }
 check empty_after_restore

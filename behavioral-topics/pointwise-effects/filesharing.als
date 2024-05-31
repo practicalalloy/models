@@ -32,10 +32,10 @@ pred empty {
 }
 
 pred upload [f : File] {
-  f not in uploaded // guard
-  uploaded' = uploaded + f// effect on uploaded
-  trashed'  = trashed// no effect on trashed
-  shared'   = shared// no effect on shared
+  f not in uploaded        // guard
+  uploaded' = uploaded + f // effect on uploaded
+  trashed'  = trashed      // no effect on trashed
+  shared'   = shared       // no effect on shared
 }
 
 pred delete [f : File] {
