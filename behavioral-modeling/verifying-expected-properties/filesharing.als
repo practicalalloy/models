@@ -1,12 +1,13 @@
 module filesharing
 
 sig Token {}
-
 sig File {
-  var shared : set Token
+   var shared : set Token
 }
 var sig uploaded in File {}
-var sig trashed in uploaded {}
+one sig Trash {
+   var trashed : seq uploaded
+}
 
 fact init {
   // Initially there are no files uploaded nor shared
