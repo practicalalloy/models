@@ -37,6 +37,7 @@ fact transitions_or_stutter {
 }   
 
 pred empty {
+    some trashed                        // guard
     no trashed'                         // effect on trashed
     uploaded' = uploaded - trashed      // effect on uploaded
     shared' = shared                    // no effect on shared
@@ -99,7 +100,6 @@ assert restore_undoes_delete {
         uploaded'' = uploaded and trashed'' = trashed and shared'' = shared
     )
 }
-
 // A counterexample is epxected because delete modifies the shared relation
 // and restore does not recover it
 check restore_undoes_delete expect 1
@@ -126,14 +126,47 @@ assert empty_after_restore {
 }
 check empty_after_restore expect 0
 
-fact fairness_on_empty {
+// unconditional fairness on empty
+pred fairness_on_empty {
 	always eventually empty
 }
 
-assert non_restored_files_will_disappear {
-    all f : File | always (
-        delete[f] and after always not restore[f] implies
-        eventually f not in uploaded
-    )
+pred weak_fairness_on_empty {
+  always (
+    always some trashed implies
+    eventually empty
+  )
 }
-check non_restored_files_will_disappear expect 0
+
+pred strong_fairness_on_empty {
+  (always eventually some trashed)
+  implies always eventually empty
+}
+
+pred non_restored_files_will_disappear {
+  all f : File | always (
+      delete[f] and after always not restore[f] implies
+      eventually f not in uploaded
+  )
+}
+
+// The liveness property is exepcted to be false without fairness assumptions
+check non_restored_files_will_disappear_wo_fairness {
+     non_restored_files_will_disappear
+} expect 1
+
+// The liveness property is expected to be true under weak fairness on empty
+check non_restored_files_will_disappear {
+    weak_fairness_on_empty implies non_restored_files_will_disappear
+} expect 0
+
+// Strong fairness is stronger than weak fairness
+check strong_implies_weak_fairness {
+    strong_fairness_on_empty implies weak_fairness_on_empty
+} expect 0
+
+// Unconditional fairness is stronger than strong fairness
+check unconditional_implies_strong_fairness {
+    fairness_on_empty implies strong_fairness_on_empty
+} expect 0
+
