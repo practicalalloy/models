@@ -29,21 +29,17 @@ fact init {
 pred initiate [n : Node] {
   // node n initiates the protocol
 
-  historically n not in n.succ.inbox          // guard
+  historically n not in n.succ.inbox   // guard
 
-  n.succ.inbox' = n.succ.inbox + n            // effect on n.succ.inbox
-  all m : Node - n.succ | m.inbox' = m.inbox  // effect on the outboxes of other nodes
+  inbox' = inbox + n.succ->n           // effect on inbox 
 }
 
 pred process [n : Node, i : Node] {
   // i is read and processed by node n
 
-  i in n.inbox                                     // guard
-
-  n.inbox' = n.inbox - i                           // effect on n.inbox
-  gt[i,n] implies n.succ.inbox' = n.succ.inbox + i // effect on n.succ.inbox
-          else    n.succ.inbox' = n.succ.inbox
-  all m : Node - n - n.succ | m.inbox' = m.inbox   // effect on the inboxes of other nodes
+  i in n.inbox                                    // guard
+ 
+  inbox' = inbox - n->i + n.succ->(i & n.^next)   // effect inbox
 }
 
 pred stutter {
