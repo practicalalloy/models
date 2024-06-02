@@ -61,33 +61,33 @@ fact events {
   )
 }
 
-run example {}
-run example3 {} for exactly 3 Node
+run example {} expect 1
+run example3 {} for exactly 3 Node expect 1
 
 run eventually_elected {
   eventually some Elected
-} for exactly 3 Node
+} for exactly 3 Node expect 1
 
 run example1 {
   eventually some Elected
-} for exactly 1 Node
+} for exactly 1 Node expect 1
 
 assert at_most_one_leader {
   always (lone Elected)
 }
-check at_most_one_leader
-check at_most_one_leader for 4 but 20 steps
-check at_most_one_leader for 4 but 1.. steps
+check at_most_one_leader expect 0
+check at_most_one_leader for 4 but 20 steps expect 0
+check at_most_one_leader for 4 but 1.. steps expect 0
 
 assert leader_stays_leader {
   always (all n : Elected | always n in Elected)
 }
-check leader_stays_leader
+check leader_stays_leader expect 0
 
 assert at_least_one_leader {
   eventually (some Elected)
 }
-check at_least_one_leader
+check at_least_one_leader expect 1
 
 pred fairness {
   all n : Node {
@@ -99,4 +99,4 @@ pred fairness {
 assert at_least_one_leader_fair {
   fairness implies eventually (some Elected)
 }
-check at_least_one_leader_fair
+check at_least_one_leader_fair expect 0
