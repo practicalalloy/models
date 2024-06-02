@@ -102,14 +102,16 @@ pred stutter {
   Elected' = Elected
 }
 
+pred node_acts [n : Node] {
+  initiate[n] or
+  (some i : Id | send[n,i]) or
+  (some i : Id | process[n,i])
+ 
+}
+
 fact events {
   // possible events
-  always (
-    stutter or
-    (some n : Node | initiate[n]) or
-    (some n : Node, i : Id | send[n,i]) or
-    (some n : Node, i : Id | process[n,i])
-  )
+  always (stutter or some n : Node | node_acts[n])
 }
 
 run example {}
@@ -136,11 +138,27 @@ assert at_least_one_leader {
 }
 check at_least_one_leader
 
+pred initiate_enabled [n : Node] {
+  historically n.id not in n.outbox
+}
+pred process_enabled [n : Node, i : Id] {
+  some n.inbox
+}
+pred send_enabled [n : Node, i : Id] {
+  some n.outbox
+}
+
+pred node_enabled [n : Node] {
+  initiate_enabled[n] or 
+  (some i : Id | process_enabled[n,i]) or 
+  (some i : Id | send_enabled[n,i])
+}
+
 pred fairness {
   all n : Node {
-    eventually always (historically n.id not in n.outbox or some n.inbox or some n.outbox)
+    eventually always node_enabled[n]
     implies
-    always eventually (initiate[n] or some i : n.inbox | process[n,i] or send[n,i])
+    always eventually node_acts[n]
   }
 }
 
