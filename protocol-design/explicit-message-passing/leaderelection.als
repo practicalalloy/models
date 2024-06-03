@@ -82,9 +82,7 @@ pred node_acts [n : Node] {
 
 fact events {
   // possible events
-  always (
-    stutter or some n : Node | node_acts[n]
-  )
+  always (stutter or some n : Node | node_acts[n])
 }
 
 pred generator {
@@ -98,8 +96,6 @@ pred unique {
   all m1,m2 : CandidateMsg | m1.payload = m2.payload implies m1 = m2
   all m1,m2 : ElectedMsg   | m1.payload = m2.payload implies m1 = m2
 }
-
-fact { generator and unique }
 
 run example {} expect 1
 run example3 {} for exactly 3 Node, 3 Message expect 1
@@ -129,14 +125,14 @@ run bad_example {
 assert at_most_one_leader {
   always lone Node.Elected
 }
-check at_most_one_leader expect 0
+check at_most_one_leader for 3 but 6 Message expect 0
 check at_most_one_leader for 4 but 20 steps expect 0
 check at_most_one_leader for 4 but 1.. steps expect 0
 
 assert leader_stays_leader {
   always (all n : Node.Elected | always n in Node.Elected)
 }
-check leader_stays_leader expect 0
+check leader_stays_leader for 3 but 6 Message expect 0
 
 assert at_least_one_leader {
   eventually (Node = Elected.Node)
@@ -145,11 +141,9 @@ check at_least_one_leader expect 1
 
 pred initiate_enabled [n : Node] {
   historically no CandidateMsg & payload.n & n.succ.inbox
-  some CandidateMsg & payload.n
 }
 pred processCandidate_enabled [n : Node, m : Message] {
   m in n.inbox
-  m.payload = n implies some ElectedMsg & payload.n
 }
 pred processElected_enabled [n : Node, m : Message] {
   m in n.inbox
@@ -172,9 +166,14 @@ pred fairness {
 assert at_least_one_leader_fair {
   fairness implies eventually (Node = Elected.Node)
 }
+check at_least_one_leader_fair for 3 but 6 Message expect 0
 check at_least_one_leader_fair for 3 but 6 Message, 20 steps expect 0
 
 assert at_least_one_leader_fair_gen {
   (generator and fairness) implies eventually (Node = Elected.Node)
 }
 check at_least_one_leader_fair_gen for 3 but 6 Message, 10 steps expect 0
+
+fact {
+	generator and unique
+}
