@@ -102,3 +102,33 @@ run example3 {} for exactly 3 Node, exactly 3 Id expect 1
 run eventually_elected {
   eventually some Elected
 } for exactly 3 Node, exactly 3 Id expect 1
+
+assert at_most_one_leader {
+  always (lone Elected)
+}
+check at_most_one_leader expect 0
+check at_most_one_leader for 4 but 20 steps expect 0
+check at_most_one_leader for 4 but 1.. steps expect 0
+
+assert leader_stays_leader {
+  always (all n : Elected | always n in Elected)
+}
+check leader_stays_leader expect 0
+
+assert at_least_one_leader {
+  eventually (some Elected)
+}
+check at_least_one_leader expect 1
+
+check book_instance12 {
+  (some n0 : Node, disj i0, i1, i2 : Id {
+    Node = n0
+    Id = i0 + i1 + i2
+    succ = n0 -> n0
+    ordering/next = i0 -> i1 + i1 -> i2
+    id = n0 -> i0
+    always no Elected
+    always no inbox
+    always no outbox
+  }) implies eventually (some Elected)
+} expect 1

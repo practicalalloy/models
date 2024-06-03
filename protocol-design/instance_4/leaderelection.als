@@ -6,8 +6,12 @@ sig Id {}
 
 sig Node {
   succ : one Node,
-  id : one Id
+  id : one Id,
+  var inbox : set Id,
+  var outbox : set Id
 }
+
+var sig Elected in Node {}
 
 fact ring {
   // succ forms a ring
@@ -27,12 +31,15 @@ fact unique_ids {
 run example {} expect 1
 run example3 {} for exactly 3 Node, exactly 3 Id expect 1
 
-run book_instance3 {
+run book_instance4 {
   some disj n0, n1, n2 : Node, disj i0, i1, i2 : Id {
     Node = n0 + n1 + n2
     Id = i0 + i1 + i2
     succ = n0 -> n1 + n1 -> n2 + n2 -> n0
     next = i0 -> i1 + i1 -> i2
     id = n0 -> i2 + n1 -> i1 + n2 -> i0
+    Elected = n1
+    inbox = n0 -> i2 + n1 -> i0 + n1 -> i1 + n2 -> i2
+    outbox = n0 -> i0 + n0 -> i1 + n1 -> i2
   }
 } for exactly 3 Node, exactly 3 Id expect 1

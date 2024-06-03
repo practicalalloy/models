@@ -3,17 +3,17 @@ module leaderelection
 sig Node {
   next : lone Node,
   succ : one Node,
-  var inbox : set Node
+  var inbox : seq Node
 }
 one sig first, last in Node {}
 
 fact ordering {
-  no next.first and no last.next
+  no next.this/first and no last.next
   Node-first in first.^next
 }
 
 fun Elected : set Node {
-  { n : Node | once (before n in n.inbox and n not in n.inbox) }
+  { n : Node | once (before n in first[n.inbox] and n not in first[n.inbox]) }
 }
 
 fact ring {
@@ -27,40 +27,46 @@ fact some_node {
 }
 
 fact init {
-  // initially inbox and outbox are empty
+  // initially inbox are empty
   no inbox
 }
 
 pred initiate [n : Node] {
   // node n initiates the protocol
 
-  historically n not in n.succ.inbox   // guard
+  historically n not in elems[n.succ.inbox]   // guard
 
-  inbox' = inbox + n.succ->n           // effect on inbox
+  n.succ.inbox' = add[n.succ.inbox,n]         // effect on n.succ.inbox
+  all m : Node - n.succ | m.inbox' = m.inbox  // effect on the outboxes of other nodes
 }
 
 pred process [n : Node, i : Node] {
   // i is read and processed by node n
 
-  i in n.inbox                                    // guard
+  i in first[n.inbox]                                      // guard
 
-  inbox' = inbox - n->i + n.succ->(i & n.^next)   // effect on inbox
+  n.inbox' = rest[n.inbox]                                 // effect on n.inbox
+  i in n.^next implies n.succ.inbox' = add[n.succ.inbox,i] // effect on n.succ.inbox
+               else    n.succ != n implies n.succ.inbox' = n.succ.inbox
+  all m : Node - n - n.succ | m.inbox' = m.inbox           // effect on the inboxes of other nodes
 }
 
 pred stutter {
   // no node acts
 
-  inbox' = inbox
+  inbox'   = inbox
 }
 
-pred node_acts [n : Node] {
+pred node_acts[n : Node] {
   initiate[n] or
   (some i : Node | process[n,i])
 }
 
 fact events {
   // possible events
-  always (stutter or some n : Node | node_acts[n])
+  always (
+    stutter or some n : Node | node_acts[n]
+  )
 }
 
 run example {} expect 1
@@ -70,7 +76,7 @@ run eventually_elected {
   eventually some Elected
 } for exactly 3 Node expect 1
 
-run eventually_elected_1node {
+run example1 {
   eventually some Elected
 } for exactly 1 Node expect 1
 
@@ -78,8 +84,8 @@ assert at_most_one_leader {
   always (lone Elected)
 }
 check at_most_one_leader expect 0
---check at_most_one_leader for 4 but 20 steps expect 0
---check at_most_one_leader for 4 but 1.. steps expect 0
+--check at_most_one_leader for 4 but 20 steps
+--check at_most_one_leader for 4 but 1.. steps
 
 assert leader_stays_leader {
   always (all n : Elected | always n in Elected)
@@ -92,10 +98,10 @@ assert at_least_one_leader {
 check at_least_one_leader expect 1
 
 pred initiate_enabled [n : Node] {
-  historically n not in n.succ.inbox
+  historically n not in elems[n.succ.inbox] 
 }
 pred process_enabled [n : Node, i : Node] {
-  some n.inbox
+  i in first[n.inbox] 
 }
 
 pred node_enabled [n : Node] {
@@ -115,3 +121,4 @@ assert at_least_one_leader_fair {
   fairness implies eventually (some Elected)
 }
 check at_least_one_leader_fair expect 0
+check at_least_one_leader_fair for 3 but 2 seq expect 1

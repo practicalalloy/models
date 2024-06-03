@@ -9,9 +9,11 @@ fact ring {
   all n : Node | Node in n.^succ
 }
 
-run example {}
+run example {} expect 1
 
 run book_instance2 {
-  // todo
-
-}
+  some disj n0, n1, n2 : Node {
+    Node = n0 + n1 + n2
+    succ = n0 -> n2 + n1 -> n0 + n2 -> n1
+  }
+} expect 1

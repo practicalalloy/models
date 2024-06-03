@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<alloy>
+
+<view nodetheme="Martha" edgetheme="Martha">
+
+<defaultnode/>
+
+<defaultedge/>
+
+<node>
+   <type name="CandidateMsg"/>
+   <type name="ElectedMsg"/>
+   <type name="Int"/>
+   <type name="Node"/>
+   <type name="String"/>
+   <type name="univ"/>
+   <type name="seq/Int"/>
+</node>
+
+<node shape="Parallelogram" color="Gray">
+   <type name="Message"/>
+</node>
+
+<node showlabel="no">
+   <set name="$book_instance17_m1" type="ElectedMsg"/>
+   <set name="$book_instance17_n0" type="Node"/>
+   <set name="first" type="Node"/>
+   <set name="last" type="Node"/>
+</node>
+
+<edge style="inherit">
+   <relation name="inbox"> <type name="Node"/> <type name="Message"/> </relation>
+</edge>
+
+<edge visible="no" attribute="yes">
+   <relation name="payload"> <type name="Message"/> <type name="Node"/> </relation>
+</edge>
+
+</view>
+
+</alloy>

@@ -24,5 +24,5 @@ fact unique_ids {
   all i : Id | lone id.i
 }
 
-run example {}
-run example3 {} for exactly 3 Node, exactly 3 Id
+run example {} expect 1
+run example3 {} for exactly 3 Node, exactly 3 Id expect 1

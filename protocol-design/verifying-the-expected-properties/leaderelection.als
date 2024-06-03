@@ -35,23 +35,6 @@ fact init {
   no Elected
 }
 
-pred initiate_no_effect [n : Node] {
-  // node n initiates the protocol
-
-  inbox'   = inbox                           // frame condition on inbox
-  Elected' = Elected                         // frame condition on Elected
-}
-
-pred initiate_no_guard [n : Node] {
-  // node n initiates the protocol
-
-  n.outbox' = n.outbox + n.id                // effect on n.outbox
-  all m : Node - n | m.outbox' = m.outbox    // effect on the outboxes of other nodes
-
-  inbox'   = inbox                           // frame condition on inbox
-  Elected' = Elected                         // frame condition on Elected
-}
-
 pred initiate [n : Node] {
   // node n initiates the protocol
 
@@ -60,7 +43,7 @@ pred initiate [n : Node] {
   n.outbox' = n.outbox + n.id                // effect on n.outbox
   all m : Node - n | m.outbox' = m.outbox    // effect on the outboxes of other nodes
 
-  inbox'   = inbox                           // frame condition on inbox
+  inbox' = inbox                             // frame condition on inbox
   Elected' = Elected                         // frame condition on Elected
 }
 
@@ -91,14 +74,14 @@ pred process [n : Node, i : Id] {
   all m : Node - n | m.outbox' = m.outbox     // effect on the outboxes of other nodes
 
   i = n.id implies Elected' = Elected + n     // effect on Elected
-           else Elected' = Elected
+           else    Elected' = Elected
 }
 
 pred stutter {
   // no node acts
 
-  outbox'  = outbox
-  inbox'   = inbox
+  outbox' = outbox
+  inbox' = inbox
   Elected' = Elected
 }
 
@@ -106,7 +89,6 @@ pred node_acts [n : Node] {
   initiate[n] or
   (some i : Id | send[n,i]) or
   (some i : Id | process[n,i])
- 
 }
 
 fact events {
@@ -114,29 +96,29 @@ fact events {
   always (stutter or some n : Node | node_acts[n])
 }
 
-run example {}
-run example3 {} for exactly 3 Node, exactly 3 Id
+run example {} expect 1
+run example3 {} for exactly 3 Node, exactly 3 Id expect 1
 
 run eventually_elected {
   eventually some Elected
-} for exactly 3 Node, exactly 3 Id
+} for exactly 3 Node, exactly 3 Id expect 1
 
 assert at_most_one_leader {
   always (lone Elected)
 }
-check at_most_one_leader
-check at_most_one_leader for 4 but 20 steps
-check at_most_one_leader for 4 but 1.. steps
+check at_most_one_leader expect 0
+check at_most_one_leader for 4 but 20 steps expect 0
+check at_most_one_leader for 4 but 1.. steps expect 0
 
 assert leader_stays_leader {
   always (all n : Elected | always n in Elected)
 }
-check leader_stays_leader
+check leader_stays_leader expect 0
 
 assert at_least_one_leader {
   eventually (some Elected)
 }
-check at_least_one_leader
+check at_least_one_leader expect 1
 
 pred initiate_enabled [n : Node] {
   historically n.id not in n.outbox
@@ -149,8 +131,8 @@ pred send_enabled [n : Node, i : Id] {
 }
 
 pred node_enabled [n : Node] {
-  initiate_enabled[n] or 
-  (some i : Id | process_enabled[n,i]) or 
+  initiate_enabled[n] or
+  (some i : Id | process_enabled[n,i]) or
   (some i : Id | send_enabled[n,i])
 }
 
@@ -165,4 +147,4 @@ pred fairness {
 assert at_least_one_leader_fair {
   fairness implies eventually (some Elected)
 }
-check at_least_one_leader_fair
+check at_least_one_leader_fair expect 0

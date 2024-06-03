@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<alloy>
+
+<view>
+
+<defaultnode/>
+
+<defaultedge/>
+
+<node>
+   <type name="Id"/>
+   <type name="Int"/>
+   <type name="Node"/>
+   <type name="String"/>
+   <type name="univ"/>
+   <type name="ordering/Ord"/>
+   <type name="seq/Int"/>
+   <set name="$first" type="Id"/>
+   <set name="$last" type="Id"/>
+   <set name="Elected" type="Node"/>
+</node>
+
+<node showlabel="no">
+   <set name="$book_instance4_i0" type="Id"/>
+   <set name="$book_instance4_i1" type="Id"/>
+   <set name="$book_instance4_i2" type="Id"/>
+   <set name="$book_instance4_n0" type="Node"/>
+   <set name="$book_instance4_n1" type="Node"/>
+   <set name="$book_instance4_n2" type="Node"/>
+</node>
+
+<edge style="inherit">
+   <relation name="inbox"> <type name="Node"/> <type name="Id"/> </relation>
+   <relation name="outbox"> <type name="Node"/> <type name="Id"/> </relation>
+</edge>
+
+</view>
+
+</alloy>

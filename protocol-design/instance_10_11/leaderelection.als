@@ -102,3 +102,17 @@ run example3 {} for exactly 3 Node, exactly 3 Id expect 1
 run eventually_elected {
   eventually some Elected
 } for exactly 3 Node, exactly 3 Id expect 1
+
+run book_instance10_11 {
+  eventually some Elected
+  some disj n0, n1, n2 : Node, disj i0, i1, i2 : Id {
+    Node = n0 + n1 + n2
+    Id = i0 + i1 + i2
+    succ = n0 -> n1 + n1 -> n2 + n2 -> n0
+    next = i0 -> i1 + i1 -> i2
+    id = n0 -> i2 + n1 -> i1 + n2 -> i0
+    no Elected
+    no inbox
+    no outbox; outbox = n0 -> i2
+  }
+} for exactly 3 Node, exactly 3 Id expect 1

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<alloy>
+
+<view nodetheme="Martha" edgetheme="Martha">
+
+<defaultnode/>
+
+<defaultedge/>
+
+<node>
+   <type name="Int"/>
+   <type name="Node"/>
+   <type name="String"/>
+   <type name="univ"/>
+   <type name="seq/Int"/>
+</node>
+
+<node showlabel="no">
+   <set name="first" type="Node"/>
+   <set name="last" type="Node"/>
+</node>
+
+<node showlabel="no" color="Green">
+   <set name="$Elected" type="Node"/>
+</node>
+
+<edge style="inherit">
+   <relation name="inbox"> <type name="Node"/> <type name="seq/Int"/> <type name="Node"/> </relation>
+</edge>
+
+</view>
+
+</alloy>

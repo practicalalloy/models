@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<alloy>
+
+<view nodetheme="Martha" edgetheme="Martha">
+
+<defaultnode/>
+
+<defaultedge/>
+
+<node>
+   <type name="Candidate"/>
+   <type name="Elect"/>
+   <type name="Int"/>
+   <type name="Node"/>
+   <type name="String"/>
+   <type name="univ"/>
+   <type name="seq/Int"/>
+</node>
+
+<node hideunconnected="yes">
+   <type name="Type"/>
+</node>
+
+<node showlabel="no">
+   <set name="first" type="Node"/>
+   <set name="last" type="Node"/>
+</node>
+
+<edge style="inherit">
+   <relation name="inbox"> <type name="Node"/> <type name="Type"/> <type name="Node"/> </relation>
+</edge>
+
+</view>
+
+</alloy>
