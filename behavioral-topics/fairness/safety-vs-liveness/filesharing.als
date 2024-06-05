@@ -25,10 +25,9 @@ fact transitions {
 } 
 
 pred empty {
-  some trashed                    // guard
-  no trashed'                     // effect on trashed
-  uploaded' = uploaded - trashed  // effect on uploaded
-  shared' = shared                // no effect on shared
+  no trashed'                    // effect on trashed
+  uploaded' = uploaded - trashed // effect on uploaded
+  shared'   = shared             // no effect on shared
 }
 
 pred upload [f : File] {
@@ -107,52 +106,20 @@ assert empty_after_restore {
 }
 check empty_after_restore expect 0
 
-assert all_files_in_uploaded {
-  all f : File | eventually f in uploaded
-}
-check all_files_in_uploaded expect 1
-
-
-// unconditional fairness on empty
-pred fairness_on_empty {
+fact fairness_on_empty {
+  // Trash is periodically emptied
   always eventually empty
 }
 
-pred weak_fairness_on_empty {
-  always (
-    always some trashed implies
-      eventually empty
-  )
-}
-
-pred strong_fairness_on_empty {
-  (always eventually some trashed)
-    implies always eventually empty
-}
-
-pred non_restored_files_will_disappear {
+assert non_restored_files_will_disappear {
   all f : File | always (
     delete[f] and after always not restore[f] implies
       eventually f not in uploaded
   )
 }
+check non_restored_files_will_disappear expect 0
 
-// The liveness property is exepcted to be false without fairness assumptions
-check non_restored_files_will_disappear_wo_fairness {
-     non_restored_files_will_disappear
-} expect 1
-
-// The liveness property is expected to be true under weak fairness on empty
-check non_restored_files_will_disappear_fair {
-    weak_fairness_on_empty implies non_restored_files_will_disappear
-} expect 0
-
-// Strong fairness is stronger than weak fairness
-check strong_implies_weak_fairness {
-    strong_fairness_on_empty implies weak_fairness_on_empty
-} expect 0
-
-// Unconditional fairness is stronger than strong fairness
-check unconditional_implies_strong_fairness {
-    fairness_on_empty implies strong_fairness_on_empty
-} expect 0
+assert all_files_in_uploaded {
+  all f : File | eventually f in uploaded
+}
+check all_files_in_uploaded expect 1
