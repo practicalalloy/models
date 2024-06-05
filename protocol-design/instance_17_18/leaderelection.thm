@@ -22,8 +22,8 @@
 </node>
 
 <node showlabel="no">
-   <set name="$book_instance17_m1" type="ElectedMsg"/>
-   <set name="$book_instance17_n0" type="Node"/>
+   <set name="$book_instance18_m1" type="CandidateMsg"/>
+   <set name="$book_instance18_n0" type="Node"/>
    <set name="first" type="Node"/>
    <set name="last" type="Node"/>
 </node>

@@ -96,8 +96,21 @@ run eventually_elected_1node {
 run book_instance17 {
   some disj n0: Node, disj m1 : ElectedMsg {
     Node = n0
+    succ = n0 -> n0
     no CandidateMsg
     ElectedMsg = m1
+    payload = m1 -> n0
+    no inbox
+  }
+} expect 1
+
+run book_instance18 {
+  some disj n0: Node, disj m1 : CandidateMsg {
+    Node = n0
+    succ = n0 -> n0
+    no ElectedMsg
+    CandidateMsg = m1
+    payload = m1 -> n0
     no inbox
   }
 } expect 1

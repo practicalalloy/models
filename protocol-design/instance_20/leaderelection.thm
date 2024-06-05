@@ -8,6 +8,8 @@
 <defaultedge/>
 
 <node>
+   <type name="Candidate"/>
+   <type name="Elect"/>
    <type name="Int"/>
    <type name="Node"/>
    <type name="String"/>
@@ -15,18 +17,20 @@
    <type name="seq/Int"/>
 </node>
 
+<node hideunconnected="yes">
+   <type name="Type"/>
+</node>
+
 <node showlabel="no">
-   <set name="$book_instance15_16_n0" type="Node"/>
+   <set name="$book_instance20_n0" type="Node"/>
+   <set name="$book_instance20_n1" type="Node"/>
+   <set name="$book_instance20_n2" type="Node"/>
    <set name="first" type="Node"/>
    <set name="last" type="Node"/>
 </node>
 
-<node showlabel="no" color="Green">
-   <set name="$Elected" type="Node"/>
-</node>
-
-<edge visible="no" attribute="yes">
-   <relation name="inbox"> <type name="Node"/> <type name="Node"/> </relation>
+<edge style="inherit">
+   <relation name="inbox"> <type name="Node"/> <type name="Type"/> <type name="Node"/> </relation>
 </edge>
 
 </view>

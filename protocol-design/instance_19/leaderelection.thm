@@ -22,6 +22,15 @@
 </node>
 
 <node showlabel="no">
+   <set name="$book_instance19_m0" type="Message"/>
+   <set name="$book_instance19_m1" type="Message"/>
+   <set name="$book_instance19_m2" type="Message"/>
+   <set name="$book_instance19_m3" type="Message"/>
+   <set name="$book_instance19_m4" type="Message"/>
+   <set name="$book_instance19_m5" type="Message"/>
+   <set name="$book_instance19_n0" type="Node"/>
+   <set name="$book_instance19_n1" type="Node"/>
+   <set name="$book_instance19_n2" type="Node"/>
    <set name="first" type="Node"/>
    <set name="last" type="Node"/>
 </node>

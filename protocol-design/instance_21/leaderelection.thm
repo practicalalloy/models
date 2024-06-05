@@ -16,6 +16,9 @@
 </node>
 
 <node showlabel="no">
+   <set name="$book_instance21_n0" type="Node"/>
+   <set name="$book_instance21_n1" type="Node"/>
+   <set name="$book_instance21_n2" type="Node"/>
    <set name="first" type="Node"/>
    <set name="last" type="Node"/>
 </node>
