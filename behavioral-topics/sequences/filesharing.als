@@ -2,11 +2,11 @@ module filesharing
 
 sig Token {}
 sig File {
-   var shared : set Token
+  var shared : set Token
 }
 var sig uploaded in File {}
 one sig Trash {
-   var trashed : seq uploaded
+  var trashed : seq uploaded
 }
 
 fact init {
@@ -18,10 +18,11 @@ fact init {
 fact transitions {
   // The system either evolves according to the defined actions or stutters
   always (
-    (some f : File | upload[f] or delete[f] or restore) or
+    (some f : File | upload[f] or delete[f]) or
     (some f : File, t : Token | share[f,t]) or
     (some t : Token | download[t]) or
     empty or
+    restore or 
     stutter
   )
 } 
