@@ -82,7 +82,8 @@ pred two_tokens [f : File, t1, t2 : Token] {
 
 run scenario_two_shared {
   some f : File, disj t1, t2 : Token {
-    two_tokens[f,t1,t2]
+    File = f
+    Token = t1 + t2
 
     no uploaded; uploaded = f; uploaded = f;   uploaded = f;           uploaded = f;   uploaded = f; no uploaded
     no shared;   no shared;    shared = f->t1; shared = f->t1 + f->t2; shared = f->t1; no shared;    no shared
@@ -90,12 +91,24 @@ run scenario_two_shared {
   }
 } for 1 File, 2 Token expect 1
 
-run scenario_two_shared_stutter {
+run book_instance1_2 {
   some f : File, disj t1, t2 : Token {
-    two_tokens[f,t1,t2]
+    File = f
+    Token = t1 + t2
 
     no uploaded; uploaded = f; uploaded = f;   uploaded = f;           uploaded = f;   uploaded = f; always no uploaded
     no shared;   no shared;    shared = f->t1; shared = f->t1 + f->t2; shared = f->t1; no shared;    always no shared
     no trashed;  no trashed;   no trashed;     no  trashed;            no trashed;     trashed = f;  always no trashed
+  }
+} for 1 File, 2 Token expect 1
+
+run book_instance3 {
+  some f : File, disj t1, t2 : Token {
+    File = f
+    Token = t1 + t2
+
+    no uploaded; uploaded = f; uploaded = f;   uploaded = f;           uploaded = f;   uploaded = f; no uploaded; uploaded = f; uploaded = f; no uploaded
+    no shared;   no shared;    shared = f->t1; shared = f->t1 + f->t2; shared = f->t1; always no shared
+    no trashed;  no trashed;   no trashed;     no  trashed;            no trashed;     trashed = f;  no trashed;  no trashed;   trashed = f;  no trashed
   }
 } for 1 File, 2 Token expect 1

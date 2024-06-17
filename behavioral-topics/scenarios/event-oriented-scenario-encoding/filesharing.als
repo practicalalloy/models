@@ -73,51 +73,7 @@ pred stutter {
   shared'   = shared   // no effect on trashed
 }
 
-run example {}
-
-assert shared_are_accessible {
-  always shared.Token in uploaded - trashed
-}
-check shared_are_accessible
-check shared_are_accessible for 4 but 20 steps
-check shared_are_accessible for 4 but 1.. steps
-
-assert restore_undoes_delete {
-  all f : File | always (
-    delete[f] and after restore[f] implies
-    uploaded'' = uploaded and trashed'' = trashed and shared'' = shared
-  )
-}
-check restore_undoes_delete
-
-fun downloaded [t : Token] : set File {
-  { f : File | once (download[t] and t in f.shared) }
-}
-
-assert one_download_per_token {
-  all t : Token | always lone downloaded[t]
-}
-
-assert empty_after_restore {
-  all f : File | always (
-    delete[f] implies
-    after ((restore[f] or upload[f]) releases not delete[f])
-  )
-}
-check empty_after_restore
-
-fact fairness_on_empty {
-  // Trash is periodically emptied
-  always eventually empty
-}
-
-assert non_restored_files_will_disappear {
-  all f : File | always (
-    delete[f] and after always not restore[f] implies
-    eventually f not in uploaded
-  )
-}
-check non_restored_files_will_disappear
+run example {} expect 1
 
 pred two_tokens [f : File, t1, t2 : Token] {
   File = f
@@ -136,7 +92,7 @@ run scenario_two_shared_stutter {
     uploaded = f and no shared and trashed = f;
     always (no uploaded + trashed and no shared)
   }
-} for 1 File, 2 Token
+} for 1 File, 2 Token expect 1
 
 run scenario_two_shared_event {
    some f : File, disj t1, t2 : Token {
@@ -144,4 +100,4 @@ run scenario_two_shared_event {
 
       upload[f]; share[f,t1]; share[f,t2]; download[t1]; delete[f]; empty; always stutter
    }
-} for 1 File, 2 Token
+} for 1 File, 2 Token expect 1
