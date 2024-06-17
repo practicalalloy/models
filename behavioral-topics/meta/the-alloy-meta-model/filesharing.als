@@ -83,60 +83,8 @@ pred stutter {
   shared'   = shared   // no effect on trashed
 }
 
-run example {}
-
-assert shared_are_accessible {
-  always shared.Token in uploaded - trashed
-}
-check shared_are_accessible
-check shared_are_accessible for 4 but 20 steps
-check shared_are_accessible for 4 but 1.. steps
-
-assert restore_undoes_delete {
-  all f : File | always (
-    delete[f] and after restore[f] implies
-    uploaded'' = uploaded and trashed'' = trashed and shared'' = shared
-  )
-}
-check restore_undoes_delete
-
-fun downloaded [t : Token] : set File {
-  { f : File | once (download[t] and t in f.shared) }
-}
-
-assert one_download_per_token {
-  all t : Token | always lone downloaded[t]
-}
-
-assert empty_after_restore {
-  all f : File | always (
-    delete[f] implies
-    after ((restore[f] or upload[f]) releases not delete[f])
-  )
-}
-check empty_after_restore
-
-fact fairness_on_empty {
-  // Trash is periodically emptied
-  always eventually empty
-}
-
-assert non_restored_files_will_disappear {
-  all f : File | always (
-    delete[f] and after always not restore[f] implies
-    eventually f not in uploaded
-  )
-}
-check non_restored_files_will_disappear
+run example {} expect 1
 
 run some_sig {
   some sig$
-} for 2
-
-run no_empty_config_sigs {
-  all s: sig$ & static$ | some s.value
-}
-
-run no_empty_file_fields {
-  all f: File$.subfields & static$ | some f.value
-}
+} for 2 expect 1
