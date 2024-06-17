@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<alloy>
+
+<view nodetheme="Martha" edgetheme="Martha">
+
+<defaultnode/>
+
+<defaultedge/>
+
+<node>
+   <type name="Int"/>
+   <type name="String"/>
+   <type name="univ"/>
+   <type name="seq/Int"/>
+</node>
+
+<node color="Gray">
+   <type name="Token"/>
+</node>
+
+<node shape="Circle" color="White">
+   <type name="File"/>
+</node>
+
+<node shape="Hexagon" color="Black">
+   <type name="Trash"/>
+</node>
+
+<node showlabel="no">
+   <set name="$two_deleted_f1" type="File"/>
+   <set name="$two_deleted_f2" type="File"/>
+</node>
+
+<node showlabel="no" color="Yellow">
+   <set name="uploaded" type="File"/>
+</node>
+
+</view>
+
+</alloy>

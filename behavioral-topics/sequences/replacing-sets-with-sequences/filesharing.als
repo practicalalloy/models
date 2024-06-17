@@ -76,6 +76,10 @@ pred stutter {
 
 run example {} expect 1
 
+run two_deleted {
+  eventually some disj f1, f2 : File | f1 + f2 in elems[Trash.trashed]
+} --expect 1
+
 assert shared_are_accessible {
   always shared.Token in uploaded - elems[Trash.trashed]
 }

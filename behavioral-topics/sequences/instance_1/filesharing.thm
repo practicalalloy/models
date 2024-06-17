@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<alloy>
+
+<view nodetheme="Martha" edgetheme="Martha" hideSkolem="yes">
+
+<defaultnode/>
+
+<defaultedge/>
+
+<node>
+   <type name="Int"/>
+   <type name="String"/>
+   <type name="univ"/>
+   <type name="seq/Int"/>
+   <set name="$book_instance1_f1" type="File"/>
+   <set name="$book_instance1_f1&apos;" type="File"/>
+   <set name="$book_instance1_f2" type="File"/>
+   <set name="$book_instance1_f2&apos;" type="File"/>
+</node>
+
+<node color="Gray">
+   <type name="Token"/>
+</node>
+
+<node shape="Circle" color="White">
+   <type name="File"/>
+</node>
+
+<node shape="Hexagon" color="Black">
+   <type name="Trash"/>
+</node>
+
+<node showlabel="no" color="Yellow">
+   <set name="uploaded" type="File"/>
+</node>
+
+</view>
+
+</alloy>
