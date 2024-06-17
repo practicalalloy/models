@@ -87,6 +87,8 @@ assert restore_undoes_delete {
     uploaded'' = uploaded and trashed'' = trashed and shared'' = shared
   )
 }
+// A counter-example is expected because the relation shared is modified
+// by delete and restore does not recover it
 check restore_undoes_delete expect 1
 
 fun downloaded [t : Token] : set File {

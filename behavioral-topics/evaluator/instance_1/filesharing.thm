@@ -12,6 +12,7 @@
    <type name="String"/>
    <type name="univ"/>
    <type name="seq/Int"/>
+   <set name="$book_instance_1_f" type="File"/>
 </node>
 
 <node color="Gray">
@@ -20,6 +21,13 @@
 
 <node shape="Circle" color="White">
    <type name="File"/>
+</node>
+
+<node showlabel="no">
+   <set name="$book_instance_1_f0" type="File"/>
+   <set name="$book_instance_1_f1" type="File"/>
+   <set name="$book_instance_1_t0" type="Token"/>
+   <set name="$book_instance_1_t1" type="Token"/>
 </node>
 
 <node showlabel="no" color="Red">
