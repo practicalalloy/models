@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<alloy>
+
+<view nodetheme="Martha" edgetheme="Martha">
+
+<defaultnode/>
+
+<defaultedge/>
+
+<node>
+   <type name="Delete"/>
+   <type name="Download"/>
+   <type name="Empty"/>
+   <type name="Int"/>
+   <type name="Restore"/>
+   <type name="Share"/>
+   <type name="String"/>
+   <type name="Stutter"/>
+   <type name="univ"/>
+   <type name="Upload"/>
+   <type name="ordering/Ord"/>
+   <type name="seq/Int"/>
+</node>
+
+<node color="Gray">
+   <type name="Token"/>
+</node>
+
+<node hideunconnected="yes" shape="Parallelogram" color="Blue">
+   <type name="Event"/>
+</node>
+
+<node shape="Circle" color="White">
+   <type name="File"/>
+</node>
+
+<node showlabel="no">
+   <set name="$example_f0" type="File"/>
+   <set name="$example_f1" type="File"/>
+   <set name="$example_t0" type="Token"/>
+   <set name="$example_t1" type="Token"/>
+   <set name="$first" type="Event"/>
+   <set name="$last" type="Event"/>
+</node>
+
+<node showlabel="no" color="Red">
+   <set name="trashed" type="File"/>
+</node>
+
+<node showlabel="no" color="Yellow">
+   <set name="uploaded" type="File"/>
+</node>
+
+<node visible="yes" hideunconnected="no" showlabel="no">
+   <set name="$empty_happens" type="Event"/>
+   <set name="$stutter_happens" type="Event"/>
+</node>
+
+<edge attribute="no">
+   <relation name="$upload_happens"> <type name="Event"/> <type name="File"/> </relation>
+</edge>
+
+<edge visible="no">
+   <relation name="$next"> <type name="Event"/> <type name="Event"/> </relation>
+   <relation name="$prev"> <type name="Event"/> <type name="Event"/> </relation>
+</edge>
+
+</view>
+
+</alloy>

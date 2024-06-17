@@ -75,6 +75,14 @@ pred stutter {
 
 run example {} expect 1
 
+run book_instance_5_6 {
+  some disj f0, f1 : File, disj t0, t1 : Token {
+    File = f0 + f1
+    Token = t0 + t1
+    upload[f1]; share[f1,t1]; delete[f1]; empty; always stutter
+  }
+} expect 1
+
 enum Event {
   // event names
   Empty, Upload, Delete, Restore, Share, Download, Stutter

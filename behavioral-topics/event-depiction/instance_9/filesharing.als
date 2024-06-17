@@ -75,6 +75,14 @@ pred stutter {
 
 run example {} expect 1
 
+run book_instance_9 {
+  some disj f0, f1 : File, disj t0, t1 : Token {
+    File = f0 + f1
+    Token = t0 + t1
+    upload[f1]; share[f1,t1]; delete[f1]; empty; always stutter
+  }
+} expect 1
+
 enum Event {
   // event names
   Empty, Upload, Delete, Restore, Share, Download, Stutter
@@ -86,4 +94,30 @@ fun empty_happens : set Event {
 
 fun stutter_happens : set Event {
   { e : Stutter | stutter }
+}
+
+fun upload_happens : Event -> File {
+  { e : Upload, f : File | upload[f] }
+}
+
+fun delete_happens : Event -> File {
+  { e : Delete, f : File | delete[f] }
+}
+
+fun restore_happens : Event -> File {
+  { e : Restore, f : File | restore[f] }
+}
+
+fun download_happens : Event -> Token {
+  { e : Share, t : Token | download[t] }
+}
+
+fun share_happens : Event -> File -> Token {
+  { e : Share, f : File, t : Token | share[f, t] }
+}
+
+fun events : set Event {
+  empty_happens + stutter_happens +
+  (upload_happens + delete_happens + restore_happens).File +
+  download_happens.Token + share_happens.Token.File
 }

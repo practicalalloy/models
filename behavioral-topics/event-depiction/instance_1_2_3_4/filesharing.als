@@ -1,7 +1,6 @@
 module filesharing
 
 sig Token {}
-
 sig File {
   var shared : set Token
 }
@@ -75,15 +74,10 @@ pred stutter {
 
 run example {} expect 1
 
-enum Event {
-  // event names
-  Empty, Upload, Delete, Restore, Share, Download, Stutter
-}
-
-fun empty_happens : set Event {
-  { e : Empty | empty }
-}
-
-fun stutter_happens : set Event {
-  { e : Stutter | stutter }
-}
+run book_instance_1_2_3_4 {
+  some disj f0, f1 : File, disj t0, t1 : Token {
+    File = f0 + f1
+    Token = t0 + t1
+    upload[f1]; share[f1,t1]; delete[f1]; empty; always stutter
+  }
+} expect 1
