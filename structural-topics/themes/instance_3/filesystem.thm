@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<alloy>
+
+<view nodetheme="Martha" hideSkolem="yes">
+
+<defaultnode/>
+
+<defaultedge/>
+
+<node>
+   <type name="Int"/>
+   <type name="Object"/>
+   <type name="String"/>
+   <type name="univ"/>
+   <type name="seq/Int"/>
+   <set name="$example_d0" type="Dir"/>
+   <set name="$example_d1" type="Dir"/>
+   <set name="$example_d2" type="Dir"/>
+   <set name="$example_e0" type="Entry"/>
+   <set name="$example_e1" type="Entry"/>
+   <set name="$example_e2" type="Entry"/>
+   <set name="$example_f" type="File"/>
+   <set name="$example_n0" type="Name"/>
+   <set name="$example_n1" type="Name"/>
+   <set name="$example_n2" type="Name"/>
+</node>
+
+<node shape="Box" color="Magic">
+   <type name="Dir"/>
+</node>
+
+<node shape="Ellipse" color="Yellow">
+   <type name="Entry"/>
+</node>
+
+<node shape="House" color="Red">
+   <type name="Root"/>
+</node>
+
+<node shape="Parallelogram" color="Blue">
+   <type name="Name"/>
+</node>
+
+<node shape="Trapezoid" color="Green">
+   <type name="File"/>
+</node>
+
+</view>
+
+</alloy>

@@ -27,6 +27,19 @@
    <type name="Dir"/>
 </node>
 
+<node showlabel="no">
+   <set name="$book_instance_8_d0" type="Dir"/>
+   <set name="$book_instance_8_d1" type="Dir"/>
+   <set name="$book_instance_8_d2" type="Dir"/>
+   <set name="$book_instance_8_e0" type="Entry"/>
+   <set name="$book_instance_8_e1" type="Entry"/>
+   <set name="$book_instance_8_e2" type="Entry"/>
+   <set name="$book_instance_8_f" type="File"/>
+   <set name="$book_instance_8_n0" type="Name"/>
+   <set name="$book_instance_8_n1" type="Name"/>
+   <set name="$book_instance_8_n2" type="Name"/>
+</node>
+
 <node style="Dotted" label="empty">
    <set name="$empty_dirs" type="Dir"/>
 </node>
@@ -38,14 +51,6 @@
 <node visible="no" color="Gray">
    <type name="Entry"/>
 </node>
-
-<edge attribute="no">
-   <relation name="object"> <type name="Entry"/> <type name="Object"/> </relation>
-</edge>
-
-<edge visible="no">
-   <relation name="$contents"> <type name="Dir"/> <type name="Object"/> </relation>
-</edge>
 
 <edge visible="no" attribute="yes">
    <relation name="name"> <type name="Entry"/> <type name="Name"/> </relation>
