@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<alloy>
+
+<view>
+
+<defaultnode/>
+
+<defaultedge/>
+
+<node>
+   <type name="File"/>
+   <type name="Int"/>
+   <type name="String"/>
+   <type name="Token"/>
+   <type name="univ"/>
+   <type name="seq/Int"/>
+   <set name="trashed" type="File"/>
+   <set name="uploaded" type="File"/>
+</node>
+
+<node showlabel="no">
+   <set name="$book_instance_3_f" type="File"/>
+   <set name="$book_instance_3_t0" type="Token"/>
+   <set name="$book_instance_3_t1" type="Token"/>
+</node>
+
+</view>
+
+</alloy>

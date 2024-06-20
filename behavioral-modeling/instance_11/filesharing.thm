@@ -23,7 +23,9 @@
 </node>
 
 <node showlabel="no">
-   <set name="$restore_undoes_delete_f" type="File"/>
+   <set name="$book_instance_11_f" type="File"/>
+   <set name="$book_instance_11_t0" type="Token"/>
+   <set name="$book_instance_11_t1" type="Token"/>
 </node>
 
 <node showlabel="no" color="Red">
