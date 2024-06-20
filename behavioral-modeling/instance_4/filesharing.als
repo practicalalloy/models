@@ -74,10 +74,10 @@ pred stutter {
 
 run example {} expect 1
 
-run book_instance_3 {
+run book_instance_4 {
   some f : File, disj t0, t1 : Token {
     File = f
     Token = t0 + t1
-    always stutter
+    upload[f];always stutter
   }
 } expect 1
