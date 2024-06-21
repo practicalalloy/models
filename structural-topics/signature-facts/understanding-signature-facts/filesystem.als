@@ -4,6 +4,11 @@ abstract sig Object {}
 
 sig Dir extends Object {
   entries : set Entry
+} {
+  // Different entries in the same directory must have different names
+  all n : Name | lone (entries & name.n)
+  // Entries cannot be shared between directories
+  all y : Dir | this != y implies no (entries & y.@entries)
 }
 
 sig File extends Object {}
@@ -20,11 +25,6 @@ sig Name {}
 run example {}
 run example {} for 4
 run example {} for 4 but 2 Entry, exactly 3 Name
-
-fact unique_names {
-  // Different entries in the same directory must have different names
-  all d : Dir, n : Name | lone (d.entries & name.n)
-}
 
 fact no_shared_dirs {
   // A directory cannot be contained in more than one entry
