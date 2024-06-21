@@ -3,8 +3,6 @@
 
 <view nodetheme="Martha" edgetheme="Martha">
 
-<projection> <type name="timestamp/TimeAux"/> </projection>
-
 <defaultnode/>
 
 <defaultedge/>
@@ -13,7 +11,6 @@
    <type name="File"/>
    <type name="Int"/>
    <type name="String"/>
-   <type name="Timestamp"/>
    <type name="univ"/>
    <type name="seq/Int"/>
    <type name="timestamp/TimeAux"/>
@@ -52,11 +49,16 @@
    <type name="Name"/>
 </node>
 
+<node visible="no" hideunconnected="no">
+   <type name="Timestamp"/>
+</node>
+
 <edge attribute="no">
    <relation name="object"> <type name="Entry"/> <type name="Object"/> </relation>
 </edge>
 
 <edge visible="no" attribute="yes">
+   <relation name="$time"> <type name="Object"/> <type name="Timestamp"/> </relation>
    <relation name="name"> <type name="Entry"/> <type name="Name"/> </relation>
 </edge>
 

@@ -3,6 +3,8 @@
 
 <view nodetheme="Martha" edgetheme="Martha">
 
+<projection> <type name="timestamp/TimeAux"/> </projection>
+
 <defaultnode/>
 
 <defaultedge/>

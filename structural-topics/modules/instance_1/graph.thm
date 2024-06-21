@@ -16,10 +16,10 @@
 </node>
 
 <node showlabel="no">
-   <set name="$dag_example_o0" type="univ"/>
-   <set name="$dag_example_o1" type="univ"/>
-   <set name="$dag_example_o2" type="univ"/>
-   <set name="$dag_example_o3" type="univ"/>
+   <set name="$book_instance_1_n0" type="node"/>
+   <set name="$book_instance_1_n1" type="node"/>
+   <set name="$book_instance_1_n2" type="node"/>
+   <set name="$book_instance_1_n3" type="node"/>
 </node>
 
 </view>

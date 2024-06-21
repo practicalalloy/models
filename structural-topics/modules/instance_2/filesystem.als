@@ -66,15 +66,15 @@ check no_partitions
 check no_partitions for 6
 
 run book_instance_2 {
-  some disj o0,o1,o2,o3,o4,o6,o7 : univ {
-    Dir = o0 + o1
-    Root = o1
-    File = o2
-    Entry = o3 + o4
-    Name = o6 + o7
---    univ = Object + Entry + File + Timestamp + Int
-    entries = o1 -> o3 + o1 -> o4
-    name = o3 -> o6 + o4 -> o7
-    object = o3 -> o2 + o4 -> o0
+  some disj d0, d1 : Dir, f : File, disj e0, e1 : Entry, disj n0, n1 : Name{
+    Dir = d0 + d1
+    Root = d1
+    File = f
+    Entry = e0 + e1
+    Name = n0 + n1
+    entries = d1 -> e0 + d1 -> e1
+    name = e0 -> n0 + e1 -> n1
+    object = e0 -> f + e1 -> d0
+    TimeAux.aux_time in d0 -> last + d1 -> first + f -> last
   }
 }

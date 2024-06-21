@@ -28,11 +28,6 @@
    <type name="Object"/>
 </node>
 
-<node hideunconnected="yes" showlabel="no">
-   <set name="$book_instance_2_o6" type="univ"/>
-   <set name="$book_instance_2_o7" type="univ"/>
-</node>
-
 <node shape="House">
    <type name="Root"/>
 </node>
@@ -42,11 +37,13 @@
 </node>
 
 <node showlabel="no">
-   <set name="$book_instance_2_o0" type="univ"/>
-   <set name="$book_instance_2_o1" type="univ"/>
-   <set name="$book_instance_2_o2" type="univ"/>
-   <set name="$book_instance_2_o3" type="univ"/>
-   <set name="$book_instance_2_o4" type="univ"/>
+   <set name="$book_instance_2_d0" type="Dir"/>
+   <set name="$book_instance_2_d1" type="Dir"/>
+   <set name="$book_instance_2_e0" type="Entry"/>
+   <set name="$book_instance_2_e1" type="Entry"/>
+   <set name="$book_instance_2_f" type="File"/>
+   <set name="$book_instance_2_n0" type="Name"/>
+   <set name="$book_instance_2_n1" type="Name"/>
 </node>
 
 <node visible="no">

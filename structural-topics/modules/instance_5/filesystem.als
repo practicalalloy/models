@@ -65,7 +65,7 @@ assert no_partitions {
 check no_partitions
 check no_partitions for 6
 
-run book_instance_4 {
+run book_instance_5 {
   some disj d0, d1 : Dir, f : File, disj e0, e1 : Entry, disj n0, n1 : Name{
     Dir = d0 + d1
     Root = d1

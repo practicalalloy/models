@@ -11,6 +11,7 @@
    <type name="File"/>
    <type name="Int"/>
    <type name="String"/>
+   <type name="Timestamp"/>
    <type name="univ"/>
    <type name="seq/Int"/>
    <type name="timestamp/TimeAux"/>
@@ -27,11 +28,6 @@
    <type name="Object"/>
 </node>
 
-<node hideunconnected="yes">
-   <set name="$example_o6" type="univ"/>
-   <set name="$example_o7" type="univ"/>
-</node>
-
 <node shape="House">
    <type name="Root"/>
 </node>
@@ -41,16 +37,17 @@
 </node>
 
 <node showlabel="no">
-   <set name="$example_o0" type="univ"/>
-   <set name="$example_o1" type="univ"/>
-   <set name="$example_o2" type="univ"/>
-   <set name="$example_o3" type="univ"/>
-   <set name="$example_o4" type="univ"/>
+   <set name="$book_instance_4_d0" type="Dir"/>
+   <set name="$book_instance_4_d1" type="Dir"/>
+   <set name="$book_instance_4_e0" type="Entry"/>
+   <set name="$book_instance_4_e1" type="Entry"/>
+   <set name="$book_instance_4_f" type="File"/>
+   <set name="$book_instance_4_n0" type="Name"/>
+   <set name="$book_instance_4_n1" type="Name"/>
 </node>
 
 <node visible="no">
    <type name="Name"/>
-   <type name="Timestamp"/>
 </node>
 
 <edge attribute="no">
@@ -58,7 +55,6 @@
 </edge>
 
 <edge visible="no" attribute="yes">
-   <relation name="$time"> <type name="Object"/> <type name="Timestamp"/> </relation>
    <relation name="name"> <type name="Entry"/> <type name="Name"/> </relation>
 </edge>
 
