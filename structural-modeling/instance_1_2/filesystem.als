@@ -8,11 +8,10 @@ sig File in Object {}
 run example {}
 
 run book_instance1 {
-  some disj o0,o1 : univ {
+  some disj o0, o1 : univ {
     Object = o0 + o1
     Dir = o1
     File = o0
-    univ = o0 + o1 + Int
   }
 }
 
@@ -21,6 +20,5 @@ run book_instance2 {
     Object = o0
     Dir = o0
     File = o0
-    univ = o0 + Int
   }
 }
