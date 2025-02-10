@@ -1,3 +1,10 @@
+/*  
+File system model at the end of the "Verifying assertions" section, and the
+whole "Structural modeling" chapter, of the Practical Alloy book.
+
+https://practicalalloy.github.io/book/chapters/structural-modeling/index.html#verifying-assertions
+*/
+
 module filesystem
 
 abstract sig Object {}
@@ -17,9 +24,10 @@ sig Entry {
 
 sig Name {}
 
+// Show arbitrary instances with the default scope
 run example {}
+// Show arbitrary instances with scope 4 for top-level signatures
 run example {} for 4
-run example {} for 4 but 2 Entry, exactly 3 Name
 
 fact unique_names {
   // Different entries in the same directory must have different names

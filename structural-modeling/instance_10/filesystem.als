@@ -1,3 +1,10 @@
+/*  
+Model for the generation of instance 10 of the "Structural modeling"
+chapter, "Verifying assertions" section, of the Practical Alloy book.
+
+https://practicalalloy.github.io/book/chapters/structural-modeling/index.html#verifying-assertions
+*/
+
 module filesystem
 
 abstract sig Object {}
@@ -17,14 +24,10 @@ sig Entry {
 
 sig Name {}
 
+// Show arbitrary instances with the default scope
 run example {}
+// Show arbitrary instances with scope 4 for top-level signatures
 run example {} for 4
-run example {} for 4 but 2 Entry, exactly 3 Name
-
-fact restrict_object {
-  // All objects are directories or files, redundant due to signature declarations
-  all x : Object | x in Dir or x in File
-}
 
 fact unique_names {
   // Different entries in the same directory must have different names
@@ -66,16 +69,15 @@ assert no_partitions {
 
 check no_partitions
 
-run book_instance10 {
-  some disj o0,o1,o2,o3,o4,o5 : univ {
-    Dir = o0 + o1 + o2
-    Root = o2
+check structural_design_instance_10 {
+  some disj d0, d1, r, e0, e1, n0 : univ {
+    Dir = d0 + d1 + r
+    Root = r
     File = none
-    Entry = o3 + o4
-    Name = o5
-    univ = o0 + o1 + o2 + o3 + o4 + o5 + Int
-    entries = o0 -> o3 + o1 -> o4
-    name = o3 -> o5 + o4 -> o5
-    object = o3 -> o1 + o4 -> o0
-  }
+    Entry = e0 + e1
+    Name = n0
+    entries = d0 -> e0 + d1 -> e1
+    name = e0 -> n0 + e1 -> n0
+    object = e0 -> d1 + e1 -> d0
+  } implies all o : Object | reachable[o]
 } for 3
