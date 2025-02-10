@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<alloy>
+
+<view hideSkolem="yes">
+
+<defaultnode/>
+
+<defaultedge/>
+
+<node>
+   <type name="Dir"/>
+   <type name="File"/>
+   <type name="Int"/>
+   <type name="Object"/>
+   <type name="String"/>
+   <type name="univ"/>
+   <type name="seq/Int"/>
+   <set name="$structural_design_instance_03_o0" type="univ"/>
+   <set name="$structural_design_instance_03_f0" type="univ"/>
+   <set name="$structural_design_instance_03_d0" type="univ"/>
+</node>
+
+</view>
+
+</alloy>

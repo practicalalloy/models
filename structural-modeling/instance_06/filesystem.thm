@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<alloy>
+
+<view hideSkolem="yes">
+
+<defaultnode/>
+
+<defaultedge/>
+
+<node>
+   <type name="Dir"/>
+   <type name="Entry"/>
+   <type name="File"/>
+   <type name="Int"/>
+   <type name="Name"/>
+   <type name="Object"/>
+   <type name="Root"/>
+   <type name="String"/>
+   <type name="univ"/>
+   <type name="seq/Int"/>
+   <set name="$structural_design_instance_06_r" type="univ"/>
+   <set name="$structural_design_instance_06_d0" type="univ"/>
+   <set name="$structural_design_instance_06_e0" type="univ"/>
+   <set name="$structural_design_instance_06_e1" type="univ"/>
+   <set name="$structural_design_instance_06_e2" type="univ"/>
+</node>
+
+</view>
+
+</alloy>
