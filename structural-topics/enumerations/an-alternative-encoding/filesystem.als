@@ -1,3 +1,10 @@
+/*  
+File system model at the end of the "An alternative encoding" section,
+"Enumeration signatures" topic, of the Practical Alloy book.
+
+https://practicalalloy.github.io/book/chapters/structural-topics/topics/subset-signatures/index.html#an-alternative-encoding
+*/
+
 module filesystem
 
 enum Permission { Read, Write, Execute }
@@ -28,12 +35,13 @@ sig Entry {
 
 sig Name {}
 
+// Show arbitrary instances with the default scope
 run example {}
+// Show arbitrary instances with scope 4 for top-level signatures
 run example {} for 4
-run example {} for 4 but 2 Entry, exactly 3 Name
 
 run distinct_permissions { 
-  some disj o1,o2:Object | o1.mode != o2.mode
+  some disj o1, o2 : Object | o1.mode != o2.mode
 } for 4
 
 fact all_classes_assigned {
@@ -77,11 +85,6 @@ fact no_indirect_containment {
 assert no_partitions {
   // Every object is reachable from the root
   all o : Object | reachable[o]
-}
-
-fact no_indirect_containment {
-   // Directories cannot descend from themselves
-   all d : Dir | d not in descendants[d]
 }
 
 check no_partitions

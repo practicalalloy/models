@@ -1,3 +1,10 @@
+/*  
+File system model at the end of the "Using enumeration signatures" section,
+"Enumeration signatures" topic, of the Practical Alloy book.
+
+https://practicalalloy.github.io/book/chapters/structural-topics/topics/subset-signatures/index.html#using-enumeration-signatures
+*/
+
 module filesystem
 
 enum Permission { Read, Write, Execute }
@@ -23,9 +30,10 @@ sig Entry {
 
 sig Name {}
 
+// Show arbitrary instances with the default scope
 run example {}
+// Show arbitrary instances with scope 4 for top-level signatures
 run example {} for 4
-run example {} for 4 but 2 Entry, exactly 3 Name
 
 fact unique_names {
   // Different entries in the same directory must have different names
@@ -63,11 +71,6 @@ fact no_indirect_containment {
 assert no_partitions {
   // Every object is reachable from the root
   all o : Object | reachable[o]
-}
-
-fact no_indirect_containment {
-   // Directories cannot descend from themselves
-   all d : Dir | d not in descendants[d]
 }
 
 check no_partitions

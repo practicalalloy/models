@@ -1,3 +1,10 @@
+/*  
+File system model at the end of the "Mixing subset and extension signatures"
+section, "Subset signatures" topic, of the Practical Alloy book.
+
+https://practicalalloy.github.io/book/chapters/structural-topics/topics/subset-signatures/index.html#mixing-subset-and-extension-signatures
+*/
+
 module filesystem
 
 abstract sig Object {}
@@ -23,6 +30,9 @@ sig Entry {
 
 sig Name {}
 
+// Show arbitrary instances with the default scope
+run example {}
+// Show arbitrary instances with scope 4 for top-level signatures
 run example {} for 4
 
 fact unique_names {
