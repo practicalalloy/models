@@ -1,3 +1,10 @@
+/*   
+File system model at the end of the "Alternative command syntaxes" section,
+"Commands in detail" topic, of the Practical Alloy book.
+
+https://practicalalloy.github.io/book/chapters/structural-topics/topics/commands/index.html#alternative-command-syntaxes
+*/
+
 module filesystem
 
 abstract sig Object {}
@@ -17,9 +24,12 @@ sig Entry {
 
 sig Name {}
 
+sig Name {}
+
+// Show arbitrary instances with the default scope
 run example {}
+// Show arbitrary instances with scope 4 for top-level signatures
 run example {} for 4
-run example {} for 4 but 2 Entry, exactly 3 Name
 
 fact unique_names {
   // Different entries in the same directory must have different names
@@ -50,30 +60,31 @@ pred reachable [o : Object] {
 }
 
 fact no_indirect_containment {
-   // Directories cannot descend from themselves
-   all d : Dir | d not in descendants[d]
+  // Directories cannot descend from themselves
+  all d : Dir | d not in descendants[d]
 }
 
-fact no_indirect_containment {
-   // Directories cannot descend from themselves
-   all d : Dir | d not in descendants[d]
-}
-
+// Check whether every object is reachable from the root
 check no_partitions {
   all o : Object | reachable[o]
 } for 6
 
-
 pred depth2 {
-    some Root.entries.object.entries.object
+  // There are some objects at depth 2 of the file system
+  some Root.entries.object.entries.object
 }
 
+// Show instances with at least depth 2 without files
 run depth2 for 4 but 0 File
+// Show instances with at least depth 2 without at most 1 file
 run depth2 for 4 but 1 File
+// Show instances with at least depth 2 without at most 2 files
 run depth2 for 4 but 2 File
 
-pred empty_dir [d: Dir] {
-    no d.entries
+pred empty_dir [d : Dir] {
+  // Tests whether directory d is empty
+  no d.entries
 }
 
+// Show instances where there is some empty directory
 run empty_dir for 3
