@@ -52,8 +52,8 @@ pred reachable [o : Object] {
 }
 
 fact no_indirect_containment {
-   // Directories cannot descend from themselves
-   all d : Dir | d not in descendants[d]
+  // Directories cannot descend from themselves
+  all d : Dir | d not in descendants[d]
 }
 
 assert no_partitions {
@@ -61,22 +61,24 @@ assert no_partitions {
   all o : Object | reachable[o]
 }
 
+// Check that there can be no partitions in a file system within the default scope
 check no_partitions
+// Check that there can be no partitions in a file system scope 6 for top-level signatures
 check no_partitions for 6
 
 fun depth [o: Object] : Natural {
-    o in Root implies Zero
-    else inc[max[{n : Natural | some x : entries.object.o | n = depth[x]}]]
+  o in Root implies Zero
+  else inc[max[{n : Natural | some x : entries.object.o | n = depth[x]}]]
 }
 
 -- needs recursion depth of 2
 run depth2 {
-    some f:File | depth[f] = inc[One]
+  some f:File | depth[f] = inc[One]
 } for 5 but 3 Name
 
 -- needs recursion depth of 3
 run depth3 {
-    some f:File | depth[f] = inc[inc[One]]
+  some f:File | depth[f] = inc[inc[One]]
 } for 5 but 3 Name
 
 -- needs recursion depth of 2

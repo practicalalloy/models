@@ -35,15 +35,6 @@ sig Entry {
 
 sig Name {}
 
-// Show arbitrary instances with the default scope
-run example {}
-// Show arbitrary instances with scope 4 for top-level signatures
-run example {} for 4
-
-run distinct_permissions { 
-  some disj o1, o2 : Object | o1.mode != o2.mode
-} for 4
-
 fact all_classes_assigned {
   // There is one permission assigned to each group
   all o : Object, c : Class | one o.mode & class.c
@@ -78,14 +69,25 @@ pred reachable [o : Object] {
 }
 
 fact no_indirect_containment {
-   // Directories cannot descend from themselves
-   all d : Dir | d not in descendants[d]
+  // Directories cannot descend from themselves
+  all d : Dir | d not in descendants[d]
 }
+
+// Show arbitrary instances with the default scope
+run example {}
+// Show arbitrary instances with scope 4 for top-level signatures
+run example {} for 4
+
+run distinct_permissions { 
+  some disj o1, o2 : Object | o1.mode != o2.mode
+} for 4
 
 assert no_partitions {
   // Every object is reachable from the root
   all o : Object | reachable[o]
 }
 
+// Check that there can be no partitions in a file system within the default scope
 check no_partitions
+// Check that there can be no partitions in a file system scope 6 for top-level signatures
 check no_partitions for 6

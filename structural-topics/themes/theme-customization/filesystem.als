@@ -1,3 +1,10 @@
+/*  
+File system model at the end of the "Theme customization" section, "Visualization
+customization" topic, of the Practical Alloy book.
+
+https://practicalalloy.github.io/book/chapters/structural-topics/topics/themes/index.html#theme-customization
+*/
+
 module filesystem
 
 abstract sig Object {}
@@ -16,10 +23,6 @@ sig Entry {
 }
 
 sig Name {}
-
-run example {} expect 1
-run example {} for 4 expect 1
-run example {} for 4 but 2 Entry, exactly 3 Name expect 1
 
 fact unique_names {
   // Different entries in the same directory must have different names
@@ -41,8 +44,20 @@ fact one_directory_per_entry {
   all e : Entry | one entries.e
 }
 
-fact no_self_containment {
-  // Directories cannot contain themselves
-  all d : Dir | d not in d.entries.object
+fun descendants [o : Object] : set Object {
+  o.^(entries.object)
 }
 
+pred reachable [o : Object] {
+  o in Root + descendants[Root]
+}
+
+fact no_indirect_containment {
+  // Directories cannot descend from themselves
+  all d : Dir | d not in descendants[d]
+}
+
+// Show arbitrary instances with the default scope
+run example {}
+// Show arbitrary instances with scope 4 for top-level signatures
+run example {} for 4

@@ -24,11 +24,6 @@ sig Entry {
 
 sig Name {}
 
-// Show arbitrary instances with the default scope
-run example {}
-// Show arbitrary instances with scope 4 for top-level signatures
-run example {} for 4
-
 fact unique_names {
   // Different entries in the same directory must have different names
   all d : Dir, n : Name | lone (d.entries & name.n)
@@ -57,28 +52,10 @@ pred reachable [o : Object] {
   o in Root + descendants[Root]
 }
 
-pred no_self_containment {
-   // Directories cannot contain themselves
-   all d : Dir | d not in d.entries.object
-}
-
-pred no_indirect_containment {
-  // Directories cannot contain themselves directly or indirectly
-  all d : Dir | d not in descendants[d]
-}
-
-pred no_partitions {
-  // Every object is reachable from the root
-  all o : Object | reachable[o]
-}
-
-check bad_containment {
-  no_self_containment implies no_partitions
-} for 6 expect 1
-
-check good_containment {
-  no_indirect_containment implies no_partitions
-} for 6 expect 0
+// Show arbitrary instances with the default scope
+run example { no_self_containment }
+// Show arbitrary instances with scope 4 for top-level signatures
+run example { no_self_containment } for 4
 
 pred depth2 {
   // There are some objects at depth 2 of the file system
@@ -110,3 +87,26 @@ run files_3_dirs_3 {} for 3 but 3 Dir, 3 File
 // Show instances with some files with overall scope of 3, but at most 3 directories
 // Is unsatisfiable since there is no scope left for files
 run dirs_3 { some File } for 3 but 3 Dir
+
+pred no_self_containment {
+   // Directories cannot contain themselves
+   all d : Dir | d not in d.entries.object
+}
+
+pred no_indirect_containment {
+  // Directories cannot contain themselves directly or indirectly
+  all d : Dir | d not in descendants[d]
+}
+
+pred no_partitions {
+  // Every object is reachable from the root
+  all o : Object | reachable[o]
+}
+
+check bad_containment {
+  no_self_containment implies no_partitions
+} for 6 expect 1
+
+check good_containment {
+  no_indirect_containment implies no_partitions
+} for 6 expect 0

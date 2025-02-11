@@ -31,15 +31,8 @@ sig Label in Tag {
 
 sig Alert in Tag {}
 
-fact tag_hierarchy {
-  // Tag is abstract
-  Tag = Shape + Label
-  // Alerts are labeled shapes
-  Alert = Shape & Label
-}
-
 sig Tagged in Object {
-    tags : some Tag
+  tags : some Tag
 }
 
 sig Entry {
@@ -49,10 +42,12 @@ sig Entry {
 
 sig Name {}
 
-// Show arbitrary instances with the default scope
-run example {}
-// Show arbitrary instances with scope 4 for top-level signatures
-run example {} for 4
+fact tag_hierarchy {
+  // Tag is abstract
+  Tag = Shape + Label
+  // Alerts are labeled shapes
+  Alert = Shape & Label
+}
 
 fact unique_names {
   // Different entries in the same directory must have different names
@@ -83,20 +78,27 @@ pred reachable [o : Object] {
 }
 
 fact no_indirect_containment {
-   // Directories cannot descend from themselves
-   all d : Dir | d not in descendants[d]
+  // Directories cannot descend from themselves
+  all d : Dir | d not in descendants[d]
 }
+
+// Show arbitrary instances with the default scope
+run example {}
+// Show arbitrary instances with scope 4 for top-level signatures
+run example {} for 4
 
 assert no_partitions {
   // Every object is reachable from the root
   all o : Object | reachable[o]
 }
 
+// Check that there can be no partitions in a file system within the default scope
 check no_partitions
+// Check that there can be no partitions in a file system scope 6 for top-level signatures
 check no_partitions for 6
 
 run subset_signatures_instance_03 {
-  some disj r, t0, t1, t2, c0, x0 : univ {
+  some r : Dir, disj t0, t1, t2 : Tag, c0 : Color, x0 : Text {
     Dir = r
     Root = r
     File = none
@@ -113,5 +115,5 @@ run subset_signatures_instance_03 {
     object = none -> none
     tags = none -> none
   }
-} for 4
+} for 4 expect 1
 

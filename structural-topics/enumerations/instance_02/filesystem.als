@@ -36,15 +36,6 @@ sig Entry {
 
 sig Name {}
 
-// Show arbitrary instances with the default scope
-run example {}
-// Show arbitrary instances with scope 4 for top-level signatures
-run example {} for 4
-
-run distinct_permissions { 
-  some disj o1, o2 : Object | o1.mode != o2.mode
-} for 4
-
 fact all_classes_assigned {
   // There is one permission assigned to each group
   all o : Object, c : Class | one o.mode & class.c
@@ -79,21 +70,33 @@ pred reachable [o : Object] {
 }
 
 fact no_indirect_containment {
-   // Directories cannot descend from themselves
-   all d : Dir | d not in descendants[d]
+  // Directories cannot descend from themselves
+  all d : Dir | d not in descendants[d]
 }
+
+// Show arbitrary instances with the default scope
+run example {}
+// Show arbitrary instances with scope 4 for top-level signatures
+run example {} for 4
+
+run distinct_permissions { 
+  some disj o1, o2 : Object | o1.mode != o2.mode
+} for 4
 
 assert no_partitions {
   // Every object is reachable from the root
   all o : Object | reachable[o]
 }
 
+// Check that there can be no partitions in a file system within the default scope
 check no_partitions
+// Check that there can be no partitions in a file system scope 6 for top-level signatures
 check no_partitions for 6
 
 run enumeration_signatures_instance_02 {
   some disj o1, o2 : Object | o1.mode != o2.mode
-  some disj r, f0, e0, n0, p0, p1, p2, p3 : univ {
+  some r : Dir, f0 : File, e0 : Entry, n0 : Name, 
+       disj p0, p1, p2, p3 : PermissionAssignment {
     Dir = r
     Root = r
     File = f0
@@ -107,4 +110,4 @@ run enumeration_signatures_instance_02 {
     class = p2 -> User + p0 -> Other + p1 -> Group + p3 -> User
     permission = p2 -> Read + p1 -> Read + p3 -> Execute + p3 -> Read 
   }
-} for 4
+} for 4 expect 1

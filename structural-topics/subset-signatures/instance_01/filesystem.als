@@ -27,11 +27,6 @@ sig Entry {
 
 sig Name {}
 
-// Show arbitrary instances with the default scope
-run example {}
-// Show arbitrary instances with scope 4 for top-level signatures
-run example {} for 4
-
 fact unique_names {
   // Different entries in the same directory must have different names
   all d : Dir, n : Name | lone (d.entries & name.n)
@@ -61,20 +56,27 @@ pred reachable [o : Object] {
 }
 
 fact no_indirect_containment {
-   // Directories cannot descend from themselves
-   all d : Dir | d not in descendants[d]
+  // Directories cannot descend from themselves
+  all d : Dir | d not in descendants[d]
 }
+
+// Show arbitrary instances with the default scope
+run example {}
+// Show arbitrary instances with scope 4 for top-level signatures
+run example {} for 4
 
 assert no_partitions {
   // Every object is reachable from the root
   all o : Object | reachable[o]
 }
 
+// Check that there can be no partitions in a file system within the default scope
 check no_partitions
+// Check that there can be no partitions in a file system scope 6 for top-level signatures
 check no_partitions for 6
 
 run subset_signatures_instance_01 {
-  some disj d0, r, f0, e0, e1, n0, n1, n2 : univ {
+  some disj d0, r : Dir, f0 : File, disj e0, e1 : Entry, disj n0, n1, n2 : Name {
     Dir = d0 + r
     Root = r
     File = f0
@@ -85,4 +87,4 @@ run subset_signatures_instance_01 {
     name = e0 -> n1 + e1 -> n2
     object = e0 -> f0 + e1 -> d0
   }
-} for 4
+} for 4 expect 1

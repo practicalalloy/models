@@ -26,7 +26,7 @@ run example {}
 run example {} for 4
 
 run structural_design_instance_06 {
-  some disj d0, r, e0, e1, e2 : univ {
+  some disj d0, r : Dir, disj e0, e1, e2 : Entry {
     Dir = d0 + r
     Root = r
     File = none
@@ -34,4 +34,4 @@ run structural_design_instance_06 {
     Name = none
     entries = d0 -> e0 + d0 -> e1 + r -> e2
   }
-}
+} expect 1

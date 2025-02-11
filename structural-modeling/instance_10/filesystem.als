@@ -24,11 +24,6 @@ sig Entry {
 
 sig Name {}
 
-// Show arbitrary instances with the default scope
-run example {}
-// Show arbitrary instances with scope 4 for top-level signatures
-run example {} for 4
-
 fact unique_names {
   // Different entries in the same directory must have different names
   all d : Dir, n : Name | lone (d.entries & name.n)
@@ -62,11 +57,17 @@ pred reachable [o : Object] {
   o in Root + descendants[Root]
 }
 
+// Show arbitrary instances with the default scope
+run example {}
+// Show arbitrary instances with scope 4 for top-level signatures
+run example {} for 4
+
 assert no_partitions {
   // Every object is reachable from the root
   all o : Object | reachable[o]
 }
 
+// Check that there can be no partitions in a file system within the default scope
 check no_partitions
 
 check structural_design_instance_10 {
@@ -80,4 +81,4 @@ check structural_design_instance_10 {
     name = e0 -> n0 + e1 -> n0
     object = e0 -> d1 + e1 -> d0
   } implies all o : Object | reachable[o]
-} for 3
+} for 3 expect 1

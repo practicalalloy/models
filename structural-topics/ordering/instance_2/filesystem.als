@@ -54,8 +54,8 @@ pred reachable [o : Object] {
 }
 
 fact no_indirect_containment {
-   // Directories cannot descend from themselves
-   all d : Dir | d not in descendants[d]
+  // Directories cannot descend from themselves
+  all d : Dir | d not in descendants[d]
 }
 
 fact children_timestamp {
@@ -68,7 +68,9 @@ assert no_partitions {
   all o : Object | reachable[o]
 }
 
+// Check that there can be no partitions in a file system within the default scope
 check no_partitions
+// Check that there can be no partitions in a file system scope 6 for top-level signatures
 check no_partitions for 6
 
 run book_instance2 {
@@ -78,7 +80,6 @@ run book_instance2 {
     File = o2
     Entry = o3 + o4
     Name = o6 + o7
---    univ = Object + Entry + File + Timestamp + Int
     entries = o1 -> o3 + o1 -> o4
     name = o3 -> o6 + o4 -> o7
     object = o3 -> o2 + o4 -> o0

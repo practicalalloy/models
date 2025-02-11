@@ -24,13 +24,6 @@ sig Entry {
 
 sig Name {}
 
-sig Name {}
-
-// Show arbitrary instances with the default scope
-run example {}
-// Show arbitrary instances with scope 4 for top-level signatures
-run example {} for 4
-
 fact unique_names {
   // Different entries in the same directory must have different names
   all d : Dir, n : Name | lone (d.entries & name.n)
@@ -64,15 +57,15 @@ fact no_indirect_containment {
   all d : Dir | d not in descendants[d]
 }
 
-// Check whether every object is reachable from the root
-check no_partitions {
-  all o : Object | reachable[o]
-} for 6
-
 pred depth2 {
   // There are some objects at depth 2 of the file system
   some Root.entries.object.entries.object
 }
+
+// Show arbitrary instances with the default scope
+run example {}
+// Show arbitrary instances with scope 4 for top-level signatures
+run example {} for 4
 
 // Show instances with at least depth 2 without files
 run depth2 for 4 but 0 File
@@ -88,3 +81,8 @@ pred empty_dir [d : Dir] {
 
 // Show instances where there is some empty directory
 run empty_dir for 3
+
+// Check whether every object is reachable from the root
+check no_partitions {
+  all o : Object | reachable[o]
+} for 6

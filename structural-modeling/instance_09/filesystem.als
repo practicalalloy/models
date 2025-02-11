@@ -24,11 +24,6 @@ sig Entry {
 
 sig Name {}
 
-// Show arbitrary instances with the default scope
-run example {}
-// Show arbitrary instances with scope 4 for top-level signatures
-run example {} for 4
-
 fact restrict_object {
   // All objects are directories or files, redundant due to signature declarations
   all x : Object | x in Dir or x in File
@@ -54,8 +49,13 @@ fact no_dangling_objects {
   Entry.object = Object - Root
 }
 
+// Show arbitrary instances with the default scope
+run example {}
+// Show arbitrary instances with scope 4 for top-level signatures
+run example {} for 4
+
 run structural_design_instance_09 {
-  some disj d0, r, f0, e0, e1, e2, e3, n0, n1, n2 : univ {
+  some disj d0, r : Dir, f0 : File, disk e0, e1, e2, e3 : Entry, disj n0, n1, n2 : Name {
     Dir = d0 + r
     Root = r
     File = f0
@@ -65,4 +65,4 @@ run structural_design_instance_09 {
     name = e0 -> n2 + e1 -> n2 + e2 -> n1 + e3 -> n0
     object = e0 -> f0 + e1 -> f0 + e2 -> f0 + e3 -> d0
   }
-} for 4
+} for 4 expect 1

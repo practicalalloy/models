@@ -26,19 +26,19 @@ run example {} for 4
 run example {} for 4 but 2 Entry, exactly 3 Name
 
 run structural_design_instance_04 {
-  some disj d0, d1, r : univ {
+  some disj d0, d1, r : Dir {
     Dir = d0 + d1 + r
     Root = r
     File = none
   }
-}
+} expect 1
 
 run structural_design_instance_05 {
-  some disj d0, r, e0, e1, n0, n1 : univ {
+  some disj d0, r : Dir, disj e0, e1 : Entry, disj n0, n1 : Name {
     Dir = d0 + r
     Root = r
     File = none
     Entry = e0 + e1
     Name = n0 + n1
   }
-} for 4
+} for 4 expect 1

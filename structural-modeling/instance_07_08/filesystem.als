@@ -30,27 +30,27 @@ run example {}
 run example {} for 4
 
 run structural_design_instance_07 {
-  some disj d0, r, o2, e0, e1, e2, e3, n0 : univ {
+  some disj d0, r : Dir, f0 : File, disj e0, e1, e2, e3 : Entry, n0 : Name {
     Dir = d0 + r
     Root = r
-    File = o2
+    File = f0
     Entry = e0 + e1 + e2 + e3
     Name = n0
     entries = d0 -> e0 + d0 -> e1 + d0 -> e2 + d0 -> e3 + r -> e3
     name = e0 -> n0 + e1 -> n0 + e2 -> n0 + e3 -> n0
     object = e0 -> d0 + e1 -> d0 + e2 -> d0 + e3 -> d0
   }
-} for 4
+} for 4 expect 1
 
 run structural_design_instance_08 {
-  some disj d0, r, o2, e0, e1, e2, e3, n0 : univ {
+  some disj d0, r : Dir, f0 : File, disj e0, e1, e2, e3 : Entru, n0 : Name {
     Dir = d0 + r
     Root = r
-    File = o2
+    File = f0
     Entry = e0 + e1 + e2 + e3
     Name = n0
     entries = d0 -> e0 + d0 -> e1 + d0 -> e2 + d0 -> e3 + r -> e3
     name = e0 -> n0 + e1 -> n0 + e2 -> n0 + e3 -> n0
     object = e0 -> d0 + e1 -> d0 + e2 -> d0 + e3 -> d0
   }
-} for 4
+} for 4 expect 1

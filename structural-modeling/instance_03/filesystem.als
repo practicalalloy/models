@@ -16,9 +16,9 @@ sig File extends Object {}
 run example {}
 
 run structural_design_instance_03 {
-  some disj f0, d0, o0 : univ {
+  some disj f0, d0, o0 : Object {
     Object = o0 + f0 + d0
     Dir = d0
     File = f0
   }
-}
+} expect 1
