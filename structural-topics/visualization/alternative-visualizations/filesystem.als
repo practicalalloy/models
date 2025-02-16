@@ -1,9 +1,8 @@
 /*  
-File system model for the generation of instance 4 of the "Visualization
-customization" topic, "Managing themes" section, of the Practical Alloy
-book.
+File system model at the end of the "Alternative visualizations" section,
+"Visualization customization" topic, of the Practical Alloy book.
 
-https://practicalalloy.github.io/book/chapters/structural-topics/topics/themes/index.html#managing-themes
+https://practicalalloy.github.io/book/chapters/structural-topics/topics/themes/index.html#alternative-visualizations
 */
 
 module filesystem
@@ -58,20 +57,16 @@ fact no_indirect_containment {
   all d : Dir | d not in descendants[d]
 }
 
+fun empty_dirs : set Dir {
+  Dir - entries.Entry
+}
+
+fun named_contents : Dir -> Name -> Object {
+  { d : Dir, n : Name, o : Object |
+    some e : Entry | e in d.entries and e.name = n and e.object = o }
+}
+
 // Show arbitrary instances with the default scope
 run example {}
 // Show arbitrary instances with scope 4 for top-level signatures
 run example {} for 4
-
-run visualization_instance_04 {
-  some disj d0, d1, r : Dir, f0 : File, disj n0, n1, n2 : Name, disj e0, e1, e2 : Entry {
-    File    = f0
-    Root    = r
-    Dir     = d0 + d1 + r
-    Entry   = e0 + e1 + e2
-    Name    = n0 + n1 + n2
-    name    = e0 -> n1 + e1 -> n0 + e2 -> n2
-    object  = e0 -> d0 + e1 -> d1 + e2 -> f0
-    entries = r -> e1 + r -> e2 + d1 -> e0
-  }
-} for 4 expect 1

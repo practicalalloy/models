@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<alloy>
+
+<view nodetheme="Martha" edgetheme="Martha">
+
+<defaultnode/>
+
+<defaultedge/>
+
+<node>
+   <type name="File"/>
+   <type name="Int"/>
+   <type name="String"/>
+   <type name="univ"/>
+   <type name="seq/Int"/>
+</node>
+
+<node color="Red">
+   <type name="Object"/>
+</node>
+
+<node shape="House">
+   <type name="Root"/>
+</node>
+
+<node shape="Trapezoid">
+   <type name="Dir"/>
+</node>
+
+<node style="Dotted" label="empty">
+   <set name="$empty_dirs" type="Dir"/>
+</node>
+
+<node visible="no">
+   <type name="Name"/>
+</node>
+
+<node visible="no" color="Gray">
+   <type name="Entry"/>
+</node>
+
+<edge visible="no" attribute="yes">
+   <relation name="name"> <type name="Entry"/> <type name="Name"/> </relation>
+</edge>
+
+</view>
+
+</alloy>
