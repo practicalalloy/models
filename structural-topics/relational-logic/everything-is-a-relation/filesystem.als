@@ -2,7 +2,7 @@
 File system model at the end of the "Everything is a relation" section, "A
 relational logic primer" topic, of the Practical Alloy book.
 
-https://practicalalloy.github.io/book/chapters/structural-topics/topics/relational-logic/index.html#everything-is-a-relation
+https://practicalalloy.github.io/chapters/structural-topics/topics/relational-logic/index.html#everything-is-a-relation
 */
 
 module filesystem

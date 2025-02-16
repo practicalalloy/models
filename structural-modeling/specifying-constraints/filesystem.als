@@ -2,7 +2,7 @@
 File system model at the end of the "Specifying constraints" section,
 "Structural modeling" chapter, of the Practical Alloy book.
 
-https://practicalalloy.github.io/book/chapters/structural-modeling/index.html#specifying-constraints
+https://practicalalloy.github.io/chapters/structural-modeling/index.html#specifying-constraints
 */
 
 module filesystem

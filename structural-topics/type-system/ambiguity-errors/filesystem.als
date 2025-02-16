@@ -2,7 +2,7 @@
 File system model at the end of the "Ambiguity errors" section, "Type system"
 topic, of the Practical Alloy book.
 
-https://practicalalloy.github.io/book/chapters/structural-topics/topics/type-system/index.html#ambiguity-errors
+https://practicalalloy.github.io/chapters/structural-topics/topics/type-system/index.html#ambiguity-errors
 */
 
 module filesystem

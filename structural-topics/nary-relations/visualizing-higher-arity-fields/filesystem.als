@@ -2,7 +2,7 @@
 File system model at the end of the "Visualizing higher-arity fields" section,
 "Higher-arity relations" topic, of the Practical Alloy book.
 
-https://practicalalloy.github.io/book/chapters/structural-topics/topics/nary-relations/index.html#visualizing-higher-arity-fields
+https://practicalalloy.github.io/chapters/structural-topics/topics/nary-relations/index.html#visualizing-higher-arity-fields
 */
 
 module filesystem

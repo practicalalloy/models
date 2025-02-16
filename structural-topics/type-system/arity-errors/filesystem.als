@@ -2,7 +2,7 @@
 File system model at the end of the "Arity errors" section, "Type system" topic,
 of the Practical Alloy book.
 
-https://practicalalloy.github.io/book/chapters/structural-topics/topics/type-system/index.html#arity-errors
+https://practicalalloy.github.io/chapters/structural-topics/topics/type-system/index.html#arity-errors
 */
 
 module filesystem

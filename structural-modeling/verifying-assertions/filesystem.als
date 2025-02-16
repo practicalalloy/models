@@ -2,7 +2,7 @@
 File system model at the end of the "Verifying assertions" section, and the
 whole "Structural modeling" chapter, of the Practical Alloy book.
 
-https://practicalalloy.github.io/book/chapters/structural-modeling/index.html#verifying-assertions
+https://practicalalloy.github.io/chapters/structural-modeling/index.html#verifying-assertions
 */
 
 module filesystem

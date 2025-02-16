@@ -2,7 +2,7 @@
 File system model for the generation of instance 1 of the "The instance
 evaluator" topic, "Evaluating expressions" section, of the Practical Alloy book.
 
-https://practicalalloy.github.io/book/chapters/structural-topics/topics/evaluator/index.html#evaluating-expressions
+https://practicalalloy.github.io/chapters/structural-topics/topics/evaluator/index.html#evaluating-expressions
 */
 
 module filesystem

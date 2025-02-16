@@ -2,7 +2,7 @@
 File system model at the end of the "Alternative visualizations" section,
 "Visualization customization" topic, of the Practical Alloy book.
 
-https://practicalalloy.github.io/book/chapters/structural-topics/topics/themes/index.html#alternative-visualizations
+https://practicalalloy.github.io/chapters/structural-topics/topics/themes/index.html#alternative-visualizations
 */
 
 module filesystem

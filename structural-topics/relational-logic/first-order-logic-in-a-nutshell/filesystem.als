@@ -2,7 +2,7 @@
 File system model at the end of the "First-order logic in a nutshell" section,
 "A relational logic primer" topic, of the Practical Alloy book.
 
-https://practicalalloy.github.io/book/chapters/structural-topics/topics/relational-logic/index.html#first-order-logic-in-a-nutshell
+https://practicalalloy.github.io/chapters/structural-topics/topics/relational-logic/index.html#first-order-logic-in-a-nutshell
 */
 
 module filesystem

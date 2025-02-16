@@ -2,7 +2,7 @@
 File system model at the end of the "From relational logic to SAT" section, and
 the whole "Model finding" topic, of the Practical Alloy book.
 
-https://practicalalloy.github.io/book/chapters/structural-topics/topics/analysis/index.html#from-relational-logic-to-sat
+https://practicalalloy.github.io/chapters/structural-topics/topics/analysis/index.html#from-relational-logic-to-sat
 */
 
 module filesystem

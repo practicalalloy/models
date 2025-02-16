@@ -2,7 +2,7 @@
 File system model at the end of the "Extracting instances from the visualizer"
 section, "Encoding test instances" topic, of the Practical Alloy book.
 
-https://practicalalloy.github.io/book/chapters/structural-topics/topics/testing-instances/index.html#extracting-instances-from-the-visualizer
+https://practicalalloy.github.io/chapters/structural-topics/topics/testing-instances/index.html#extracting-instances-from-the-visualizer
 */
 
 module filesystem

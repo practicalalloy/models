@@ -2,7 +2,7 @@
 File system model at the end of the "Negative test instances" section, "Encoding
 test instances" topic, of the Practical Alloy book.
 
-https://practicalalloy.github.io/book/chapters/structural-topics/topics/testing-instances/index.html#negative-test-instances
+https://practicalalloy.github.io/chapters/structural-topics/topics/testing-instances/index.html#negative-test-instances
 */
 
 module filesystem

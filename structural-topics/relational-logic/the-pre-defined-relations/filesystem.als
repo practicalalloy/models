@@ -2,7 +2,7 @@
 File system model at the end of the "The predefined relations" section, "A
 relational logic primer" topic, of the Practical Alloy book.
 
-https://practicalalloy.github.io/book/chapters/structural-topics/topics/relational-logic/index.html#the-predefined-relations
+https://practicalalloy.github.io/chapters/structural-topics/topics/relational-logic/index.html#the-predefined-relations
 */
 
 module filesystem

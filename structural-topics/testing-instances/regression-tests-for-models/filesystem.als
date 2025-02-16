@@ -2,7 +2,7 @@
 File system model at the end of the "Regression tests for models" section,
 "Encoding test instances" topic, of the Practical Alloy book.
 
-https://practicalalloy.github.io/book/chapters/structural-topics/topics/testing-instances/index.html#regression-tests-for-models
+https://practicalalloy.github.io/chapters/structural-topics/topics/testing-instances/index.html#regression-tests-for-models
 */
 
 module filesystem

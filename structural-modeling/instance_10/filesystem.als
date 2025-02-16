@@ -2,7 +2,7 @@
 Model for the generation of instance 10 of the "Structural modeling"
 chapter, "Verifying assertions" section, of the Practical Alloy book.
 
-https://practicalalloy.github.io/book/chapters/structural-modeling/index.html#verifying-assertions
+https://practicalalloy.github.io/chapters/structural-modeling/index.html#verifying-assertions
 */
 
 module filesystem

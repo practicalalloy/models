@@ -2,7 +2,7 @@
 File system model at the end of the "A note on predefined types" section, "Type
 system" topic, of the Practical Alloy book.
 
-https://practicalalloy.github.io/book/chapters/structural-topics/topics/type-system/index.html#a-note-on-predefined-types
+https://practicalalloy.github.io/chapters/structural-topics/topics/type-system/index.html#a-note-on-predefined-types
 */
 
 module filesystem

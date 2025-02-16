@@ -2,7 +2,7 @@
 Time-stamp model for the generation of instance 4 of the "Module system" topic,
 "Private declarations" section, of the Practical Alloy book.
 
-https://practicalalloy.github.io/book/chapters/structural-topics/topics/modules/index.html#private-declarations
+https://practicalalloy.github.io/chapters/structural-topics/topics/modules/index.html#private-declarations
 */
 
 module timestamp[A,T]

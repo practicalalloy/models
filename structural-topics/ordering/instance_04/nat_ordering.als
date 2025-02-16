@@ -2,7 +2,7 @@
 Natural numbers model for the generation of instance 4 of the "The predefined
 ordering module" topic, "Analysis scopes" section, of the Practical Alloy book.
 
-https://practicalalloy.github.io/book/chapters/structural-topics/topics/ordering/index.html#analysis-scopes
+https://practicalalloy.github.io/chapters/structural-topics/topics/ordering/index.html#analysis-scopes
 */
 
 open util/ordering[Nat]

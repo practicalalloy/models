@@ -2,7 +2,7 @@
 File system model for the generation of instance 1 of the "Enumeration
 signatures" topic, "Field declaration" section, of the Practical Alloy book.
 
-https://practicalalloy.github.io/book/chapters/structural-topics/topics/enumerations/index.html#using-enumeration-signatures
+https://practicalalloy.github.io/chapters/structural-topics/topics/enumerations/index.html#using-enumeration-signatures
 */
 
 module filesystem

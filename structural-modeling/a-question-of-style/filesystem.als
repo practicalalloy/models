@@ -2,7 +2,7 @@
 File system model at the end of the "A question of style" section,
 "Structural modeling" chapter, of the Practical Alloy book.
 
-https://practicalalloy.github.io/book/chapters/structural-modeling/index.html#a-question-of-style
+https://practicalalloy.github.io/chapters/structural-modeling/index.html#a-question-of-style
 */
 
 module filesystem

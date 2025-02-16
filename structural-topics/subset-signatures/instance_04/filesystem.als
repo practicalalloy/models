@@ -2,7 +2,7 @@
 File system model for the generation of instance 4 of the "Subset signatures"
 topic, "Cross-signature subsets" section, of the Practical Alloy book.
 
-https://practicalalloy.github.io/book/chapters/structural-topics/topics/subset-signatures/index.html#cross-signature-subsets
+https://practicalalloy.github.io/chapters/structural-topics/topics/subset-signatures/index.html#cross-signature-subsets
 */
 
 module filesystem

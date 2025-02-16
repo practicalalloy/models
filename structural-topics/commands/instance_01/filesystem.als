@@ -2,7 +2,7 @@
 File system model for the generation of instance 1 of the "Commands in detail"
 topic, "Alternative command syntaxes" section, of the Practical Alloy book.
 
-https://practicalalloy.github.io/book/chapters/structural-topics/topics/commands/index.html#alternative-command-syntaxes
+https://practicalalloy.github.io/chapters/structural-topics/topics/commands/index.html#alternative-command-syntaxes
 */
 
 module filesystem

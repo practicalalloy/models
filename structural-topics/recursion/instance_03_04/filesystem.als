@@ -3,7 +3,7 @@ File system model for the generation of instances 3 and 4 of the "Handling
 recursion" topic, "Recursion through memoization" section, of the Practical
 Alloy book.
 
-https://practicalalloy.github.io/book/chapters/structural-topics/topics/recursion/index.html#recursion-through-memoization
+https://practicalalloy.github.io/chapters/structural-topics/topics/recursion/index.html#recursion-through-memoization
 */
 
 module filesystem

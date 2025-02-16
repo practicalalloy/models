@@ -2,7 +2,7 @@
 File system model at the end of the "Using enumeration signatures" section,
 "Enumeration signatures" topic, of the Practical Alloy book.
 
-https://practicalalloy.github.io/book/chapters/structural-topics/topics/subset-signatures/index.html#using-enumeration-signatures
+https://practicalalloy.github.io/chapters/structural-topics/topics/subset-signatures/index.html#using-enumeration-signatures
 */
 
 module filesystem

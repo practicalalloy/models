@@ -2,7 +2,7 @@
 File system model at the end of the "Enforcing multiplicities with arrows"
 section, "Arrow multiplicity constraints" topic, of the Practical Alloy book.
 
-https://practicalalloy.github.io/book/chapters/structural-topics/topics/bestiary/index.html#enforcing-multiplicities-with-arrows
+https://practicalalloy.github.io/chapters/structural-topics/topics/bestiary/index.html#enforcing-multiplicities-with-arrows
 */
 
 module filesystem

@@ -2,7 +2,7 @@
 File system model at the end of the "Relational model finding" section, and the
 whole "Model finding" topic, of the Practical Alloy book.
 
-https://practicalalloy.github.io/book/chapters/structural-topics/topics/analysis/index.html#relational-model-finding
+https://practicalalloy.github.io/chapters/structural-topics/topics/analysis/index.html#relational-model-finding
 */
 
 module filesystem

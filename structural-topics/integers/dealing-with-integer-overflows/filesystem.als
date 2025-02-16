@@ -2,7 +2,7 @@
 File system model at the end of the "Dealing with integer overflows" section,
 "Working with integers" topic, of the Practical Alloy book.
 
-https://practicalalloy.github.io/book/chapters/structural-topics/topics/integers/index.html#dealing-with-integer-overflows
+https://practicalalloy.github.io/chapters/structural-topics/topics/integers/index.html#dealing-with-integer-overflows
 */
 
 module filesystem

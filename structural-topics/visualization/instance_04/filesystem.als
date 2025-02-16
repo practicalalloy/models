@@ -3,7 +3,7 @@ File system model for the generation of instance 4 of the "Visualization
 customization" topic, "Managing themes" section, of the Practical Alloy
 book.
 
-https://practicalalloy.github.io/book/chapters/structural-topics/topics/themes/index.html#managing-themes
+https://practicalalloy.github.io/chapters/structural-topics/topics/themes/index.html#managing-themes
 */
 
 module filesystem

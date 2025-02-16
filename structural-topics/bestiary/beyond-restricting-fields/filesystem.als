@@ -2,7 +2,7 @@
 File system model at the end of the "Beyond restricting fields" section, "Arrow
 multiplicity constraints" topic, of the Practical Alloy book.
 
-https://practicalalloy.github.io/book/chapters/structural-topics/topics/bestiary/index.html#beyond-restricting-fields
+https://practicalalloy.github.io/chapters/structural-topics/topics/bestiary/index.html#beyond-restricting-fields
 */
 
 module filesystem

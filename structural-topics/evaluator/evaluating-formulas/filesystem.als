@@ -2,7 +2,7 @@
 File system model at the end of the "Evaluating formulas" section,
 "The instance evaluator" topic, of the Practical Alloy book.
 
-https://practicalalloy.github.io/book/chapters/structural-topics/topics/evaluator/index.html#evaluating-formulas
+https://practicalalloy.github.io/chapters/structural-topics/topics/evaluator/index.html#evaluating-formulas
 */
 
 module filesystem

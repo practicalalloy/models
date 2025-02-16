@@ -2,7 +2,7 @@
 File system model for the generation of instances 1 and 2 of the "Encoding test
 instances" topic, "The some/disj pattern" section, of the Practical Alloy book.
 
-https://practicalalloy.github.io/book/chapters/structural-topics/topics/testing-instances/index.html#the-some-disj-pattern
+https://practicalalloy.github.io/chapters/structural-topics/topics/testing-instances/index.html#the-some-disj-pattern
 */
 
 module filesystem

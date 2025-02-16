@@ -2,7 +2,7 @@
 File system model at the end of the "Alloy vs. classical logic nomenclature"
 section, "A relational logic primer" topic, of the Practical Alloy book.
 
-https://practicalalloy.github.io/book/chapters/structural-topics/topics/relational-logic/index.html#alloy-vs-classical-logic-nomenclature
+https://practicalalloy.github.io/chapters/structural-topics/topics/relational-logic/index.html#alloy-vs-classical-logic-nomenclature
 */
 
 module filesystem

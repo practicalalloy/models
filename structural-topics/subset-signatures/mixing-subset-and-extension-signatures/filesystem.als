@@ -2,7 +2,7 @@
 File system model at the end of the "Mixing subset and extension signatures"
 section, "Subset signatures" topic, of the Practical Alloy book.
 
-https://practicalalloy.github.io/book/chapters/structural-topics/topics/subset-signatures/index.html#mixing-subset-and-extension-signatures
+https://practicalalloy.github.io/chapters/structural-topics/topics/subset-signatures/index.html#mixing-subset-and-extension-signatures
 */
 
 module filesystem

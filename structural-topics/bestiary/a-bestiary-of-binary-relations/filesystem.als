@@ -2,7 +2,7 @@
 File system model at the end of the "A bestiary of binary relations" section,
 "Arrow multiplicity constraints" topic, of the Practical Alloy book.
 
-https://practicalalloy.github.io/book/chapters/structural-topics/topics/bestiary/index.html#a-bestiary-of-binary-relations
+https://practicalalloy.github.io/chapters/structural-topics/topics/bestiary/index.html#a-bestiary-of-binary-relations
 */
 
 module filesystem

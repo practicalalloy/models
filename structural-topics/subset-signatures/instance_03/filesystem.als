@@ -2,7 +2,7 @@
 File system model for the generation of instance 3 of the "Subset signatures"
 topic, "Simulating multiple inheritance" section, of the Practical Alloy book.
 
-https://practicalalloy.github.io/book/chapters/structural-topics/topics/subset-signatures/index.html#simulating-multiple-inheritance
+https://practicalalloy.github.io/chapters/structural-topics/topics/subset-signatures/index.html#simulating-multiple-inheritance
 */
 
 module filesystem

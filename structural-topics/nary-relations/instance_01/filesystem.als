@@ -3,7 +3,7 @@ File system model for the generation of instance 1 of the "Higher-arity
 relations" topic, "Visualizing higher-arity fields" section, of the Practical
 Alloy book.
 
-https://practicalalloy.github.io/book/chapters/structural-topics/topics/nary-relations/index.html#declaring-higher-arity-fields
+https://practicalalloy.github.io/chapters/structural-topics/topics/nary-relations/index.html#declaring-higher-arity-fields
 */
 
 module filesystem

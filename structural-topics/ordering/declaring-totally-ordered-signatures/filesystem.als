@@ -2,7 +2,7 @@
 File system model at the end of the "Declaring totally ordered signatures"
 section, "The predefined ordering module" topic, of the Practical Alloy book.
 
-https://practicalalloy.github.io/book/chapters/structural-topics/topics/ordering/index.html#declaring-totally-ordered-signatures
+https://practicalalloy.github.io/chapters/structural-topics/topics/ordering/index.html#declaring-totally-ordered-signatures
 */
 
 module filesystem

@@ -2,7 +2,7 @@
 File system model at the end of the "Understanding signature facts" section,
 "Signature facts" topic, of the Practical Alloy book.
 
-https://practicalalloy.github.io/book/chapters/structural-topics/topics/signature-facts/index.html#understanding-signature-facts
+https://practicalalloy.github.io/chapters/structural-topics/topics/signature-facts/index.html#understanding-signature-facts
 */
 
 module filesystem

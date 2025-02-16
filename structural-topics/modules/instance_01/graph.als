@@ -2,7 +2,7 @@
 Graph model for the generation of instance 1 of the "Module system" topic,
 "Parametrized modules" section, of the Practical Alloy book.
 
-https://practicalalloy.github.io/book/chapters/structural-topics/topics/modules/index.html#parametrized-modules
+https://practicalalloy.github.io/chapters/structural-topics/topics/modules/index.html#parametrized-modules
 */
 
 module graph[node]

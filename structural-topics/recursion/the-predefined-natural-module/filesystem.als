@@ -2,7 +2,7 @@
 File system model at the end of the "The predefined natural module" section,
 "Handling recursion" topic, of the Practical Alloy book.
 
-https://practicalalloy.github.io/book/chapters/structural-topics/topics/recursion/index.html#the-predefined-natural-module
+https://practicalalloy.github.io/chapters/structural-topics/topics/recursion/index.html#the-predefined-natural-module
 */
 
 module filesystem

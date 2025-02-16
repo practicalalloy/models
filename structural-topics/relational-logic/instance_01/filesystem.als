@@ -2,7 +2,7 @@
 File system model for the generation of instance 1 of the "A relational logic
 primer" topic of the Practical Alloy book.
 
-https://practicalalloy.github.io/book/chapters/structural-topics/topics/relational-logic/index.html#a-relational-logic-primer
+https://practicalalloy.github.io/chapters/structural-topics/topics/relational-logic/index.html#a-relational-logic-primer
 */
 
 module filesystem

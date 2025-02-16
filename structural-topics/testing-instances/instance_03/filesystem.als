@@ -3,7 +3,7 @@ File system model for the generation of instance 3 of the "Encoding test
 instances" topic, "Skolemization and visualization" section, of the Practical
 Alloy book.
 
-https://practicalalloy.github.io/book/chapters/structural-topics/topics/testing-instances/index.html#skolemization-and-visualization
+https://practicalalloy.github.io/chapters/structural-topics/topics/testing-instances/index.html#skolemization-and-visualization
 */
 
 module filesystem

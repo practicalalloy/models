@@ -2,7 +2,7 @@
 File system model at the end of the "Models with integers" section, "Working
 with integers" topic, of the Practical Alloy book.
 
-https://practicalalloy.github.io/book/chapters/structural-topics/topics/integers/index.html#models-with-integers
+https://practicalalloy.github.io/chapters/structural-topics/topics/integers/index.html#models-with-integers
 */
 
 module filesystem

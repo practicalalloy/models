@@ -3,7 +3,7 @@ File system model for the generation of instance 5 of the "Visualization
 customization" topic, "Improving visualizations with derived relations" section,
 of the Practical Alloy book.
 
-https://practicalalloy.github.io/book/chapters/structural-topics/topics/themes/index.html#improving-visualizations-with-derived-relations
+https://practicalalloy.github.io/chapters/structural-topics/topics/themes/index.html#improving-visualizations-with-derived-relations
 */
 
 module filesystem

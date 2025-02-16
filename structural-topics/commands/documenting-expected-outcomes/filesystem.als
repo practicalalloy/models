@@ -2,7 +2,7 @@
 File system model at the end of the "Documenting expected outcomes" section,
 "Commands in detail" topic, of the Practical Alloy book.
 
-https://practicalalloy.github.io/book/chapters/structural-topics/topics/commands/index.html#documenting-expected-outcomes
+https://practicalalloy.github.io/chapters/structural-topics/topics/commands/index.html#documenting-expected-outcomes
 */
 
 module filesystem

@@ -2,7 +2,7 @@
 File system model at the end of the "Defining relations by comprehension" section,
 "Higher-arity relations" topic, of the Practical Alloy book.
 
-https://practicalalloy.github.io/book/chapters/structural-topics/topics/nary-relations/index.html#defining-relations-by-comprehension
+https://practicalalloy.github.io/chapters/structural-topics/topics/nary-relations/index.html#defining-relations-by-comprehension
 */
 
 module filesystem

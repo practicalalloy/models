@@ -2,7 +2,7 @@
 File system model for the generation of instance 2 of the, "Working with
 integers" topic, "Integer operations" section, of the Practical Alloy book.
 
-https://practicalalloy.github.io/book/chapters/structural-topics/topics/integers/index.html#integer-operations
+https://practicalalloy.github.io/chapters/structural-topics/topics/integers/index.html#integer-operations
 */
 
 module filesystem

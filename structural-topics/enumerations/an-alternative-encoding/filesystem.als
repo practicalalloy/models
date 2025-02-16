@@ -2,7 +2,7 @@
 File system model at the end of the "An alternative encoding" section,
 "Enumeration signatures" topic, of the Practical Alloy book.
 
-https://practicalalloy.github.io/book/chapters/structural-topics/topics/subset-signatures/index.html#an-alternative-encoding
+https://practicalalloy.github.io/chapters/structural-topics/topics/subset-signatures/index.html#an-alternative-encoding
 */
 
 module filesystem

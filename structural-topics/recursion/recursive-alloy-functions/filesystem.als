@@ -2,7 +2,7 @@
 File system model at the end of the "Recursive Alloy functions" section,
 "Handling recursion" topic, of the Practical Alloy book.
 
-https://practicalalloy.github.io/book/chapters/structural-topics/topics/recursion/index.html#recursive-alloy-functions
+https://practicalalloy.github.io/chapters/structural-topics/topics/recursion/index.html#recursive-alloy-functions
 */
 
 module filesystem

@@ -2,7 +2,7 @@
 File system model for the generation of instances 1 and 2 of the "Model finding"
 topic, "Skolemization" section, of the Practical Alloy book.
 
-https://practicalalloy.github.io/book/chapters/structural-topics/topics/analysis/index.html#skolemization
+https://practicalalloy.github.io/chapters/structural-topics/topics/analysis/index.html#skolemization
 */
 
 module filesystem

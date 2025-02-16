@@ -2,7 +2,7 @@
 File system model for the generation of instances 7 and 8 of the "Structural
 modeling" chapter, "Field declaration" section, of the Practical Alloy book.
 
-https://practicalalloy.github.io/book/chapters/structural-modeling/index.html#field-declaration
+https://practicalalloy.github.io/chapters/structural-modeling/index.html#field-declaration
 */
 
 module filesystem

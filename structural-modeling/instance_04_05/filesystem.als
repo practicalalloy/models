@@ -2,7 +2,7 @@
 File system model for the generation of instances 4 and 5 of the "Structural
 modeling" chapter, "Signature declaration" section, of the Practical Alloy book.
 
-https://practicalalloy.github.io/book/chapters/structural-modeling/index.html#signature-declaration
+https://practicalalloy.github.io/chapters/structural-modeling/index.html#signature-declaration
 */
 
 module filesystem
