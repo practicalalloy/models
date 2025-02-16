@@ -1,3 +1,10 @@
+/*  
+File system model at the end of the "Declaring totally ordered signatures"
+section, "The predefined ordering module" topic, of the Practical Alloy book.
+
+https://practicalalloy.github.io/book/chapters/structural-topics/topics/ordering/index.html#declaring-totally-ordered-signatures
+*/
+
 module filesystem
 
 open util/ordering[Time]
@@ -20,10 +27,6 @@ sig Entry {
 }
 
 sig Name {}
-
-run example {}
-run example {} for 4
-run example {} for 4 but 2 Entry, exactly 3 Name
 
 fact unique_names {
   // Different entries in the same directory must have different names
@@ -53,16 +56,21 @@ pred reachable [o : Object] {
   o in Root + descendants[Root]
 }
 
+fact children_timestamp {
+  // The timestamp of an entry precedes that of its children
+  all e : Entry, t : e.object.entries.time | lt[e.time, t]
+}
+
+// Show arbitrary instances with the default scope
+run example {}
+// Show arbitrary instances with scope 4 for top-level signatures
+run example {} for 4
+
 assert no_indirect_containment {
   // Directories cannot contain themselves directly or indirectly
   all d : Dir | d not in descendants[d]
 }
 check no_indirect_containment for 6
-
-fact children_timestamp {
-  // The timestamp of an entry precedes that of its children
-  all e : Entry, t : e.object.entries.time | lt[e.time,t]
-}
 
 assert no_partitions {
   // Every object is reachable from the root

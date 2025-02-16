@@ -1,3 +1,10 @@
+/*   
+File system model at the end of the "Extracting instances from the visualizer"
+section, "Encoding test instances" topic, of the Practical Alloy book.
+
+https://practicalalloy.github.io/book/chapters/structural-topics/topics/testing-instances/index.html#extracting-instances-from-the-visualizer
+*/
+
 module filesystem
 
 abstract sig Object {}
@@ -7,6 +14,7 @@ sig Dir extends Object {
 }
 
 sig File extends Object {}
+one sig F1, F2 extends File {}
 
 one sig Root extends Dir {}
 
@@ -16,10 +24,6 @@ sig Entry {
 }
 
 sig Name {}
-
-run example {}
-run example {} for 4
-run example {} for 4 but 2 Entry, exactly 3 Name
 
 fact unique_names {
   // Different entries in the same directory must have different names
@@ -54,6 +58,37 @@ fact no_indirect_containment {
   all d : Dir | d not in descendants[d]
 }
 
+// Show arbitrary instances with the default scope
+run example {}
+// Show arbitrary instances with scope 4 for top-level signatures
+run example {} for 4
+
+run test_root_file_dir {
+  some disj d0, d1 : Dir, disj f0, f1 : File, disj e0, e1, e2 : Entry, disj n0, n1, n2 : Name {
+    Root    = d0
+    Dir     = d0 + d1
+    File    = f0 + f1
+    Entry   = e0 + e1 + e2
+    Name    = n0 + n1 + n2
+    entries = d0 -> e0 + d0 -> e1 + d1 -> e2
+    name    = e0 -> n0 + e1 -> n1 + e2 -> n2
+    object  = e0 -> d1 + e1 -> f0 + e2 -> f1
+  }
+} for 4 Object, 3 Entry, 3 Name expect 1
+
+run test_root_file_dir_bad_name {
+  some disj r, d0 : Dir, disj f0, f1 : File, disj e0, e1, e2 : Entry, disj n0, n1 : Name {
+    Root  = r
+    Dir   = r + d0
+    File  = f0 + f1
+    Entry = e0 + e1 + e2
+    Name  = n0 + n1
+    entries = r -> e0 + r -> e1 + d0 -> e2
+    name    = e0 -> n0 + e1 -> n0 + e2 -> n1
+    object  = e0 -> d0 + e1 -> f0 + e2 -> f1
+  }
+} for 4 Object, 3 Entry, 2 Name expect 0
+
 assert no_partitions {
   // Every object is reachable from the root
   all o : Object | reachable[o]
@@ -63,29 +98,3 @@ assert no_partitions {
 check no_partitions
 // Check that there can be no partitions in a file system scope 6 for top-level signatures
 check no_partitions for 6
-
-run test_root_file_dir {
-  some disj d1, d2 : Dir, disj f1, f2 : File, disj e1, e2, e3 : Entry, disj n1, n2, n3 : Name {
-    Root  = d1
-    Dir   = d1 + d2
-    File  = f1 + f2
-    Entry = e1 + e2 + e3
-    Name  = n1 + n2 + n3
-    entries = d1 -> e1 + d1 -> e2 + d2 -> e3
-    name    = e1 -> n1 + e2 -> n2 + e3 -> n3
-    object  = e1 -> d2 + e2 -> f1 + e3 -> f2
-  }
-} for 4 Object, 3 Entry, 3 Name expect 1
-
-run test_root_file_dir_bad_name {
-  some disj d1, d2 : Dir, disj f1, f2 : File, disj e1, e2, e3 : Entry, disj n1, n3 : Name {
-    Root  = d1
-    Dir   = d1 + d2
-    File  = f1 + f2
-    Entry = e1 + e2 + e3
-    Name  = n1 + n3
-    entries = d1 -> e1 + d1 -> e2 + d2 -> e3
-    name    = e1 -> n1 + e2 -> n1 + e3 -> n3
-    object  = e1 -> d2 + e2 -> f1 + e3 -> f2
-  }
-} for 4 Object, 3 Entry, 2 Name expect 0

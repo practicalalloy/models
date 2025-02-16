@@ -54,15 +54,15 @@ run example {}
 // Show arbitrary instances with scope 4 for top-level signatures
 run example {} for 4
 
-run structural_design_instance_09 {
-  some disj d0, r : Dir, f0 : File, disk e0, e1, e2, e3 : Entry, disj n0, n1, n2 : Name {
-    Dir = d0 + r
-    Root = r
-    File = f0
-    Entry = e0 + e1 + e2 + e3
-    Name = n0 + n1 + n2
+run structural_modeling_instance_09 {
+  some disj d0, r : Dir, f0 : File, disj e0, e1, e2, e3 : Entry, disj n0, n1, n2 : Name {
+    Dir     = d0 + r
+    Root    = r
+    File    = f0
+    Entry   = e0 + e1 + e2 + e3
+    Name    = n0 + n1 + n2
     entries = d0 -> e1 + d0 -> e2 + d0 -> e3
-    name = e0 -> n2 + e1 -> n2 + e2 -> n1 + e3 -> n0
-    object = e0 -> f0 + e1 -> f0 + e2 -> f0 + e3 -> d0
+    name    = e0 -> n2 + e1 -> n2 + e2 -> n1 + e3 -> n0
+    object  = e0 -> f0 + e1 -> f0 + e2 -> f0 + e3 -> d0
   }
 } for 4 expect 1

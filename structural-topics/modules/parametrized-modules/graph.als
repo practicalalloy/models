@@ -1,7 +1,14 @@
+/*  
+Graph model at the end of the "Parametrized modules" section, "Module
+system" topic, of the Practical Alloy book.
+
+https://practicalalloy.github.io/book/chapters/structural-topics/topics/modules/index.html#parametrized-modules
+*/
+
 module graph[node]
 
 pred dag [r: node -> node] {
-  all n: node | n not in n.^r
+  all n : node | n not in n.^r
 }
 
 pred rootedAt [r: node -> node, root: node] {

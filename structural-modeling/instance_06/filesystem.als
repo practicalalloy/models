@@ -25,13 +25,13 @@ run example {}
 // Show arbitrary instances with scope 4 for top-level signatures
 run example {} for 4
 
-run structural_design_instance_06 {
+run structural_modeling_instance_06 {
   some disj d0, r : Dir, disj e0, e1, e2 : Entry {
-    Dir = d0 + r
-    Root = r
-    File = none
-    Entry = e0 + e1 + e2 
-    Name = none
+    Dir     = d0 + r
+    Root    = r
+    File    = none
+    Entry   = e0 + e1 + e2 
+    Name    = none
     entries = d0 -> e0 + d0 -> e1 + r -> e2
   }
 } expect 1

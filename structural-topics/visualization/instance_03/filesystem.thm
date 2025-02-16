@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<alloy>
+
+<view nodetheme="Martha" hideSkolem="yes">
+
+<defaultnode/>
+
+<defaultedge/>
+
+<node>
+   <type name="Int"/>
+   <type name="Object"/>
+   <type name="String"/>
+   <type name="univ"/>
+   <type name="seq/Int"/>
+</node>
+
+<node shape="Box" color="Magic">
+   <type name="Dir"/>
+</node>
+
+<node shape="Ellipse" color="Yellow">
+   <type name="Entry"/>
+</node>
+
+<node shape="House" color="Red">
+   <type name="Root"/>
+</node>
+
+<node shape="Parallelogram" color="Blue">
+   <type name="Name"/>
+</node>
+
+<node shape="Trapezoid" color="Green">
+   <type name="File"/>
+</node>
+
+<node style="Bold" label="d0">
+   <set name="$visualization_instance_03_d0" type="Dir"/>
+</node>
+
+<node style="Bold" label="d1">
+   <set name="$visualization_instance_03_d1" type="Dir"/>
+</node>
+
+<node style="Bold" label="e0">
+   <set name="$visualization_instance_03_e0" type="Entry"/>
+</node>
+
+<node style="Bold" label="e1">
+   <set name="$visualization_instance_03_e1" type="Entry"/>
+</node>
+
+<node style="Bold" label="e2">
+   <set name="$visualization_instance_03_e2" type="Entry"/>
+</node>
+
+<node style="Bold" label="f0">
+   <set name="$visualization_instance_03_f0" type="File"/>
+</node>
+
+<node style="Bold" label="n0">
+   <set name="$visualization_instance_03_n0" type="Name"/>
+</node>
+
+<node style="Bold" label="n1">
+   <set name="$visualization_instance_03_n1" type="Name"/>
+</node>
+
+<node style="Bold" label="n2">
+   <set name="$visualization_instance_03_n2" type="Name"/>
+</node>
+
+<node style="Bold" label="r">
+   <set name="$visualization_instance_03_r" type="Dir"/>
+</node>
+
+</view>
+
+</alloy>

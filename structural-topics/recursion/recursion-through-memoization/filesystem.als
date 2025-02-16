@@ -1,15 +1,16 @@
+/*   
+File system model at the end of the "Recursion through memoization" section,
+"Handling recursion" topic, of the Practical Alloy book.
+
+https://practicalalloy.github.io/book/chapters/structural-topics/topics/recursion/index.html#recursion-through-memoization
+*/
+
 module filesystem
 
 open util/natural
 
 abstract sig Object {
   depth : one Natural
-}
-
-fact calculate_depth {
-  all o:Object |
-    o in Root implies o.depth = Zero
-    else o.depth = inc[max[(entries.object.o).depth]]
 }
 
 sig Dir extends Object {
@@ -26,10 +27,6 @@ sig Entry {
 }
 
 sig Name {}
-
-run example {}
-run example {} for 4
-run example {} for 4 but 2 Entry, exactly 3 Name
 
 fact unique_names {
   // Different entries in the same directory must have different names
@@ -64,6 +61,25 @@ fact no_indirect_containment {
   all d : Dir | d not in descendants[d]
 }
 
+fact calculate_depth {
+  all o : Object |
+    o in Root implies o.depth = Zero
+    else o.depth = inc[max[(entries.object.o).depth]]
+}
+
+// Show arbitrary instances with the default scope
+run example {}
+// Show arbitrary instances with scope 4 for top-level signatures
+run example {} for 4
+
+run depth2 {
+  some f : File | f.depth = inc[One]
+} for 5 but 3 Name
+
+run depth4 {
+  some f : File | f.depth = inc[inc[inc[One]]]
+} for 5 but 3 Name
+
 assert no_partitions {
   // Every object is reachable from the root
   all o : Object | reachable[o]
@@ -73,11 +89,3 @@ assert no_partitions {
 check no_partitions
 // Check that there can be no partitions in a file system scope 6 for top-level signatures
 check no_partitions for 6
-
-run depth2 {
-  some f:File | f.depth = inc[One]
-} for 5 but 3 Name
-
-run depth4 {
-  some f:File | f.depth = inc[inc[inc[One]]]
-} for 5 but 3 Name

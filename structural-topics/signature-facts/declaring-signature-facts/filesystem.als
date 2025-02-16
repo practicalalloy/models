@@ -1,3 +1,10 @@
+/*
+File system model at the end of the "Declaring signature facts" section,
+"Signature facts" topic, of the Practical Alloy book.
+
+https://practicalalloy.github.io/book/chapters/structural-topics/topics/signature-facts/index.html
+*/
+
 module filesystem
 
 abstract sig Object {}
@@ -19,10 +26,6 @@ sig Entry {
 }
 
 sig Name {}
-
-run example {}
-run example {} for 4
-run example {} for 4 but 2 Entry, exactly 3 Name
 
 fact no_shared_dirs {
   // A directory cannot be contained in more than one entry
@@ -51,6 +54,11 @@ fact no_indirect_containment {
   // Directories cannot descend from themselves
   all d : Dir | d not in descendants[d]
 }
+
+// Show arbitrary instances with the default scope
+run example {}
+// Show arbitrary instances with scope 4 for top-level signatures
+run example {} for 4
 
 assert no_partitions {
   // Every object is reachable from the root

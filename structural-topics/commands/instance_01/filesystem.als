@@ -87,16 +87,16 @@ check no_partitions {
   all o : Object | reachable[o]
 } for 6
 
-run commands_in_detail_instance_01 {
+run commands_instance_01 {
   some d : Dir | empty_dir[d]
   some disj r, d0 : Dir, e0 : Entry, n0 : Name {
-    Dir = r + d0
-    Root = r
-    File = none
-    Entry = e0
-    Name = n0
+    Dir     = r + d0
+    Root    = r
+    File    = none
+    Entry   = e0
+    Name    = n0
     entries = r -> e0
-    name = e0 -> n0
-    object = e0 -> d0
+    name    = e0 -> n0
+    object  = e0 -> d0
   }
 } for 3 expect 1

@@ -1,6 +1,13 @@
+/*  
+File system model at the end of the "Private declarations" section, "Module
+system" topic, of the Practical Alloy book.
+
+https://practicalalloy.github.io/book/chapters/structural-topics/topics/modules/index.html#private-declarations
+*/
+
 module filesystem
 open graph[Object] 
-open timestamp[Object,Timestamp]
+open timestamp[Object, Timestamp]
 
 sig Timestamp {}
 
@@ -20,10 +27,6 @@ sig Entry {
 }
 
 sig Name {}
-
-run example {}
-run example {} for 4
-run example {} for 4 but 2 Entry, exactly 3 Name
 
 fact unique_names {
   // Different entries in the same directory must have different names
@@ -54,8 +57,13 @@ fact rooted_dag {
 }
 
 fact time {
-  all d:Dir | d.entries.object.time in d.time.*next
+  all d : Dir | d.entries.object.time in d.time.*next
 }
+
+// Show arbitrary instances with the default scope
+run example {}
+// Show arbitrary instances with scope 4 for top-level signatures
+run example {} for 4
 
 assert no_partitions {
   // Every object is reachable from the root

@@ -77,14 +77,14 @@ check no_partitions for 6
 
 run subset_signatures_instance_01 {
   some disj d0, r : Dir, f0 : File, disj e0, e1 : Entry, disj n0, n1, n2 : Name {
-    Dir = d0 + r
-    Root = r
-    File = f0
-    Entry = e0 + e1
-    Name = n0 + n1 + n2
-    Tagged = r + f0
+    Dir     = d0 + r
+    Root    = r
+    File    = f0
+    Entry   = e0 + e1
+    Name    = n0 + n1 + n2
+    Tagged  = r + f0
     entries = r -> e0 + r -> e1
-    name = e0 -> n1 + e1 -> n2
-    object = e0 -> f0 + e1 -> d0
+    name    = e0 -> n1 + e1 -> n2
+    object  = e0 -> f0 + e1 -> d0
   }
 } for 4 expect 1

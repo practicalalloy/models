@@ -1,3 +1,10 @@
+/*
+File system model at the end of the "Ambiguity errors" section, "Type system"
+topic, of the Practical Alloy book.
+
+https://practicalalloy.github.io/book/chapters/structural-topics/topics/type-system/index.html#ambiguity-errors
+*/
+
 module filesystem
 
 abstract sig Object {}
@@ -16,10 +23,6 @@ sig Entry {
 }
 
 sig Name {}
-
-run example {}
-run example {} for 4
-run example {} for 4 but 2 Entry, exactly 3 Name
 
 fact unique_names {
   // Different entries in the same directory must have different names
@@ -54,14 +57,14 @@ fact no_indirect_containment {
   all d : Dir | d not in descendants[d]
 }
 
+// Show arbitrary instances with the default scope
+run example {}
+// Show arbitrary instances with scope 4 for top-level signatures
+run example {} for 4
+
 assert no_partitions {
   // Every object is reachable from the root
   all o : Object | reachable[o]
-}
-
-fact no_indirect_containment {
-  // Directories cannot descend from themselves
-  all d : Dir | d not in descendants[d]
 }
 
 // Check that there can be no partitions in a file system within the default scope
@@ -69,5 +72,12 @@ check no_partitions
 // Check that there can be no partitions in a file system scope 6 for top-level signatures
 check no_partitions for 6
 
-run not_ambiguous { some Root.contents }
-run ambiguous { some contents }
+run not_ambiguous { 
+  // Can disambiguate contents
+  some Root.contents
+}
+
+run ambiguous { 
+  // Cannot disambiguate contents
+  some contents 
+}

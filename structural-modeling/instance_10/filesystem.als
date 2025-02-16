@@ -70,15 +70,15 @@ assert no_partitions {
 // Check that there can be no partitions in a file system within the default scope
 check no_partitions
 
-check structural_design_instance_10 {
-  some disj d0, d1, r, e0, e1, n0 : univ {
-    Dir = d0 + d1 + r
-    Root = r
-    File = none
-    Entry = e0 + e1
-    Name = n0
+check structural_modeling_instance_10 {
+  (some disj d0, d1, r : Dir, disj e0, e1 : Entry, n0 : Name {
+    Dir     = d0 + d1 + r
+    Root    = r
+    File    = none
+    Entry   = e0 + e1
+    Name    = n0
     entries = d0 -> e0 + d1 -> e1
-    name = e0 -> n0 + e1 -> n0
-    object = e0 -> d1 + e1 -> d0
-  } implies all o : Object | reachable[o]
+    name    = e0 -> n0 + e1 -> n0
+    object  = e0 -> d1 + e1 -> d0
+  }) implies all o : Object | reachable[o]
 } for 3 expect 1

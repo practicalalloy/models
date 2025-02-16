@@ -15,10 +15,10 @@ sig File extends Object {}
 // Show arbitrary instances with the default scope
 run example {}
 
-run structural_design_instance_03 {
+run structural_modeling_instance_03 {
   some disj f0, d0, o0 : Object {
     Object = o0 + f0 + d0
-    Dir = d0
-    File = f0
+    Dir    = d0
+    File   = f0
   }
 } expect 1

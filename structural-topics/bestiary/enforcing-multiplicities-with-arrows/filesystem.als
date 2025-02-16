@@ -1,3 +1,10 @@
+/*  
+File system model at the end of the "Enforcing multiplicities with arrows"
+section, "Arrow multiplicity constraints" topic, of the Practical Alloy book.
+
+https://practicalalloy.github.io/book/chapters/structural-topics/topics/bestiary/index.html#enforcing-multiplicities-with-arrows
+*/
+
 module filesystem
 
 abstract sig Object {}
@@ -17,10 +24,6 @@ sig Entry {
 
 sig Name {}
 
-run example {}
-run example {} for 4
-run example {} for 4 but 2 Entry, exactly 3 Name
-
 fact unique_names {
   // Different entries in the same directory must have different names
   all d : Dir, n : Name | lone (d.entries & name.n)
@@ -34,6 +37,11 @@ fact no_shared_dirs {
 fact no_dangling_objects {
   // Every object except the root is contained somewhere
   Entry.object = Object - Root
+}
+
+fact no_shared_entries {
+  // Entries cannot be shared between directories (subsumed by one_directory_per_entry)
+  entries in Dir lone -> Entry
 }
 
 fact one_directory_per_entry {
@@ -54,14 +62,14 @@ fact no_indirect_containment {
   all d : Dir | d not in descendants[d]
 }
 
+// Show arbitrary instances with the default scope
+run example {}
+// Show arbitrary instances with scope 4 for top-level signatures
+run example {} for 4
+
 assert no_partitions {
   // Every object is reachable from the root
   all o : Object | reachable[o]
-}
-
-fact no_indirect_containment {
-  // Directories cannot descend from themselves
-  all d : Dir | d not in descendants[d]
 }
 
 // Check that there can be no partitions in a file system within the default scope

@@ -78,18 +78,18 @@ check no_partitions
 // Check that there can be no partitions in a file system scope 6 for top-level signatures
 check no_partitions for 6
 
-run enumeration_signatures_instance_01 {
+run enumerations_instance_01 {
   some r : Dir, f0 : File, e0 : Entry, n0 : Name {
-    Dir = r
-    Root = r
-    File = f0
-    Entry = e0
-    Name = n0
-    entries = r -> e0
-    name = e0 -> n0
-    object = e0 -> f0
-    user_permission = r -> Read + f0 -> Permission
-    group_permission = f0 -> Permission
+    Dir               = r
+    Root              = r
+    File              = f0
+    Entry             = e0
+    Name              = n0
+    entries           = r -> e0
+    name              = e0 -> n0
+    object            = e0 -> f0
+    user_permission   = r -> Read + f0 -> Permission
+    group_permission  = f0 -> Permission
     others_permission = f0 -> Permission
   }
 } expect 1

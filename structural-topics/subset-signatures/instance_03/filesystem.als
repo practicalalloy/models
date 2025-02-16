@@ -99,21 +99,20 @@ check no_partitions for 6
 
 run subset_signatures_instance_03 {
   some r : Dir, disj t0, t1, t2 : Tag, c0 : Color, x0 : Text {
-    Dir = r
-    Root = r
-    File = none
-    Entry = none
-    Name = none
-    Tagged = none
-    Tag = t0 + t1 + t2
-    Color = c0
-    Text = x0
-    Shape = t0 + t2
-    Label = t1 + t2
+    Dir     = r
+    Root    = r
+    File    = none
+    Entry   = none
+    Name    = none
+    Tagged  = none
+    Tag     = t0 + t1 + t2
+    Color   = c0
+    Text    = x0
+    Shape   = t0 + t2
+    Label   = t1 + t2
     entries = none -> none
-    name = none -> none
-    object = none -> none
-    tags = none -> none
+    name    = none -> none
+    object  = none -> none
+    tags    = none -> none
   }
 } for 4 expect 1
-

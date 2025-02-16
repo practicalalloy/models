@@ -18,15 +18,15 @@
    <type name="String"/>
    <type name="univ"/>
    <type name="seq/Int"/>
-   <set name="$structural_design_instance_04_r" type="univ"/>
-   <set name="$structural_design_instance_04_d0" type="univ"/>
-   <set name="$structural_design_instance_04_d1" type="univ"/>
-   <set name="$structural_design_instance_05_r" type="univ"/>
-   <set name="$structural_design_instance_05_f0" type="univ"/>
-   <set name="$structural_design_instance_05_e0" type="univ"/>
-   <set name="$structural_design_instance_05_e1" type="univ"/>
-   <set name="$structural_design_instance_05_n0" type="univ"/>
-   <set name="$structural_design_instance_05_n1" type="univ"/>
+   <set name="$structural_modeling_instance_04_r" type="univ"/>
+   <set name="$structural_modeling_instance_04_d0" type="univ"/>
+   <set name="$structural_modeling_instance_04_d1" type="univ"/>
+   <set name="$structural_modeling_instance_05_r" type="univ"/>
+   <set name="$structural_modeling_instance_05_f0" type="univ"/>
+   <set name="$structural_modeling_instance_05_e0" type="univ"/>
+   <set name="$structural_modeling_instance_05_e1" type="univ"/>
+   <set name="$structural_modeling_instance_05_n0" type="univ"/>
+   <set name="$structural_modeling_instance_05_n1" type="univ"/>
 </node>
 
 </view>

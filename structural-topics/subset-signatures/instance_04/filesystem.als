@@ -107,24 +107,23 @@ check no_partitions for 6
 run subset_signatures_instance_04 {
   some r : Dir, f0 : File, s0 : Symlink, disj e0, e1 : Entry, disj n0, n1 : Name, 
        disj t0, t1, t2 : Tag, c0 : Color, x0 : Text, disj p0, p1 : Permission {
-    Dir = r
-    Root = r
-    File = f0
-    Symlink = s0
-    Entry = e0 + e1
-    Name = n0 + n1
-    Tagged = r + f0
-    Tag = t0 + t1 + t2
-    Color = c0
-    Text = x0
-    Shape = t0 + t1
-    Label = t2
+    Dir        = r
+    Root       = r
+    File       = f0
+    Symlink    = s0
+    Entry      = e0 + e1
+    Name       = n0 + n1
+    Tagged     = r + f0
+    Tag        = t0 + t1 + t2
+    Color      = c0
+    Text       = x0
+    Shape      = t0 + t1
+    Label      = t2
     Permission = p0 + p1
-    entries = r -> e0 + r -> e1
-    name = e0 -> n0 + e1 -> n1
-    object = e0 -> s0 + e1 -> f0
-    tags = r -> t0 + f0 -> t1 + f0 -> t2
+    entries    = r -> e0 + r -> e1
+    name       = e0 -> n0 + e1 -> n1
+    object     = e0 -> s0 + e1 -> f0
+    tags       = r -> t0 + f0 -> t1 + f0 -> t2
     permission = r -> p0 + f0 -> p1
   }
 } for 4
-

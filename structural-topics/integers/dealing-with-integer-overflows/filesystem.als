@@ -1,3 +1,10 @@
+/*  
+File system model at the end of the "Dealing with integer overflows" section,
+"Working with integers" topic, of the Practical Alloy book.
+
+https://practicalalloy.github.io/book/chapters/structural-topics/topics/integers/index.html#dealing-with-integer-overflows
+*/
+
 module filesystem
 
 one sig Capacity in Int {}
@@ -9,7 +16,7 @@ sig Dir extends Object {
 }
 
 sig File extends Object {
-  size: one Int
+  size : one Int
 }
 
 one sig Root extends Dir {}
@@ -20,32 +27,6 @@ sig Entry {
 }
 
 sig Name {}
-
-run example {}
-run example {} for 4
-run example {} for 4 but 2 Entry, exactly 3 Name
-
-fact positive_sizes {
-  // All file sizes are positive
-  all f : File | gt[f.size,0]
-}
-
-fact below_capactiy {
-  // The sum of the size of all files cannot exceed the capacity
-  (sum f : File | f.size) <= Capacity
-}
-
-fact size_limits {
-  // Guarantee file sizes do not overflow
-  all f : File | f.size <= div[max,#File]
-}
-
-run full_root { #(Root.entries) = 3 } for 4
-
--- run with prevent overflows
-check big_files {
-  all f:File | f.size > 10
-}
 
 fact unique_names {
   // Different entries in the same directory must have different names
@@ -78,6 +59,35 @@ pred reachable [o : Object] {
 fact no_indirect_containment {
   // Directories cannot descend from themselves
   all d : Dir | d not in descendants[d]
+}
+
+fact positive_sizes {
+  // All file sizes are positive
+  all f : File | gt[f.size, 0]
+}
+
+fact below_capactiy {
+  // The sum of the size of all files cannot exceed the capacity
+  (sum f : File | f.size) <= Capacity
+}
+
+fact size_limits {
+  // Guarantee file sizes do not overflow
+  all f : File | f.size <= div[max, #File]
+}
+
+// Show arbitrary instances with the default scope
+run example {}
+// Show arbitrary instances with scope 4 for top-level signatures
+run example {} for 4
+
+run full_root { 
+  #(Root.entries) = 3 } 
+for 4
+
+// Execute with prevent overflows
+check big_files {
+  all f:File | f.size > 10
 }
 
 assert no_partitions {
