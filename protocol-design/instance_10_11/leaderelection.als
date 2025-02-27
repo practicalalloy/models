@@ -64,16 +64,16 @@ pred send [n : Node, i : Id] {
 pred process [n : Node, i : Id] {
   // i is read and processed by node n
 
-  i in n.inbox                                // guard
+  i in n.inbox                                 // guard
 
-  n.inbox' = n.inbox - i                      // effect on n.inbox
-  all m : Node - n | m.inbox' = m.inbox       // effect on the inboxes of other nodes
+  n.inbox' = n.inbox - i                       // effect on n.inbox
+  all m : Node - n | m.inbox' = m.inbox        // effect on the inboxes of other nodes
 
-  gt[i,n.id] implies n.outbox' = n.outbox + i // effect on n.outbox
-             else    n.outbox' = n.outbox
-  all m : Node - n | m.outbox' = m.outbox     // effect on the outboxes of other nodes
+  gt[i, n.id] implies n.outbox' = n.outbox + i // effect on n.outbox
+              else    n.outbox' = n.outbox
+  all m : Node - n | m.outbox' = m.outbox      // effect on the outboxes of other nodes
 
-  i = n.id implies Elected' = Elected + n     // effect on Elected
+  i = n.id implies Elected' = Elected + n      // effect on Elected
            else    Elected' = Elected
 }
 
@@ -87,8 +87,8 @@ pred stutter {
 
 pred node_acts [n : Node] {
   initiate[n] or
-  (some i : Id | send[n,i]) or
-  (some i : Id | process[n,i])
+  (some i : Id | send[n, i]) or
+  (some i : Id | process[n, i])
 }
 
 fact events {

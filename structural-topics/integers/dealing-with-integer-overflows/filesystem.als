@@ -87,7 +87,7 @@ for 4
 
 // Execute with prevent overflows
 check big_files {
-  all f:File | f.size > 10
+  all f : File | f.size > 10
 }
 
 assert no_partitions {

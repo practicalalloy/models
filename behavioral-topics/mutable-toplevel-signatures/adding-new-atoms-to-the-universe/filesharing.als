@@ -1,3 +1,10 @@
+/*  
+File sharing app model at the end of the "Adding new atoms to the universe"
+section, "Mutable top-level signatures" topic, of the Practical Alloy book.
+
+https://practicalalloy.github.io/chapters/behavioral-topics/topics/mutable-toplevel-signatures/index.html#adding-new-atoms-to-the-universe
+*/
+
 module filesharing
 
 sig Token {}
@@ -17,7 +24,7 @@ fact transitions {
   always (
     upload or
     (some f : File | delete[f] or restore[f]) or
-    (some f : File, t : Token | share[f,t]) or
+    (some f : File, t : Token | share[f, t]) or
     (some t : Token | download[t]) or
     empty or
     stutter

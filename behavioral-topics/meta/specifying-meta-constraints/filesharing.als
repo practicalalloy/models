@@ -1,3 +1,10 @@
+/*  
+File sharing app model at the end of the "Specifying meta-constraints" section,
+"Meta-capabilities" topic, of the Practical Alloy book.
+
+https://practicalalloy.github.io/chapters/behavioral-topics/topics/meta/index.html#specifying-meta-constraints
+*/
+
 module filesharing
 
 sig Token {}
@@ -20,14 +27,14 @@ var sig trashed in uploaded {}
 
 fact init {
   // Initially all mutable elements are empty
-  all v: var$ | no v.value
+  all v : var$ | no v.value
 }
 
 fact transitions {
   // The system either evolves according to the defined actions or stutters
   always (
     (some f : File | upload[f] or delete[f] or restore[f]) or
-    (some f : File, t : Token | share[f,t]) or
+    (some f : File, t : Token | share[f, t]) or
     (some t : Token | download[t]) or
     empty or
     stutter
@@ -43,7 +50,7 @@ pred empty {
 pred upload [f : File] {
   f not in uploaded                            // guard
   uploaded' = uploaded + f                     // effect on uploaded
-  all v: var$ - uploaded$ | v.value = v.value' // no effect on anything other than uploaded
+  all v : var$ - uploaded$ | v.value = v.value' // no effect on anything other than uploaded
 }
 
 pred delete [f : File] {
@@ -56,24 +63,24 @@ pred delete [f : File] {
 pred restore [f : File] {
   f in trashed                                // guard
   trashed'  = trashed - f                     // effect on trashed
-  all v: var$ - trashed$ | v.value = v.value' // no effect on anything other than trashed
+  all v : var$ - trashed$ | v.value = v.value' // no effect on anything other than trashed
 }
 
 pred share [f : File, t : Token] {
   f in uploaded - trashed                        // guard
   historically t not in File.shared              // guard
   shared'   = shared + f->t                      // effect on shared
-  all v: var$ - File$shared | v.value = v.value' // no effect on anything other than shared
+  all v : var$ - File$shared | v.value = v.value' // no effect on anything other than shared
 }
 
 pred download [t : Token] {
   some shared.t                                  // guard 
   shared'   = shared - File->t                   // effect on shared
-  all v: var$ - File$shared | v.value = v.value' // no effect on anything other than shared}
+  all v : var$ - File$shared | v.value = v.value' // no effect on anything other than shared}
 }
 
 pred stutter {
-  all v: var$ | v.value = v.value' // no effect on anything
+  all v : var$ | v.value = v.value' // no effect on anything
 }
 
 run example {} expect 1
@@ -83,13 +90,13 @@ run some_sig {
 } for 2 expect 1
 
 run no_empty_config_sigs {
-  all s: sig$ & static$ | some s.value
+  all s : sig$ & static$ | some s.value
 } expect 1
 
 run no_empty_file_fields {
-  all f: File$.subfields & static$ | some f.value
+  all f : File$.subfields & static$ | some f.value
 } expect 1
 
 run everything_happens {
-  all v: var$ | eventually some v.value
+  all v : var$ | eventually some v.value
 } expect 1

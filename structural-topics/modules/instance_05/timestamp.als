@@ -5,7 +5,7 @@ Time-stamp model for the generation of instance 5 of the "Module system" topic,
 https://practicalalloy.github.io/chapters/structural-topics/topics/modules/index.html#private-declarations
 */
 
-module timestamp[A,T]
+module timestamp[A, T]
 open util/ordering[T]
 
 private one sig TimeAux {

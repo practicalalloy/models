@@ -65,7 +65,7 @@ run example {}
 // Show arbitrary instances with scope 4 for top-level signatures
 run example {} for 4
 
-fun depth [o: Object] : Natural {
+fun depth [o : Object] : Natural {
   o in Root implies Zero
   else inc[max[{n : Natural | some x : entries.object.o | n = depth[x]}]]
 }

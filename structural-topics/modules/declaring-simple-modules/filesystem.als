@@ -49,8 +49,8 @@ pred reachable [o : Object] {
 }
 
 fact rooted_dag {
-  dag[Object,entries.object]
-  rootedAt[Object,entries.object,Root]
+  dag[Object, entries.object]
+  rootedAt[Object, entries.object, Root]
 }
 
 // Show arbitrary instances with the default scope

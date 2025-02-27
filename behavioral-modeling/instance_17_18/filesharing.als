@@ -1,3 +1,11 @@
+/*  
+File system model for the generation of instances 17 and 18 of the "Behavioral
+modeling" chapter, "Verifying expected properties" section, of the Practical
+Alloy book.
+
+https://practicalalloy.github.io/chapters/behavioral-modeling/index.html#verifying-expected-properties
+*/
+
 module filesharing
 
 sig Token {}
@@ -17,7 +25,7 @@ fact transitions {
   // The system either evolves according to the defined actions or stutters
   always (
     (some f : File | upload[f] or delete[f] or restore[f]) or
-    (some f : File, t : Token | share[f,t]) or
+    (some f : File, t : Token | share[f, t]) or
     (some t : Token | download[t]) or
     empty or
     stutter
@@ -91,18 +99,6 @@ assert restore_undoes_delete {
 // by delete and restore does not recover it
 check restore_undoes_delete expect 1
 
-check book_instance_17_18 {
-  (some disj f0, f1, f2 : File, t : Token {
-    File = f0 + f1 + f2
-    Token = t
-    upload[f2];share[f2,t];delete[f2];restore[f2];always stutter
-  }) implies
-  (all f : File | always (
-    delete[f] and after restore[f] implies
-    uploaded'' = uploaded and trashed'' = trashed and shared'' = shared
-  ))
-} expect 1
-
 fun downloaded [t : Token] : set File {
   { f : File | once (download[t] and t in f.shared) }
 }
@@ -132,3 +128,15 @@ assert non_restored_files_will_disappear {
   )
 }
 check non_restored_files_will_disappear expect 0
+
+check behavioral_modeling_instance_17_18 {
+  (some disj f0, f1, f2 : File, t0 : Token {
+    File  = f0 + f1 + f2
+    Token = t0
+    upload[f2];share[f2, t0];delete[f2];restore[f2];always stutter
+  }) implies
+  (all f : File | always (
+    delete[f] and after restore[f] implies
+    uploaded'' = uploaded and trashed'' = trashed and shared'' = shared
+  ))
+} expect 1

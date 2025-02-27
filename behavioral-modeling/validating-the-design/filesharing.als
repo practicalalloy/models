@@ -1,3 +1,10 @@
+/*  
+File sharing app model at the end of the "Validating the design" section,
+"Behavioral modeling" chapter, of the Practical Alloy book.
+
+https://practicalalloy.github.io/chapters/behavioral-modeling/index.html#validating-the-design
+*/
+
 module filesharing
 
 sig Token {}
@@ -13,7 +20,7 @@ fact init {
   no shared
 }
 
-fact transitions_or_stutter {
+fact transitions {
   // The system either evolves according to the defined actions or stutters
   always (
     (some f : File | upload[f] or delete[f] or restore[f]) or

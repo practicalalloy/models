@@ -64,7 +64,7 @@ fact no_indirect_containment {
 
 fact children_timestamp {
   // The timestamp of an entry precedes that of its children
-  all e : Entry, t : e.object.entries.time | lt[e.time,t]
+  all e : Entry, t : e.object.entries.time | lt[e.time, t]
 }
 
 // Show arbitrary instances with the default scope

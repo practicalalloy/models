@@ -1,3 +1,10 @@
+/*  
+File sharing app model at the end of the "The temporal sequence operator"
+section, "Encoding trace scenarios" topic, of the Practical Alloy book.
+
+https://practicalalloy.github.io/chapters/behavioral-topics/topics/scenarios/index.html#the-temporal-sequence-operator
+*/
+
 module filesharing
 
 sig Token {}
@@ -18,7 +25,7 @@ fact transitions {
   // The system either evolves according to the defined actions or stutters
   always (
     (some f : File | upload[f] or delete[f] or restore[f]) or
-    (some f : File, t : Token | share[f,t]) or
+    (some f : File, t : Token | share[f, t]) or
     (some t : Token | download[t]) or
     empty or
     stutter
@@ -75,27 +82,27 @@ pred stutter {
 
 run example {} expect 1
 
-pred two_tokens [f : File, t1, t2 : Token] {
-  File = f
-  Token = t1 + t2
+pred two_tokens [f : File, t0, t1 : Token] {
+  File  = f
+  Token = t0 + t1
 }
 
 run scenario_two_shared {
-  some f : File, disj t1, t2 : Token {
-    two_tokens[f,t1,t2]
+  some f : File, disj t0, t1 : Token {
+    two_tokens[f, t0, t1]
 
     no uploaded; uploaded = f; uploaded = f;   uploaded = f;           uploaded = f;   uploaded = f; no uploaded
-    no shared;   no shared;    shared = f->t1; shared = f->t1 + f->t2; shared = f->t1; no shared;    no shared
+    no shared;   no shared;    shared = f->t0; shared = f->t0 + f->t1; shared = f->t0; no shared;    no shared
     no trashed;  no trashed;   no trashed;     no  trashed;            no trashed;     trashed = f;  no trashed
   }
-} for 1 File, 2 Token expect 1
+} for 1 File, 2 Token
 
 run scenario_two_shared_stutter {
-  some f : File, disj t1, t2 : Token {
-    two_tokens[f,t1,t2]
+  some f : File, disj t0, t1 : Token {
+    two_tokens[f, t0, t1]
 
     no uploaded; uploaded = f; uploaded = f;   uploaded = f;           uploaded = f;   uploaded = f; always no uploaded
-    no shared;   no shared;    shared = f->t1; shared = f->t1 + f->t2; shared = f->t1; no shared;    always no shared
+    no shared;   no shared;    shared = f->t0; shared = f->t0 + f->t1; shared = f->t0; no shared;    always no shared
     no trashed;  no trashed;   no trashed;     no  trashed;            no trashed;     trashed = f;  always no trashed
   }
-} for 1 File, 2 Token expect 1
+} for 1 File, 2 Token

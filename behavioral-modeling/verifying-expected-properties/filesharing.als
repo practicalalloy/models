@@ -1,3 +1,10 @@
+/*  
+File sharing app model at the end of the "Verifying expected properties"
+section, "Behavioral modeling" chapter, of the Practical Alloy book.
+
+https://practicalalloy.github.io/chapters/behavioral-modeling/index.html#verifying-expected-properties
+*/
+
 module filesharing
 
 sig Token {}
@@ -17,7 +24,7 @@ fact transitions {
   // The system either evolves according to the defined actions or stutters
   always (
     (some f : File | upload[f] or delete[f] or restore[f]) or
-    (some f : File, t : Token | share[f,t]) or
+    (some f : File, t : Token | share[f, t]) or
     (some t : Token | download[t]) or
     empty or
     stutter

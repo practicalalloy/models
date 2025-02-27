@@ -5,7 +5,7 @@ Time-stamp model for the generation of instance 3 of the "Module system" topic,
 https://practicalalloy.github.io/chapters/structural-topics/topics/modules/index.html#adding-fields-to-module-parameters
 */
 
-module timestamp[A,T]
+module timestamp[A, T]
 open util/ordering[T]
 
 one sig TimeAux {

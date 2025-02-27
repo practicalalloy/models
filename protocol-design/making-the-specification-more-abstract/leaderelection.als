@@ -55,7 +55,7 @@ pred stutter {
 
 pred node_acts [n : Node] {
   initiate[n] or
-  (some i : Node | process[n,i])
+  (some i : Node | process[n, i])
 }
 
 fact events {
@@ -100,7 +100,7 @@ pred process_enabled [n : Node, i : Node] {
 
 pred node_enabled [n : Node] {
   initiate_enabled[n] or 
-  (some i : Node | process_enabled[n,i])
+  (some i : Node | process_enabled[n, i])
 }
 
 pred fairness {

@@ -1,3 +1,10 @@
+/*  
+File sharing app model at the end of the "A macro for frame conditions" section,
+"Macro system" topic, of the Practical Alloy book.
+
+https://practicalalloy.github.io/chapters/behavioral-topics/topics/macros/index.html#a-macro-for-frame-conditions
+*/
+
 module filesharing
 
 sig Token {}
@@ -18,7 +25,7 @@ fact transitions {
   // The system either evolves according to the defined actions or stutters
   always (
     (some f : File | upload[f] or delete[f] or restore[f]) or
-    (some f : File, t : Token | share[f,t]) or
+    (some f : File, t : Token | share[f, t]) or
     (some t : Token | download[t]) or
     empty or
     stutter

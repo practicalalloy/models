@@ -53,7 +53,7 @@ pred reachable [o : Object] {
 
 fact rooted_dag {
   dag[entries.object]
-  rootedAt[entries.object,Root]
+  rootedAt[entries.object, Root]
 }
 
 fact time {

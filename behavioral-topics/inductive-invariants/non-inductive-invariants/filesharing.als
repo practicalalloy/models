@@ -1,3 +1,10 @@
+/*  
+File sharing app model at the end of the "Non-inductive invariants" section,
+"Inductive invariants" topic, of the Practical Alloy book.
+
+https://practicalalloy.github.io/chapters/behavioral-topics/topics/inductive-invariants/index.html#non-inductive-invariants
+*/
+
 module filesharing
 
 sig Token {}
@@ -16,7 +23,7 @@ pred init {
 pred next {
   // The system either evolves according to the defined actions or stutters
   (some f : File | upload[f] or delete[f] or restore[f]) or
-  (some f : File, t : Token | share[f,t]) or
+  (some f : File, t : Token | share[f, t]) or
   (some t : Token | download[t]) or
   empty or
   stutter
@@ -161,4 +168,3 @@ assert pres_inv_shared_are_uploaded {
 }
 check pres_inv_shared_are_uploaded for 10 but 2 steps expect 1
 check pres_inv_shared_are_uploaded for 1 but 2 steps expect 1
-

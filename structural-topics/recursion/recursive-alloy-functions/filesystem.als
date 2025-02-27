@@ -69,7 +69,7 @@ assert no_partitions {
   all o : Object | reachable[o]
 }
 
-fun depth [o: Object] : Natural {
+fun depth [o : Object] : Natural {
   o in Root implies Zero
   else inc[max[{n : Natural | some x : entries.object.o | n = depth[x]}]]
 }

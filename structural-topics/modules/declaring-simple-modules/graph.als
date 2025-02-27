@@ -7,10 +7,10 @@ https://practicalalloy.github.io/chapters/structural-topics/topics/modules/index
 
 module graph
 
-pred dag [node: set univ, r: node->node] {
-  all n: node | n not in n.^r
+pred dag [node : set univ, r : node->node] {
+  all n : node | n not in n.^r
 }
 
-pred rootedAt[node: set univ, r: node->node, root: node] {
+pred rootedAt[node : set univ, r : node->node, root : node] {
   node in root.*r
 }

@@ -1,3 +1,11 @@
+/*  
+File sharing app model at the end of the "Uses of the event idiom beyond
+visualization" section, "An idiom for event depiction" topic, of the Practical
+Alloy book.
+
+https://practicalalloy.github.io/chapters/behavioral-topics/topics/event-depiction/index.html#uses-of-the-event-idiom-beyond-visualization
+*/
+
 module filesharing
 
 sig Token {}

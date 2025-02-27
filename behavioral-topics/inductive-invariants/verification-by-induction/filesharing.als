@@ -1,3 +1,10 @@
+/*  
+File sharing app model at the end of the "Verification by induction" section,
+"Inductive invariants" topic, of the Practical Alloy book.
+
+https://practicalalloy.github.io/chapters/behavioral-topics/topics/inductive-invariants/index.html#verification-by-induction
+*/
+
 module filesharing
 
 sig Token {}
@@ -16,7 +23,7 @@ pred init {
 pred next {
   // The system either evolves according to the defined actions or stutters
   (some f : File | upload[f] or delete[f] or restore[f]) or
-  (some f : File, t : Token | share[f,t]) or
+  (some f : File, t : Token | share[f, t]) or
   (some t : Token | download[t]) or
   empty or
   stutter

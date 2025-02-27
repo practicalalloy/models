@@ -5,7 +5,7 @@ system" topic, of the Practical Alloy book.
 https://practicalalloy.github.io/chapters/structural-topics/topics/modules/index.html#private-declarations
 */
 
-module timestamp[A,T]
+module timestamp[A, T]
 open util/ordering[T]
 
 private one sig TimeAux {

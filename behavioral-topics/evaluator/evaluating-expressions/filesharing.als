@@ -1,3 +1,10 @@
+/*  
+File sharing app model at the end of the "Evaluating expressions" section, "The
+trace evaluator" topic, of the Practical Alloy book.
+
+https://practicalalloy.github.io/chapters/behavioral-topics/topics/evaluator/index.html#evaluating-expressions
+*/
+
 module filesharing
 
 sig Token {}
@@ -18,7 +25,7 @@ fact transitions {
   // The system either evolves according to the defined actions or stutters
   always (
     (some f : File | upload[f] or delete[f] or restore[f]) or
-    (some f : File, t : Token | share[f,t]) or
+    (some f : File, t : Token | share[f, t]) or
     (some t : Token | download[t]) or
     empty or
     stutter
@@ -76,5 +83,5 @@ pred stutter {
 run example {}
 
 run shared_deleted {
-  some f:File | eventually (f in shared.Token and after f in trashed)
+  some f : File | eventually (f in shared.Token and after f in trashed)
 } for 2

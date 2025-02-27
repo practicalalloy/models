@@ -1,3 +1,10 @@
+/*  
+File sharing app model at the end of the "Replacing sets with sequences"
+section, "Sequences" topic, of the Practical Alloy book.
+
+https://practicalalloy.github.io/chapters/behavioral-topics/topics/sequences/index.html#replacing-sets-with-sequences
+*/
+
 module filesharing
 
 sig Token {}
@@ -19,7 +26,7 @@ fact transitions {
   // The system either evolves according to the defined actions or stutters
   always (
     (some f : File | upload[f] or delete[f]) or
-    (some f : File, t : Token | share[f,t]) or
+    (some f : File, t : Token | share[f, t]) or
     (some t : Token | download[t]) or
     empty or
     restore or 
@@ -40,10 +47,10 @@ pred upload [f : File] {
 }
 
 pred delete [f : File] {
-  f in uploaded - elems[Trash.trashed]  // guard
-  Trash.trashed' = add[Trash.trashed,f] // effect on trashed
-  shared' = shared - f->Token           // effect on shared
-  uploaded' = uploaded                  // no effect on uploaded
+  f in uploaded - elems[Trash.trashed]   // guard
+  Trash.trashed' = add[Trash.trashed, f] // effect on trashed
+  shared' = shared - f->Token            // effect on shared
+  uploaded' = uploaded                   // no effect on uploaded
 }
 
 pred restore {

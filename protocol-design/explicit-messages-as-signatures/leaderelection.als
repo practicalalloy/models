@@ -73,8 +73,8 @@ pred stutter {
 
 pred node_acts [n : Node] {
   initiate[n] or
-  (some m : CandidateMsg | processCandidate[n,m]) or
-  (some m : ElectedMsg | processElected[n,m])
+  (some m : CandidateMsg | processCandidate[n, m]) or
+  (some m : ElectedMsg | processElected[n, m])
 }
 
 fact events {
@@ -90,8 +90,8 @@ pred generator {
 }
 
 pred unique {
-  all m1,m2 : CandidateMsg | m1.payload = m2.payload implies m1 = m2
-  all m1,m2 : ElectedMsg   | m1.payload = m2.payload implies m1 = m2
+  all m1, m2 : CandidateMsg | m1.payload = m2.payload implies m1 = m2
+  all m1, m2 : ElectedMsg   | m1.payload = m2.payload implies m1 = m2
 }
 
 run example {} expect 1
@@ -146,8 +146,8 @@ pred processElected_enabled [n : Node, m : Message] {
 
 pred node_enabled [n : Node] {
   initiate_enabled[n] or 
-  (some m : CandidateMsg | processCandidate_enabled[n,m]) or 
-  (some m : ElectedMsg | processElected_enabled[n,m])
+  (some m : CandidateMsg | processCandidate_enabled[n, m]) or 
+  (some m : ElectedMsg | processElected_enabled[n, m])
 }
 
 pred fairness {

@@ -1,3 +1,10 @@
+/*  
+File sharing app model at the end of the "Specifying actions" section,
+"Behavioral modeling" chapter, of the Practical Alloy book.
+
+https://practicalalloy.github.io/chapters/behavioral-modeling/index.html#specifying-actions
+*/
+
 module filesharing
 
 sig Token {}
@@ -17,7 +24,7 @@ fact transitions {
   // The system evolves according to the defined actions
   always (
     (some f : File | upload[f] or delete[f] or restore[f]) or
-    (some f : File, t : Token | share[f,t]) or
+    (some f : File, t : Token | share[f, t]) or
     (some t : Token | download[t]) or
     empty
   )

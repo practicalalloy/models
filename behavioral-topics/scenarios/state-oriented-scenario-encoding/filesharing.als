@@ -1,3 +1,10 @@
+/*  
+File sharing app model at the end of the "State-oriented scenario encoding"
+section, "Encoding trace scenarios" topic, of the Practical Alloy book.
+
+https://practicalalloy.github.io/chapters/behavioral-topics/topics/scenarios/index.html#state-oriented-scenario-encoding
+*/
+
 module filesharing
 
 sig Token {}
@@ -18,7 +25,7 @@ fact transitions {
   // The system either evolves according to the defined actions or stutters
   always (
     (some f : File | upload[f] or delete[f] or restore[f]) or
-    (some f : File, t : Token | share[f,t]) or
+    (some f : File, t : Token | share[f, t]) or
     (some t : Token | download[t]) or
     empty or
     stutter
@@ -76,12 +83,12 @@ pred stutter {
 run example {} expect 1
 
 run scenario_two_shared {
-  some f : File, disj t1, t2 : Token {
-    File = f
-    Token = t1 + t2
+  some f : File, disj t0, t1 : Token {
+    File  = f
+    Token = t0 + t1
 
-    no uploaded and after (uploaded = f and after (uploaded = f and after (uploaded = f and after (uploaded = f and after (uploaded = f and after no uploaded)))))
-    no shared and after (no shared and after (shared = f->t1 and after (shared = f->t1 + f->t2 and after (shared = f->t1 and after (no shared and after no shared)))))
-    no trashed and after (no trashed and after (no trashed and after (no trashed and after (no trashed and after (trashed = f and after no trashed)))))
+    no uploaded and after (uploaded = f and after (uploaded = f and after uploaded = f))
+    no shared and after (no shared and after (shared = f->t0 and after shared = f->t0 + f->t1))
+    no trashed and after (no trashed and after (no trashed and after no trashed))  
   }
 } for 1 File, 2 Token expect 1

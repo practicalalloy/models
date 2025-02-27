@@ -1,3 +1,10 @@
+/*  
+File system model for the generation of instance 10 of the "Behavioral modeling"
+chapter, "Validating the design" section, of the Practical Alloy book.
+
+https://practicalalloy.github.io/chapters/behavioral-modeling/index.html#validating-the-design
+*/
+
 module filesharing
 
 sig Token {}
@@ -13,7 +20,7 @@ fact init {
   no shared
 }
 
-fact transitions_or_stutter {
+fact transitions {
   // The system either evolves according to the defined actions or stutters
   always (
     (some f : File | upload[f] or delete[f] or restore[f]) or
@@ -74,12 +81,12 @@ pred stutter {
 
 run example {} expect 1
 
-run book_instance_10 {
-  some f : File, disj t0, t1 : Token {
-    File = f
+run behavioral_modeling_instance_10 {
+  some f0 : File, disj t0, t1 : Token {
+    File  = f0
     Token = t0 + t1
-    always (upload[f] implies after delete[f])
-    always (delete[f] implies after empty)
-    always (empty implies after upload[f])
+    always (upload[f0] implies after delete[f0])
+    always (delete[f0] implies after empty)
+    always (empty implies after upload[f0])
   }
 } expect 1

@@ -34,21 +34,21 @@ fact init {
 pred initiate [n : Node] {
   // node n initiates the protocol
 
-  historically n not in elems[n.succ.inbox]   // guard
+  historically n not in elems[n.succ.inbox]    // guard
 
-  n.succ.inbox' = add[n.succ.inbox,n]         // effect on n.succ.inbox
-  all m : Node - n.succ | m.inbox' = m.inbox  // effect on the outboxes of other nodes
+  n.succ.inbox' = add[n.succ.inbox, n]         // effect on n.succ.inbox
+  all m : Node - n.succ | m.inbox' = m.inbox   // effect on the outboxes of other nodes
 }
 
 pred process [n : Node, i : Node] {
   // i is read and processed by node n
 
-  i in first[n.inbox]                                      // guard
+  i in first[n.inbox]                                       // guard
 
-  n.inbox' = rest[n.inbox]                                 // effect on n.inbox
-  i in n.^next implies n.succ.inbox' = add[n.succ.inbox,i] // effect on n.succ.inbox
+  n.inbox' = rest[n.inbox]                                  // effect on n.inbox
+  i in n.^next implies n.succ.inbox' = add[n.succ.inbox, i] // effect on n.succ.inbox
                else    n.succ != n implies n.succ.inbox' = n.succ.inbox
-  all m : Node - n - n.succ | m.inbox' = m.inbox           // effect on the inboxes of other nodes
+  all m : Node - n - n.succ | m.inbox' = m.inbox            // effect on the inboxes of other nodes
 }
 
 pred stutter {
@@ -59,7 +59,7 @@ pred stutter {
 
 pred node_acts[n : Node] {
   initiate[n] or
-  (some i : Node | process[n,i])
+  (some i : Node | process[n, i])
 }
 
 fact events {
@@ -106,7 +106,7 @@ pred process_enabled [n : Node, i : Node] {
 
 pred node_enabled [n : Node] {
   initiate_enabled[n] or 
-  (some i : Node | process_enabled[n,i])
+  (some i : Node | process_enabled[n, i])
 }
 
 pred fairness {

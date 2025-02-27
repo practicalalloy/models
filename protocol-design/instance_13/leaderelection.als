@@ -84,8 +84,8 @@ pred stutter {
 
 pred node_acts [n : Node] {
   initiate[n] or
-  (some i : Node | send[n,i]) or
-  (some i : Node | process[n,i])
+  (some i : Node | send[n, i]) or
+  (some i : Node | process[n, i])
 }
 
 fact events {
