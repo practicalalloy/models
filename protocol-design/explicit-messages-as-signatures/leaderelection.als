@@ -1,3 +1,10 @@
+/*  
+Leader election model at the end of the "Explicit messages as signatures"
+section, "Protocol design" chapter, of the Practical Alloy book.
+
+https://practicalalloy.github.io/chapters/protocol-design/index.html#explicit-messages-as-signatures
+*/
+
 module leaderelection
 
 abstract sig Message {

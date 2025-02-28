@@ -89,9 +89,9 @@ run subset_signatures_instance_02 {
     Name    = n0 + n1 + n2
     Tagged  = r + f0
     Tag     = t0 + t1 + t2
-    entries = r -> e0 + r -> e1
-    name    = e0 -> n1 + e1 -> n2
-    object  = e0 -> f0 + e1 -> d0
-    tags    = r -> t2 + f0 -> t0 + f0 -> t1
+    entries = r->e0 + r->e1
+    name    = e0->n1 + e1->n2
+    object  = e0->f0 + e1->d0
+    tags    = r->t2 + f0->t0 + f0->t1
   }
 } for 4 expect 1

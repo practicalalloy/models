@@ -154,7 +154,7 @@ run sequences_instance_01 {
     no Token
     after uploaded = f0
     after after uploaded = f0 + f1
-    after after after Trash.trashed = 0 -> f0
-    after after after after Trash.trashed = 0 -> f0 + 1 -> f1
+    after after after Trash.trashed = 0->f0
+    after after after after Trash.trashed = 0->f0 + 1->f1
   }
 } expect 1

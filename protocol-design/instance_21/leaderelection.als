@@ -1,3 +1,10 @@
+/*  
+Leader election model for the generation of instance 21 of the "Protocol design"
+chapter, "Refining the network model" section, of the Practical Alloy book.
+
+https://practicalalloy.github.io/chapters/protocol-design/index.html#refining-the-network-model
+*/
+
 module leaderelection
 
 sig Node {
@@ -84,8 +91,8 @@ assert at_most_one_leader {
   always (lone Elected)
 }
 check at_most_one_leader expect 0
---check at_most_one_leader for 4 but 20 steps
---check at_most_one_leader for 4 but 1.. steps
+check at_most_one_leader for 4 but 20 steps expect 0
+check at_most_one_leader for 4 but 1.. steps expect 0
 
 assert leader_stays_leader {
   always (all n : Elected | always n in Elected)
@@ -123,14 +130,14 @@ assert at_least_one_leader_fair {
 check at_least_one_leader_fair expect 0
 check at_least_one_leader_fair for 3 but 2 seq expect 1
 
-check book_instance21 {
-  (some disj n0, n1, n2: Node {
-    Node = n0 + n1 + n2
-    succ = n0 -> n2 + n2 -> n1 + n1 -> n0
-    next = n0 -> n1 + n1 -> n2
+check protocol_design_instance_21 {
+  (some disj n0, n1, n2 : Node {
+    Node        = n0 + n1 + n2
+    succ        = n0->n2 + n2->n1 + n1->n0
+    next        = n0->n1 + n1->n2
     no inbox
-    inbox' = n1 -> 0 -> n2
-    inbox''''' = n0 -> 0 -> n2 + n2 -> 0 -> n0 + n2 -> 1 -> n1
-    inbox'''''' = n2 -> 0 -> n0 + n2 -> 1 -> n1
+    inbox'      = n1->0->n2
+    inbox'''''  = n0->0->n2 + n2->0->n0 + n2->1->n1
+    inbox'''''' = n2->0->n0 + n2->1->n1
   }) implies (fairness implies eventually (some Elected))
 } for exactly 3 Node, 2 seq, exactly 9 steps expect 1

@@ -49,6 +49,6 @@ run nary_relations_instance_02 {
     Root     = r
     File     = f0
     Name     = n0 + n1 + n2
-    contents = r -> n1 -> d1 + r -> n2 -> f0 + d1 -> n1 -> d0 + d1 -> n2 -> f0
+    contents = r->n1->d1 + r->n2->f0 + d1->n1->d0 + d1->n2->f0
   }
 } for 4 expect 1

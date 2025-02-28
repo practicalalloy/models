@@ -1,3 +1,11 @@
+/*  
+Leader election model for the generation of instances 17 and 18 of the "Protocol
+design" chapter, "Explicit messages as signatures" section, of the Practical
+Alloy book.
+
+https://practicalalloy.github.io/chapters/protocol-design/index.html#explicit-messages-as-signatures
+*/
+
 module leaderelection
 
 abstract sig Message {
@@ -93,24 +101,24 @@ run eventually_elected_1node {
   eventually some Elected
 } for exactly 1 Node, 2 Message expect 1
 
-run book_instance17 {
-  some disj n0: Node, disj m1 : ElectedMsg {
+run protocol_design_instance_17 {
+  some n0 : Node, m0 : ElectedMsg {
     Node = n0
-    succ = n0 -> n0
+    succ = n0->n0
     no CandidateMsg
-    ElectedMsg = m1
-    payload = m1 -> n0
+    ElectedMsg = m0
+    payload = m0->n0
     no inbox
   }
 } expect 1
 
-run book_instance18 {
-  some disj n0: Node, disj m1 : CandidateMsg {
+run protocol_design_instance_18 {
+  some n0 : Node, m0 : CandidateMsg {
     Node = n0
-    succ = n0 -> n0
+    succ = n0->n0
     no ElectedMsg
-    CandidateMsg = m1
-    payload = m1 -> n0
+    CandidateMsg = m0
+    payload = m0->n0
     no inbox
   }
 } expect 1

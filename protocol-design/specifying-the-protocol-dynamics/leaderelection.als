@@ -1,3 +1,10 @@
+/*  
+Leader election model at the end of the "Specifying the protocol dynamics"
+section, "Protocol design" chapter, of the Practical Alloy book.
+
+https://practicalalloy.github.io/chapters/protocol-design/index.html#specifying-the-protocol-dynamics
+*/
+
 module leaderelection
 
 open util/ordering[Id]

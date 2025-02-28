@@ -93,7 +93,7 @@ run evaluator_instance_01_02_03 {
     File  = f0 + f1
     Token = t0 + t1
     after uploaded = f1
-    after after shared = f1 -> t0
+    after after shared = f1->t0
     after after after trashed = f1
   }
 } for 2 expect 1

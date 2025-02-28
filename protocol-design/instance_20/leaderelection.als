@@ -1,3 +1,10 @@
+/*  
+Leader election model for the generation of instance 20 of the "Protocol design"
+chapter, "Messages as tuples" section, of the Practical Alloy book.
+
+https://practicalalloy.github.io/chapters/protocol-design/index.html#messages-as-tuples
+*/
+
 module leaderelection
 
 abstract sig Type {}
@@ -132,14 +139,14 @@ assert at_least_one_leader_fair {
 }
 check at_least_one_leader_fair expect 0
 
-run book_instance20 {
+run protocol_design_instance_20 {
   eventually some Elected
-  some disj n0, n1, n2: Node {
-    Node = n0 + n1 + n2
-    succ = n0 -> n1 + n1 -> n2 + n2 -> n0
-    next = n2 -> n0 + n0 -> n1
+  some disj n0, n1, n2 : Node {
+    Node       = n0 + n1 + n2
+    succ       = n0->n1 + n1->n2 + n2->n0
+    next       = n2->n0 + n0->n1
     no inbox
-    inbox'''' = n2 -> Elect -> n1
-    inbox''''' = n0 -> Elect -> n1
+    inbox''''  = n2->Elect->n1
+    inbox''''' = n0->Elect->n1
   }
 } for exactly 3 Node, exactly 8 steps expect 1

@@ -77,8 +77,8 @@ check structural_modeling_instance_10 {
     File    = none
     Entry   = e0 + e1
     Name    = n0
-    entries = d0 -> e0 + d1 -> e1
-    name    = e0 -> n0 + e1 -> n0
-    object  = e0 -> d1 + e1 -> d0
+    entries = d0->e0 + d1->e1
+    name    = e0->n0 + e1->n0
+    object  = e0->d1 + e1->d0
   }) implies all o : Object | reachable[o]
 } for 3 expect 1

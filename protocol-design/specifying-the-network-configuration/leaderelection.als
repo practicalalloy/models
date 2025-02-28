@@ -1,3 +1,10 @@
+/*  
+Leader election model at the end of the "Specifying the network configuration"
+section, "Protocol design" chapter, of the Practical Alloy book.
+
+https://practicalalloy.github.io/chapters/protocol-design/index.html#specifying-the-network-configuration
+*/
+
 module leaderelection
 
 open util/ordering[Id]

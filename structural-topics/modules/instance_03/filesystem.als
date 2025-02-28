@@ -82,9 +82,9 @@ run modules_instance_03 {
     File             = f0
     Entry            = e0 + e1
     Name             = n0 + n1
-    entries          = d1 -> e0 + d1 -> e1
-    name             = e0 -> n0 + e1 -> n1
-    object           = e0 -> f0 + e1 -> d0
-    TimeAux.aux_time in d0 -> last + d1 -> first + f0 -> last
+    entries          = d1->e0 + d1->e1
+    name             = e0->n0 + e1->n1
+    object           = e0->f0 + e1->d0
+    TimeAux.aux_time in d0->last + d1->first + f0->last
   }
 } expect 1

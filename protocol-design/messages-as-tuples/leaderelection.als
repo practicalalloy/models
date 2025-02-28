@@ -1,3 +1,10 @@
+/*  
+Leader election model at the end of the "Messages as tuples" section, "Protocol
+design" chapter, of the Practical Alloy book.
+
+https://practicalalloy.github.io/chapters/protocol-design/index.html#messages-as-tuples
+*/
+
 module leaderelection
 
 abstract sig Type {}

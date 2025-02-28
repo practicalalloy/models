@@ -92,7 +92,7 @@ check no_partitions for 6
 
 run integers_instance_02 {
   #(Root.entries) = 3 
-  some disj r : Dir, disj f0, f1, f2 : File, 
+  some r : Dir, disj f0, f1, f2 : File, 
        disj e0, e1, e2 : Entry, disj n0, n1, n2 : Name {
     Root     = r
     Dir      = r
@@ -100,9 +100,9 @@ run integers_instance_02 {
     Entry    = e0 + e1 + e2
     Name     = n0 + n1 + n2
     Capacity = 4
-    entries  = r -> e0 + r -> e1 + r -> e2
-    name     = e0 -> n2 + e1 -> n1 + e2 -> n0
-    object   = e0 -> f1 + e1 -> f2 + e2 -> f0
-    size     = f0 -> 6 + f1 -> 1 + f2 -> 5
+    entries  = r->e0 + r->e1 + r->e2
+    name     = e0->n2 + e1->n1 + e2->n0
+    object   = e0->f1 + e1->f2 + e2->f0
+    size     = f0->6 + f1->1 + f2->5
   }
 } for 4 expect 1

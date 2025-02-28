@@ -92,9 +92,9 @@ run model_finding_instance_01 {
     File    = none
     Entry   = e0
     Name    = n0
-    entries = r -> e0
-    name    = e0 -> n0
-    object  = e0 -> d0
+    entries = r->e0
+    name    = e0->n0
+    object  = e0->d0
   }
 } for 3 expect 1
 
@@ -105,8 +105,8 @@ check model_finding_instance_02 {
     File    = f0
     Entry   = e0 + e1 + e2
     Name    = n0 + n1 + n2
-    entries = r -> e0 + d0 -> e1 + d0 -> e2
-    name    = e0 -> n2 + e1 -> n1 + e2 -> n0
-    object  = e0 -> d0 + e1 -> f0 + e2 -> f0
+    entries = r->e0 + d0->e1 + d0->e2
+    name    = e0->n2 + e1->n1 + e2->n0
+    object  = e0->d0 + e1->f0 + e2->f0
   }) implies all s : set Entry | lone s.name
 } for 3 expect 1

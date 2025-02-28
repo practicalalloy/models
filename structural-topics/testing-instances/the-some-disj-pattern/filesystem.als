@@ -70,9 +70,9 @@ run test_root_file_dir {
     File    = f0 + f1
     Entry   = e0 + e1 + e2
     Name    = n0 + n1 + n2
-    entries = d0 -> e0 + d0 -> e1 + d1 -> e2
-    name    = e0 -> n0 + e1 -> n1 + e2 -> n2
-    object  = e0 -> d1 + e1 -> f0 + e2 -> f1
+    entries = d0->e0 + d0->e1 + d1->e2
+    name    = e0->n0 + e1->n1 + e2->n2
+    object  = e0->d1 + e1->f0 + e2->f1
   }
 } for 4 Object, 3 Entry, 3 Name
 

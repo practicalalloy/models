@@ -99,9 +99,9 @@ run recursion_instance_03 {
     File    = f0 + f1
     Entry   = e0 + e1 + e2 + e3 + e4
     Name    = n0 + n1 + n2
-    entries = r -> e3 + r -> e4 + d1 -> e0 + d1 -> e1 + d1 -> e2
-    name    = e0 -> n2 + e1 -> n1 + e2 -> n0 + e3 -> n2 + e4 -> n1
-    object  = e0 -> f0 + e1 -> f0 + e2 -> f1 + e3 -> d0 + e4 -> d1
+    entries = r->e3 + r->e4 + d1->e0 + d1->e1 + d1->e2
+    name    = e0->n2 + e1->n1 + e2->n0 + e3->n2 + e4->n1
+    object  = e0->f0 + e1->f0 + e2->f1 + e3->d0 + e4->d1
   }
 } for 5 but 3 Name expect 1
 
@@ -113,8 +113,8 @@ run recursion_instance_04 {
     File    = f0
     Entry   = e0 + e1 + e2 + e3 + e4
     Name    = n0 + n1 + n2
-    entries = r -> e3 + r -> e4 + d0 -> e2 + d1 -> e1 + d2 -> e0
-    name    = e0 -> n2 + e1 -> n2 + e2 -> n2 + e3 -> n1 + e4 -> n0
-    object  = e0 -> f0 + e1 -> d2 + e2 -> d1 + e3 -> f0 + e4 -> d0
+    entries = r->e3 + r->e4 + d0->e2 + d1->e1 + d2->e0
+    name    = e0->n2 + e1->n2 + e2->n2 + e3->n1 + e4->n0
+    object  = e0->f0 + e1->d2 + e2->d1 + e3->f0 + e4->d0
   }
 } for 5 but 3 Name expect 1

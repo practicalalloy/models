@@ -120,10 +120,10 @@ run subset_signatures_instance_04 {
     Shape      = t0 + t1
     Label      = t2
     Permission = p0 + p1
-    entries    = r -> e0 + r -> e1
-    name       = e0 -> n0 + e1 -> n1
-    object     = e0 -> s0 + e1 -> f0
-    tags       = r -> t0 + f0 -> t1 + f0 -> t2
-    permission = r -> p0 + f0 -> p1
+    entries    = r->e0 + r->e1
+    name       = e0->n0 + e1->n1
+    object     = e0->s0 + e1->f0
+    tags       = r->t0 + f0->t1 + f0->t2
+    permission = r->p0 + f0->p1
   }
 } for 4

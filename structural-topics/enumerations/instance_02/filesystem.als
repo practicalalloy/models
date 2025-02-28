@@ -103,11 +103,11 @@ run enumerations_instance_02 {
     Entry                = e0
     Name                 = n0
     PermissionAssignment = p0 + p1 + p2 + p3
-    entries              = r -> e0
-    name                 = e0 -> n0
-    object               = e0 -> f0
-    mode                 = r -> p0 + r -> p1 + r -> p2 + f0 -> p0 + f0 -> p1 + f0 -> p3
-    class                = p2 -> User + p0 -> Other + p1 -> Group + p3 -> User
-    permission           = p2 -> Read + p1 -> Read + p3 -> Execute + p3 -> Read 
+    entries              = r->e0
+    name                 = e0->n0
+    object               = e0->f0
+    mode                 = r->p0 + r->p1 + r->p2 + f0->p0 + f0->p1 + f0->p3
+    class                = p2->User + p0->Other + p1->Group + p3->User
+    permission           = p2->Read + p1->Read + p3->Execute + p3->Read 
   }
 } for 4 expect 1

@@ -1,3 +1,10 @@
+/*  
+Leader election model for the generation of instance 19 of the "Protocol design"
+chapter, "Explicit messages as signatures" section, of the Practical Alloy book.
+
+https://practicalalloy.github.io/chapters/protocol-design/index.html#explicit-messages-as-signatures
+*/
+
 module leaderelection
 
 abstract sig Message {
@@ -163,18 +170,18 @@ assert at_least_one_leader_fair {
 }
 check at_least_one_leader_fair for 3 but 6 Message expect 0
 
-run book_instance19 {
+run protocol_design_instance_19 {
   all n : Node | eventually initiate[n]
   eventually Node = Elected.Node
-  some disj n0, n1, n2: Node, disj m0, m1, m2, m3, m4, m5 : Message {
-    Node = n0 + n1 + n2
-    succ = n0 -> n1 + n1 -> n2 + n2 -> n0
-    next = n2 -> n0 + n0 -> n1
-    ElectedMsg = m3 + m4 + m5
+  some disj n0, n1, n2 : Node, disj m0, m1, m2, m3, m4, m5 : Message {
+    Node         = n0 + n1 + n2
+    succ         = n0->n1 + n1->n2 + n2->n0
+    next         = n2->n0 + n0->n1
+    ElectedMsg   = m3 + m4 + m5
     CandidateMsg = m0 + m1 + m2
-    payload = m0 -> n0 + m1 -> n1 + m2 -> n2 + m3 -> n0 + m4 -> n1 + m5 -> n2 
+    payload      = m0->n0 + m1->n1 + m2->n2 + m3->n0 + m4->n1 + m5->n2 
     no inbox
-    inbox'''' = n2 -> m4
-    inbox''''' = n0 -> m4
+    inbox''''    = n2->m4
+    inbox'''''   = n0->m4
   }
 } for exactly 3 Node, exactly 6 Message, exactly 10 steps expect 1

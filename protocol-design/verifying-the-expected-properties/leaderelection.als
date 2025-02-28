@@ -1,3 +1,10 @@
+/*  
+Leader election model at the end of the "Verifying the expected properties"
+section, "Protocol design" chapter, of the Practical Alloy book.
+
+https://practicalalloy.github.io/chapters/protocol-design/index.html#verifying-the-expected-properties
+*/
+
 module leaderelection
 
 open util/ordering[Id]

@@ -110,9 +110,9 @@ run subset_signatures_instance_03 {
     Text    = x0
     Shape   = t0 + t2
     Label   = t1 + t2
-    entries = none -> none
-    name    = none -> none
-    object  = none -> none
-    tags    = none -> none
+    entries = none->none
+    name    = none->none
+    object  = none->none
+    tags    = none->none
   }
 } for 4 expect 1

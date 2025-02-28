@@ -95,8 +95,8 @@ run commands_instance_01 {
     File    = none
     Entry   = e0
     Name    = n0
-    entries = r -> e0
-    name    = e0 -> n0
-    object  = e0 -> d0
+    entries = r->e0
+    name    = e0->n0
+    object  = e0->d0
   }
 } for 3 expect 1

@@ -1,3 +1,10 @@
+/*  
+Leader election model at the end of the "Making the specification more abstract"
+section, "Protocol design" chapter, of the Practical Alloy book.
+
+https://practicalalloy.github.io/chapters/protocol-design/index.html#making-the-specification-more-abstract
+*/
+
 module leaderelection
 
 sig Node {
@@ -78,8 +85,8 @@ assert at_most_one_leader {
   always (lone Elected)
 }
 check at_most_one_leader expect 0
---check at_most_one_leader for 4 but 20 steps expect 0
---check at_most_one_leader for 4 but 1.. steps expect 0
+check at_most_one_leader for 4 but 20 steps expect 0
+check at_most_one_leader for 4 but 1.. steps expect 0
 
 assert leader_stays_leader {
   always (all n : Elected | always n in Elected)

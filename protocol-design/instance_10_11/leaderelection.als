@@ -1,3 +1,11 @@
+/*  
+Leader election model for the generation of instances 10 and 11 of the "Protocol
+design" chapter, "Specifying the protocol dynamics" section, of the Practical
+Alloy book.
+
+https://practicalalloy.github.io/chapters/protocol-design/index.html#specifying-the-protocol-dynamics
+*/
+
 module leaderelection
 
 open util/ordering[Id]
@@ -103,16 +111,16 @@ run eventually_elected {
   eventually some Elected
 } for exactly 3 Node, exactly 3 Id expect 1
 
-run book_instance10_11 {
+run protocol_design_instance_10_11 {
   eventually some Elected
   some disj n0, n1, n2 : Node, disj i0, i1, i2 : Id {
     Node = n0 + n1 + n2
-    Id = i0 + i1 + i2
-    succ = n0 -> n1 + n1 -> n2 + n2 -> n0
-    next = i0 -> i1 + i1 -> i2
-    id = n0 -> i2 + n1 -> i1 + n2 -> i0
+    Id   = i0 + i1 + i2
+    succ = n0->n1 + n1->n2 + n2->n0
+    next = i0->i1 + i1->i2
+    id   = n0->i2 + n1->i1 + n2->i0
     no Elected
     no inbox
-    no outbox; outbox = n0 -> i2
+    no outbox; outbox = n0->i2
   }
 } for exactly 3 Node, exactly 3 Id expect 1

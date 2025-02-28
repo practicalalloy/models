@@ -32,6 +32,6 @@ run structural_modeling_instance_06 {
     File    = none
     Entry   = e0 + e1 + e2 
     Name    = none
-    entries = d0 -> e0 + d0 -> e1 + r -> e2
+    entries = d0->e0 + d0->e1 + r->e2
   }
 } expect 1

@@ -79,8 +79,8 @@ run relational_logic_instance_01 {
     File    = f0
     Entry   = e0 + e1 + e2 + e3
     Name    = n0 + n1 + n2
-    entries = r -> e0 + r -> e1 + r -> e2 + d0 -> e3
-    name    = e0 -> n0 + e1 -> n2 + e2 -> n1 + e3 -> n1
-    object  = e0 -> f0 + e1 -> f0 + e2 -> d0 + e3 -> d1
+    entries = r->e0 + r->e1 + r->e2 + d0->e3
+    name    = e0->n0 + e1->n2 + e2->n1 + e3->n1
+    object  = e0->f0 + e1->f0 + e2->d0 + e3->d1
   }
 } for 4 expect 1

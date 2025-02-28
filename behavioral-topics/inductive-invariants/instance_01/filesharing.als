@@ -176,7 +176,7 @@ check inductive_invariants_instance_01 {
     Token    = t0
     uploaded = f0
     trashed  = f0
-    shared   = f0 -> t0
+    shared   = f0->t0
   }) implies ((inv_shared_are_uploaded and next) implies
     after inv_shared_are_uploaded)
 } for 10 expect 1

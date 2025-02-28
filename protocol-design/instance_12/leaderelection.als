@@ -1,3 +1,11 @@
+/*  
+Leader election model for the generation of instance 12 of the "Protocol design"
+chapter, "Verifying the expected properties" section, of the Practical Alloy
+book.
+
+https://practicalalloy.github.io/chapters/protocol-design/index.html#verifying-the-expected-properties
+*/
+
 module leaderelection
 
 open util/ordering[Id]
@@ -120,13 +128,13 @@ assert at_least_one_leader {
 }
 check at_least_one_leader expect 1
 
-check book_instance12 {
+check protocol_design_instance_12 {
   (some n0 : Node, disj i0, i1, i2 : Id {
-    Node = n0
-    Id = i0 + i1 + i2
-    succ = n0 -> n0
-    ordering/next = i0 -> i1 + i1 -> i2
-    id = n0 -> i0
+    Node          = n0
+    Id            = i0 + i1 + i2
+    succ          = n0->n0
+    ordering/next = i0->i1 + i1->i2
+    id            = n0->i0
     always no Elected
     always no inbox
     always no outbox

@@ -85,11 +85,11 @@ run enumerations_instance_01 {
     File              = f0
     Entry             = e0
     Name              = n0
-    entries           = r -> e0
-    name              = e0 -> n0
-    object            = e0 -> f0
-    user_permission   = r -> Read + f0 -> Permission
-    group_permission  = f0 -> Permission
-    others_permission = f0 -> Permission
+    entries           = r->e0
+    name              = e0->n0
+    object            = e0->f0
+    user_permission   = r->Read + f0->Permission
+    group_permission  = f0->Permission
+    others_permission = f0->Permission
   }
 } expect 1

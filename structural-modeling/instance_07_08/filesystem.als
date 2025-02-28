@@ -36,9 +36,9 @@ run structural_modeling_instance_07 {
     File    = f0
     Entry   = e0 + e1 + e2 + e3
     Name    = n0
-    entries = d0 -> e0 + d0 -> e1 + d0 -> e2 + d0 -> e3 + r -> e3
-    name    = e0 -> n0 + e1 -> n0 + e2 -> n0 + e3 -> n0
-    object  = e0 -> d0 + e1 -> d0 + e2 -> d0 + e3 -> d0
+    entries = d0->e0 + d0->e1 + d0->e2 + d0->e3 + r->e3
+    name    = e0->n0 + e1->n0 + e2->n0 + e3->n0
+    object  = e0->d0 + e1->d0 + e2->d0 + e3->d0
   }
 } for 4 expect 1
 
@@ -49,8 +49,8 @@ run structural_modeling_instance_08 {
     File    = f0
     Entry   = e0 + e1 + e2 + e3
     Name    = n0
-    entries = d0 -> e0 + d0 -> e1 + d0 -> e2 + d0 -> e3 + r -> e3
-    name    = e0 -> n0 + e1 -> n0 + e2 -> n0 + e3 -> n0
-    object  = e0 -> d0 + e1 -> d0 + e2 -> d0 + e3 -> d0
+    entries = d0->e0 + d0->e1 + d0->e2 + d0->e3 + r->e3
+    name    = e0->n0 + e1->n0 + e2->n0 + e3->n0
+    object  = e0->d0 + e1->d0 + e2->d0 + e3->d0
   }
 } for 4 expect 1

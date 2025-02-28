@@ -71,8 +71,8 @@ run book_instance_08 {
     Dir     = d0 + d1 + d2
     Entry   = e0 + e1 + e2
     Name    = n0 + n1 + n2
-    name    = e0 -> n1 + e1 -> n0 + e2 -> n2
-    object  = e0 -> d0 + e1 -> d1 + e2 -> f0
-    entries = d2 -> e1 + d2 -> e2 + d1 -> e0
+    name    = e0->n1 + e1->n0 + e2->n2
+    object  = e0->d0 + e1->d1 + e2->f0
+    entries = d2->e1 + d2->e2 + d1->e0
   }
 } for 4 expect 1

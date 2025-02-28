@@ -79,8 +79,8 @@ run evaluator_instance_01 {
     File    = f0
     Entry   = e0 + e1 + e2
     Name    = n0 + n1
-    entries = d0 -> e0 + r -> e1 + r -> e2
-    name    = e0 -> n0 + e1 -> n1 + e2 -> n0
-    object  = e0 -> f0 + e1 -> f0 + e2 -> d0
+    entries = d0->e0 + r->e1 + r->e2
+    name    = e0->n0 + e1->n1 + e2->n0
+    object  = e0->f0 + e1->f0 + e2->d0
   }
 } expect 1

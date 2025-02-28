@@ -1,3 +1,11 @@
+/*  
+Leader election model for the generation of instance 14 of the "Protocol design"
+chapter, "Making the specification more abstract" section, of the Practical
+Alloy book.
+
+https://practicalalloy.github.io/chapters/protocol-design/index.html#making-the-specification-more-abstract
+*/
+
 module leaderelection
 
 sig Node {
@@ -74,12 +82,12 @@ run eventually_elected {
   eventually some Elected
 } for exactly 3 Node expect 1
 
-run book_instance14 {
+run protocol_design_instance_14 {
   eventually some Elected
   some disj n0, n1, n2 : Node {
     Node = n0 + n1 + n2
-    succ = n2 -> n0 + n0 -> n1 + n1 -> n2
-    next = n0 -> n1 + n2 -> n0
+    succ = n2->n0 + n0->n1 + n1->n2
+    next = n0->n1 + n2->n0
     no Elected
     no inbox
   }

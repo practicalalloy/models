@@ -104,7 +104,7 @@ run meta_instance_01 {
     Text       = x0
     no Binary
     Token      = t0
-    link       = l0 -> x0
-    attributes = x0 -> a0
+    link       = l0->x0
+    attributes = x0->a0
   }
 } for 2 expect 1

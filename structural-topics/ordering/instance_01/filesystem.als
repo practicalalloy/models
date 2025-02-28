@@ -89,8 +89,8 @@ run ordering_instance_01 {
     File    = f0
     Entry   = e0 + e1
     Name    = n0 + n1
-    entries = r -> e0 + r -> e1
-    name    = e0 -> n0 + e1 -> n1
-    object  = e0 -> f0 + e1 -> d0
+    entries = r->e0 + r->e1
+    name    = e0->n0 + e1->n1
+    object  = e0->f0 + e1->d0
   }
 } expect 1
