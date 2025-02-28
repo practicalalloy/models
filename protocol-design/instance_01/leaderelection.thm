@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<alloy>
+
+<view hideSkolem="yes">
+
+<defaultnode/>
+
+<defaultedge/>
+
+<node>
+   <type name="Int"/>
+   <type name="Node"/>
+   <type name="String"/>
+   <type name="univ"/>
+   <type name="seq/Int"/>
+   <set name="$book_instance1_n0" type="Node"/>
+   <set name="$book_instance1_n1" type="Node"/>
+</node>
+
+</view>
+
+</alloy>

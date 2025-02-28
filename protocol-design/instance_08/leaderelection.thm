@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<alloy>
+
+<view nodetheme="Martha" edgetheme="Martha">
+
+<defaultnode/>
+
+<defaultedge/>
+
+<node>
+   <type name="Int"/>
+   <type name="Node"/>
+   <type name="String"/>
+   <type name="univ"/>
+   <type name="ordering/Ord"/>
+   <type name="seq/Int"/>
+</node>
+
+<node hideunconnected="yes" shape="Circle" color="Gray">
+   <type name="Id"/>
+</node>
+
+<node showlabel="no">
+   <set name="$book_instance8_i0" type="Id"/>
+   <set name="$book_instance8_i1" type="Id"/>
+   <set name="$book_instance8_i2" type="Id"/>
+   <set name="$book_instance8_n0" type="Node"/>
+   <set name="$book_instance8_n1" type="Node"/>
+   <set name="$book_instance8_n2" type="Node"/>
+   <set name="$first" type="Id"/>
+   <set name="$last" type="Id"/>
+</node>
+
+<node showlabel="no" color="Green">
+   <set name="Elected" type="Node"/>
+</node>
+
+<edge style="inherit" visible="no" attribute="yes">
+   <relation name="inbox"> <type name="Node"/> <type name="Id"/> </relation>
+   <relation name="outbox"> <type name="Node"/> <type name="Id"/> </relation>
+</edge>
+
+<edge visible="no" attribute="yes">
+   <relation name="id"> <type name="Node"/> <type name="Id"/> </relation>
+</edge>
+
+<edge visible="no" constraint="no">
+   <relation name="$prev"> <type name="Id"/> <type name="Id"/> </relation>
+</edge>
+
+</view>
+
+</alloy>
